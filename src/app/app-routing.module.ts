@@ -3,12 +3,13 @@ import { RouterModule, Routes, Router } from '@angular/router';
 import { TemplateGalleryComponent } from './template-gallery/template-gallery.component';
 import { DummyComponent } from './dummy/dummy.component';
 import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 const routes: Routes = [
   { path: 'template-gallery', component: TemplateGalleryComponent },
   { path: 'dummy', component: DummyComponent },
   { path: 'feedback', component: FeedbackPageComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full' },
+  { path: '**', redirectTo: '', pathMatch: 'full',component:NavbarComponent },
  
   // other routes
 ];
