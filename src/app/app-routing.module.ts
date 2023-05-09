@@ -8,6 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 const routes: Routes = [
   { path: 'template-gallery', component: TemplateGalleryComponent },
   { path: 'dummy', component: DummyComponent },
+  { path: 'edit-response', component: NavbarComponent },
   { path: 'feedback', component: FeedbackPageComponent},
   { path: '**', redirectTo: '', pathMatch: 'full',component:NavbarComponent },
  
