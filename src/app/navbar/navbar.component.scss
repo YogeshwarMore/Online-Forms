@@ -1,0 +1,114 @@
+.mat-toolbar {
+  background-color: blueviolet;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+.center-items {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.search-form {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  align-items: center;
+  border: 2px solid rgb(255, 255, 255);
+  border-radius: 20px;
+  padding: 6px;
+  height: 36px; /* Set height to match input */
+
+  input[type="text"] {
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 20px;
+    font-size: 14px;
+    padding: 6px;
+    width: 150px;
+    margin-right: 6px;
+
+    &:focus {
+      outline: navajowhite;
+    }
+  }
+
+  .mat-icon {
+    display: flex;
+    align-items: center;
+  }
+
+  button {
+    align-items: center;
+    padding: 8px;
+    margin-left: 6px;
+  }
+}
+
+.account {
+  display: flex;
+  align-items: center;
+
+  button {
+    margin-left: 10px;
+    background: linear-gradient(to bottom right, skyblue, white, pink);
+  }
+  
+}
+
+
+@media only screen and (max-width: 600px) {
+  .center-items {
+    flex-direction: column;
+  }
+
+  .search-form {
+    margin: 10px;
+    position: relative;
+    left: 0;
+    transform: none;
+  }
+
+  .search-form input[type="text"] {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  button {
+    margin-left: 0;
+  }
+
+  .account {
+    margin-top: 10px;
+    justify-content: center;
+
+    button {
+      margin-left: 6px;
+    }
+  }
+}
+
+@media only screen and (max-width: 400px) {
+  .search-form input[type="text"] {
+    font-size: 12px;
+    width: 120px;
+    margin-right: 4px;
+  }
+
+  button {
+    font-size: 12px;
+    padding: 6px;
+    margin-left: 4px;
+  }
+
+  .account button {
+    font-size: 12px;
+    padding: 6px;
+    margin-left: 8px;
+  }
+}

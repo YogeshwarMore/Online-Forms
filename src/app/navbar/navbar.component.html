@@ -1,0 +1,22 @@
+<mat-toolbar color="primary" class="mat-elevation-z6">
+  <div class="center-items">
+    <mat-icon>blur_on</mat-icon>
+    <span>Online Forms</span>
+    <div class="spacer"></div>
+    <div class="search-form">
+      <input type="text" placeholder="Search..">
+      <button mat-mini-fab title="Search" color="basic">
+        <mat-icon>search</mat-icon>
+      </button>
+    </div>
+    <div class="account">
+      <button mat-raised-button [matMenuTriggerFor]="menu" title="Account">Account<mat-icon>person</mat-icon></button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Sign Up</button>
+        <mat-divider></mat-divider>
+        <button mat-menu-item>Sign In</button>
+      </mat-menu>
+    </div>
+  </div>
+</mat-toolbar>
+<mat-divider></mat-divider>

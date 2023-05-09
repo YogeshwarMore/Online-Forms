@@ -1,0 +1,197 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.top, .bottom {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 20px 20px;
+  border-radius: 10px;
+  margin: 10px;
+}
+.top{
+  
+  background-color: rgb(235, 208, 230);
+}
+
+.bottom{
+  margin-top: 0px;
+  background-color: rgb(227, 239, 239);
+}
+
+.top h2 {
+  position: absolute;
+  text-decoration: underline;
+  top: 70px; /* Adjust this value to move the heading up or down */
+  left: 20px; /* Adjust this value to move the heading left or right */
+  margin-top: 20px;
+  margin-left: 10px;
+  font-size: 20px;
+  color: purple;
+}
+.bottom-section {
+  position: relative;
+}
+
+.bottom h2 {
+  position: absolute;
+  text-decoration: underline;
+  left: 20px;
+  margin-left: 10px;
+  margin-top: -50px;
+  font-size: 20px;
+  color: purple;
+}
+
+.templates-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.top template, .bottom template {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  cursor: pointer;
+  flex-basis: calc((100% / 5) - 40px); // set flex-basis to 20% minus margin
+}
+
+.template:hover {
+  transform: scale(1.05) translate(5px, -5px);
+}
+
+.template-image {
+  height: 180px;
+  width: 180px;
+  margin-bottom: 10px;
+  margin-left: 50px;
+  border-radius: 10px;
+}
+
+.template-text {
+  font-size: 16px;
+  color: purple;
+  margin-top: 10px;
+  text-align: center;
+  display: block;
+}
+
+
+@media only screen and (max-width: 768px) {
+  .top, .bottom {
+    padding: 20px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+  h2 {
+    font-size: 16px;
+  }
+
+  .new-form {
+    margin-top: 10px;
+  }
+
+  .new-form-button {
+    height: 50px;
+    width: 50px;
+  }
+
+  .new-form-text {
+    font-size: 14px;
+  }
+
+  .bottom {
+    display: none;
+  }
+
+  .template {
+    margin: 10px;
+    flex-basis: calc((100% / 3) - 20px); // set flex-basis to 33.33% minus margin
+  }
+
+  .template-image {
+    height: 100px;
+    width: 100px;
+  }
+
+  .template-text {
+    font-size: 14px;
+  }
+}
+
+@media only screen and (max-width: 576px) {
+  .template {
+    flex-basis: calc((100% / 2) - 20px); // set flex-basis to 50% minus margin
+  }
+
+  .template-image {
+    height: 80px;
+    width: 80px;
+  }
+
+  .template-text {
+    font-size: 12px;
+  }
+}
+.left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 230px;
+  margin-top: -175px;
+}
+
+.left:hover {
+  transform: scale(1.05) translate(5px, -5px);
+}
+
+.left label {
+  margin-right: 10px;
+}
+
+.left select {
+  width: 220px;
+  height: 40px;
+  padding: 5px;
+  border-radius: 20px;
+  border: none;
+  background-color: #e2ace9;
+  font-size: 16px;
+  color: #333;
+}
+
+.left option {
+  background-color: #e4cce4;
+  color: #333;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+@media only screen and (max-width: 600px) {
+  .left {
+    margin-left: 0;
+  }
+  
+  .left select {
+    width: 100%;
+  }
+  
+  .right {
+    margin-right: 0;
+  }
+}
