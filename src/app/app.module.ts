@@ -17,6 +17,13 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { DummyComponent } from './dummy/dummy.component';
 import { TemplateGalleryComponent } from './template-gallery/template-gallery.component';
 import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
+import { FormComponent } from './form/form.component';
+import {MatTabsModule} from '@angular/material/tabs';
+import {MatListModule} from '@angular/material/list';
+import { FormPopupComponent } from './form-popup/form-popup.component';
+import {MatDialogModule} from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+
 
 
 
@@ -27,6 +34,8 @@ import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
     DummyComponent,
     TemplateGalleryComponent,
     FeedbackPageComponent,
+    FormComponent,
+    FormPopupComponent,
     
   ],
   imports: [
@@ -42,7 +51,11 @@ import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
     MatFormFieldModule,
     MatSidenavModule,
     FlexLayoutModule,
-    RouterModule
+    RouterModule,
+    MatTabsModule,
+    MatListModule,
+    MatDialogModule,
+    FormsModule
   ],
   exports: [RouterModule],
   providers: [],

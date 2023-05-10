@@ -1,0 +1,67 @@
+<mat-tab-group>
+    <mat-tab label="Form">
+
+        <div class="container">
+
+            <div class="left">
+             
+              <input type="text" name="myInput" placeholder="Form Name">
+              <br>    
+              <input type="text" id="lname" name="lname" placeholder="Description" style="font-size: small;">
+              <hr>
+              <div class="textfield" *ngFor="let field of fields">
+                    <label>{{ field.name }}</label>
+                    <input type="text">
+                  </div>
+
+
+            </div>
+
+            <div class="right">
+
+              <mat-tab-group>
+                <mat-tab label="Input">
+              <div class="textfield">
+                <label>label</label>
+                <input type="text" placeholder="New Field">
+              </div>
+           
+                <button (click)="addField()">Add Field</button>
+
+                </mat-tab>
+
+                <mat-tab label="Radios / Checkboxes">
+                  
+
+                </mat-tab> 
+                <mat-tab label="Buttons">
+                  
+
+                </mat-tab> 
+                <mat-tab label="Date / Time">
+                  
+
+                </mat-tab>
+
+
+                </mat-tab-group>
+
+            </div>
+
+            
+
+        </div>
+
+
+    </mat-tab>
+
+    <mat-tab label="Responses">
+        <mat-list role="list">
+            <mat-list-item role="listitem">Item 1</mat-list-item>
+            <mat-list-item role="listitem">Item 2</mat-list-item>
+            <mat-list-item role="listitem">Item 3</mat-list-item>
+        </mat-list>
+
+    </mat-tab>
+
+</mat-tab-group>

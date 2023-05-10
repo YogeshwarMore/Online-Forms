@@ -4,13 +4,16 @@ import { TemplateGalleryComponent } from './template-gallery/template-gallery.co
 import { DummyComponent } from './dummy/dummy.component';
 import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { FormComponent } from './form/form.component';
 
 const routes: Routes = [
   { path: 'template-gallery', component: TemplateGalleryComponent },
   { path: 'dummy', component: DummyComponent },
   { path: 'edit-response', component: NavbarComponent },
   { path: 'feedback', component: FeedbackPageComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full',component:NavbarComponent },
+  {path: 'form', component: FormComponent},
+  { path: '**', redirectTo: '', pathMatch: 'full',component:NavbarComponent }
+
  
   // other routes
 ];
