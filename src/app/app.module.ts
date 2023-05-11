@@ -23,6 +23,7 @@ import {MatListModule} from '@angular/material/list';
 import { FormPopupComponent } from './form-popup/form-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
+import { NavbarOnlyComponent } from './navbar-only/navbar-only.component';
 
 
 
@@ -36,6 +37,7 @@ import { FormsModule } from '@angular/forms';
     FeedbackPageComponent,
     FormComponent,
     FormPopupComponent,
+    NavbarOnlyComponent,
     
   ],
   imports: [

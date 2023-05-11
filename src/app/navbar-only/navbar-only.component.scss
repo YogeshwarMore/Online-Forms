@@ -1,0 +1,66 @@
+.mat-toolbar {
+    background-color: blueviolet;
+  }
+  
+  .spacer {
+    flex: 1 1 auto;
+  }
+  
+  .center-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    position: relative;
+  }
+  
+  
+  
+  .account {
+    display: flex;
+    align-items: center;
+  
+    button {
+      margin-left: 10px;
+      background: linear-gradient(to bottom right, skyblue, white, pink);
+    }
+    
+  }
+  
+  
+  @media only screen and (max-width: 600px) {
+    .center-items {
+      flex-direction: column;
+    }
+  
+  
+    button {
+      margin-left: 0;
+    }
+  
+    .account {
+      margin-top: 10px;
+      justify-content: center;
+  
+      button {
+        margin-left: 6px;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 400px) {
+  
+  
+    button {
+      font-size: 12px;
+      padding: 6px;
+      margin-left: 4px;
+    }
+  
+    .account button {
+      font-size: 12px;
+      padding: 6px;
+      margin-left: 8px;
+    }
+  }
+  

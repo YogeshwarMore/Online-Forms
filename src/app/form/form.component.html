@@ -1,3 +1,6 @@
+<app-navbar-only></app-navbar-only>
+<body>
+  <div class="forms-container">
 <mat-tab-group>
     <mat-tab label="Form">
 
@@ -56,12 +59,26 @@
     </mat-tab>
 
     <mat-tab label="Responses">
-        <mat-list role="list">
-            <mat-list-item role="listitem">Item 1</mat-list-item>
-            <mat-list-item role="listitem">Item 2</mat-list-item>
-            <mat-list-item role="listitem">Item 3</mat-list-item>
-        </mat-list>
+      <mat-divider></mat-divider>
+      <div class="responses-header">
+        <h3>Number of responses:</h3>
+        <mat-slide-toggle>Recieving Responses</mat-slide-toggle>
+        <h4>List of users/IDs:</h4>
+        <div class="user-list">
+          <div *ngFor="let user of userlist">
+            <a routerLink="/response/{{ user.id }}" class="user-item">{{ user.name }} 
+               <div class="icons">
+                <mat-icon class="icon-button" routerLink="">delete</mat-icon>
+                <mat-icon class="icon-button" routerLink="">print</mat-icon>
+              </div> </a>
+             
+            <hr>
+          </div>
+        </div>
+      </div>
 
     </mat-tab>
 
 </mat-tab-group>
+</div>
+</body>
