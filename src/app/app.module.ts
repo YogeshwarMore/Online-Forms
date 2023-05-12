@@ -24,7 +24,8 @@ import { FormPopupComponent } from './form-popup/form-popup.component';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { NavbarOnlyComponent } from './navbar-only/navbar-only.component';
-
+import { MatInputModule } from '@angular/material/input';
+import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
 
 
 
@@ -38,6 +39,7 @@ import { NavbarOnlyComponent } from './navbar-only/navbar-only.component';
     FormComponent,
     FormPopupComponent,
     NavbarOnlyComponent,
+    DynamicFormComponent,
     
   ],
   imports: [
@@ -57,7 +59,8 @@ import { NavbarOnlyComponent } from './navbar-only/navbar-only.component';
     MatTabsModule,
     MatListModule,
     MatDialogModule,
-    FormsModule
+    FormsModule,
+    MatInputModule
   ],
   exports: [RouterModule],
   providers: [],

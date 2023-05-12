@@ -3,13 +3,14 @@
     </h1>
     <div mat-dialog-content>
     <mat-form-field>
-    <input placeholder="First Name" matInput  [(ngModel)]="data.firstName">
+    <input placeholder="label Name" matInput [(ngModel)]="Name">
     </mat-form-field><br>
-    <mat-form-field>
-    <input placeholder="Last Name" matInput [(ngModel)]="data.lastName">
-    </mat-form-field>
+    <!-- <mat-form-field>
+    <input placeholder="Last Name" matInput [(ngModel)]="lastName">
+    </mat-form-field> -->
+    <mat-slide-toggle  [(ngModel)]="isOptional">isOptional</mat-slide-toggle>
     </div>
     <div mat-dialog-actions>
-    <button mat-button [mat-dialog-close]="data">Submit</button>
-    <button mat-button (click)="onNoClick()">Close</button>
+    <button mat-button (click)="OnSave()">Submit</button>
+    <button mat-button [mat-dialog-close]>Close</button>
     </div>
