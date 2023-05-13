@@ -3,12 +3,21 @@
     <mat-icon>blur_on</mat-icon>
     <span>Online Forms</span>
     <div class="spacer"></div>
+
     <div class="search-form">
-      <input type="text" placeholder="Search..">
+      <mat-form-field>
+        <input  matInput [matAutocomplete]="auto" placeholder="Search..">
+        </mat-form-field>
+        <mat-autocomplete #auto>
+          <mat-option *ngFor="let form of forms">{{form.formname}}</mat-option>
+        </mat-autocomplete>
       <button mat-mini-fab title="Search" color="basic">
         <mat-icon>search</mat-icon>
       </button>
+      
+      
     </div>
+
     <div class="account">
       <button mat-raised-button [matMenuTriggerFor]="menu" title="Account">Account<mat-icon>person</mat-icon></button>
       <mat-menu #menu="matMenu">

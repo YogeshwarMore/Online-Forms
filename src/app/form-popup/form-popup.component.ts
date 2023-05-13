@@ -1,5 +1,5 @@
-import { Component} from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
+import { Component, Inject, OnInit} from '@angular/core';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 
 
@@ -8,16 +8,29 @@ import { MatDialogRef } from '@angular/material/dialog';
   templateUrl: './form-popup.component.html',
   styleUrls: ['./form-popup.component.scss']
 })
-export class FormPopupComponent{
+export class FormPopupComponent implements OnInit{
 
- 
-  Name:any;
-  isOptional:any;
-  constructor( public dialogRef: MatDialogRef<FormPopupComponent>) { }
+  type: any;
+  Name: any;
+  isOptional: any;
+  count: any;
+  optionValue:String="";
+  options: string[] = [];
+
+
+  constructor( public dialogRef: MatDialogRef<FormPopupComponent>,@Inject(MAT_DIALOG_DATA)public data:any) { }
+  ngOnInit(): void {
+    this.type=this.data.name;
+  }
+
+    addOption(): void {
+    this.options.push(this.Name);
+    this.Name = '';
+  }
  
   OnSave(){
     this.dialogRef.close({
-      data:{f:this.Name,l:this.isOptional}
+      data1:{f:this.Name,l:this.isOptional,options: this.options}
     });
     
   }

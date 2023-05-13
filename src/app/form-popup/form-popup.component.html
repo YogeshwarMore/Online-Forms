@@ -1,16 +1,23 @@
 <h1 mat-dialog-title>
     Fill Basic Details
-    </h1>
-    <div mat-dialog-content>
+</h1>
+<div mat-dialog-content>
     <mat-form-field>
-    <input placeholder="label Name" matInput [(ngModel)]="Name">
-    </mat-form-field><br>
-    <!-- <mat-form-field>
-    <input placeholder="Last Name" matInput [(ngModel)]="lastName">
-    </mat-form-field> -->
-    <mat-slide-toggle  [(ngModel)]="isOptional">isOptional</mat-slide-toggle>
-    </div>
-    <div mat-dialog-actions>
+        <input type="type" placeholder="label Name" matInput [(ngModel)]="Name">
+    </mat-form-field>
+
+    <ng-container *ngFor="let option of options; let i = index;">
+        <input [type]="type" placeholder="option {{i + 1}}" [placeholder]="option">
+        <label>{{option}}</label>
+    </ng-container>
+
+    <button *ngIf="type == 'radio'|| type == 'checkbox'" mat-raised-button (click)="addOption()">Add option</button>
+
+    <mat-slide-toggle *ngIf="type != 'button' || type=='DatePicker'"
+        [(ngModel)]="isOptional">isOptional</mat-slide-toggle>
+</div>
+
+<div mat-dialog-actions>
     <button mat-button (click)="OnSave()">Submit</button>
     <button mat-button [mat-dialog-close]>Close</button>
-    </div>
+</div>

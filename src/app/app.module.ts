@@ -21,11 +21,15 @@ import { FormComponent } from './form/form.component';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatListModule} from '@angular/material/list';
 import { FormPopupComponent } from './form-popup/form-popup.component';
+import { MatAutocompleteModule} from '@angular/material/autocomplete';
 import {MatDialogModule} from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { NavbarOnlyComponent } from './navbar-only/navbar-only.component';
 import { MatInputModule } from '@angular/material/input';
 import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import {   HttpClientModule } from '@angular/common/http';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
 
 
 
@@ -60,7 +64,13 @@ import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
     MatListModule,
     MatDialogModule,
     FormsModule,
-    MatInputModule
+    MatInputModule,
+    HttpClientModule,
+    MatAutocompleteModule,
+    MatDatepickerModule,
+    MatNativeDateModule
+    
+  
   ],
   exports: [RouterModule],
   providers: [],

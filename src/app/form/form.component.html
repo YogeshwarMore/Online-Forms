@@ -8,33 +8,47 @@
         <div class="container">
 
           <div class="left">
-            
+
             <input type="text" name="myInput" placeholder="Form Name">
             <br>
             <input type="text" id="lname" name="lname" placeholder="Description" style="font-size: small;">
             <hr>
             <ng-container *ngFor="let field of fields">
 
-            <div *ngIf="field.type === 'text'">
-              <label>{{ field.name }}</label>
-              <input type="text" [name]="field.name">
-            </div>
+              <div *ngIf="field.type === 'text'">
+                <label>{{ field.name }}</label>
+                <input type="text" [name]="field.name">
+              </div>
 
-            <div *ngIf="field.type === 'radio'">
-              <label>{{ field.name }}</label>
-              <ng-container *ngFor="let option of field.options">
-                <input type="radio" [name]="field.name" [value]="option.value">{{ option.label }}
-              </ng-container>
-            </div>
+              <div *ngIf="field.type === 'radio'">
+                <label>{{ field.name }}</label>
+                <ng-container *ngFor="let option of field.options">
+                  <input type="radio" [name]="field.name" [value]="field.name">{{ option }}
+                </ng-container>
+              </div>
 
-            <div *ngIf="field.type === 'checkbox'">
-              <label>{{ field.name }}</label>
-              <ng-container *ngFor="let option of field.options">
-                <input type="checkbox" [name]="field.name" [value]="option.value">{{ option.label }}
-              </ng-container>
-            </div>
-          </ng-container>
+              <div *ngIf="field.type === 'checkbox'">
+                <label>{{ field.name }}</label>
+                <ng-container *ngFor="let option of field.options">
+                  <input type="checkbox" [name]="field.name" [value]="field.name">{{ option }}
+                </ng-container>
+              </div>
 
+              <div *ngIf="field.type === 'button'">
+                <button>{{field.name}}</button>
+              </div>
+
+              <div *ngIf="field.type==='DatePicker'">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Choose a date</mat-label>
+                  <input matInput [matDatepicker]="picker">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <button mat-raised-button (click)="picker.open()">Open</button>
+              </div>
+
+            </ng-container>
           </div>
 
           <div class="right">
@@ -51,14 +65,28 @@
 
               <mat-tab label="Radios / Checkboxes">
                 <label>radio button</label>
-                  <input type="radio" value="" >
-                  <input type="radio" value="" >
-                <button (click)="addField('radio')">Add Field</button>
-              </mat-tab>
-              <mat-tab label="Buttons">
+                <input type="radio" value="option 1">
+                <input type="radio" value="option 2">
+                <button (click)="addField('radio')">Add Radio</button>
 
+                <label>radio button</label>
+                <input type="checkbox" value="option 1">
+                <input type="checkbox" value="option 2">
+                <button (click)="addField('checkbox')">Add checkbox</button>
               </mat-tab>
-              <mat-tab label="Date / Time">
+
+              <mat-tab label="Buttons">
+                <button mat-raised-button (click)="addField('button')">Add Button</button>
+              </mat-tab>
+
+              <mat-tab label="Date / Time" (click)="addField('DatePicker')">
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Choose a date</mat-label>
+                  <input matInput [matDatepicker]="picker">
+                  <mat-hint>MM/DD/YYYY</mat-hint>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+                <button mat-raised-button (click)="addField('DatePicker')">Open</button>
               </mat-tab>
             </mat-tab-group>
           </div>
@@ -71,17 +99,18 @@
           <h3>Number of responses:</h3>
           <mat-slide-toggle>Recieving Responses</mat-slide-toggle>
           <h4>List of users/IDs:</h4>
-          <div class="user-list">
-            <div *ngFor="let user of userlist">
-              <a routerLink="/response/{{ user.id }}" class="user-item">{{ user.name }}
-                <div class="icons">
-                  <mat-icon class="icon-button" routerLink="">delete</mat-icon>
-                  <mat-icon class="icon-button" routerLink="">print</mat-icon>
-                </div>
-              </a>
+          <div class="user-list" *ngFor="let user of userlist">
+            <div class="user-wrapper">
+              <a routerLink="/response/{{ user.id }}" class="user-item">{{ user.name }}</a>
+            </div>
+
+            <div class="icons">
+              <mat-icon class="icon-button" routerLink="">delete</mat-icon>
+              <mat-icon class="icon-button" routerLink="">print</mat-icon>
             </div>
 
           </div>
+
         </div>
 
       </mat-tab>

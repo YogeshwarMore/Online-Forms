@@ -2,11 +2,12 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormPopupComponent } from '../form-popup/form-popup.component';
 
+
 interface Field {
   name: string;
   isOptional: boolean;
   type: string;
-  options?: { label: string, value: string }[]
+  options?: string[];
 }
 
 @Component({
@@ -27,43 +28,63 @@ export class FormComponent {
 
   fields: Array<Field> = [];
   
-
   constructor(public dialog: MatDialog) {
   }
   
+  
   addField(type : string) {
     const dialogRef = this.dialog.open(FormPopupComponent, {
-      width: '250px'
+      width: '500px',
+      data:{name : type}
     });
     
     dialogRef.afterClosed().subscribe(res => {
 
-      if(type == "text"){
+      if(type == "text" && res.data1.f){
         const newTextField: Field = {
-          name: res.data.f,
-          isOptional: res.data.isOptional,
+          name: res.data1.f,
+          isOptional: res.data1.isOptional,
           type: "text"
+          
         };
         this.fields.push(newTextField);
-      } else if (type == "radio") {
+      } else if (type == "radio" && res.data1.f) {
         const newRadioField: Field = {
-          name: res.data.f,
-          isOptional: res.data.isOptional,
+          name: res.data1.f,
+          isOptional: res.data1.isOptional,
           type: "radio",
-          options: [{label: "Option 1", value: "option1"}, {label: "Option 2", value: "option2"}]
+          options: res.data1.options
         };
         this.fields.push(newRadioField);
-      } else if (type == "checkbox") {
+      } else if (type == "checkbox"&& res.data1.f) {
         const newCheckboxField: Field = {
-          name: res.data.f,
-          isOptional: res.data.isOptional,
+          name: res.data1.f,
+          isOptional: res.data1.isOptional,
           type: "checkbox",
-          options: [{label: "Option 1", value: "option1"}, {label: "Option 2", value: "option2"}]
+          options: res.data1.options
         };
         this.fields.push(newCheckboxField);
+      }else if(type =="button"&& res.data1.f)
+      {
+        const newbutton: Field={
+        name:res.data1.f,
+        isOptional: false,
+        type:"button"
+      };
+      this.fields.push(newbutton);
+      }else if(type =="DatePicker"&& res.data1.f)
+      {
+        const newbutton: Field={
+        name:res.data1.f,
+        isOptional: res.data1.isOptional,
+        type:"DatePicker"
+      };
+      this.fields.push(newbutton);
       }
-    }); 
-
+    });
+    
+    console.log(this.fields);
+    
   }
 
   
