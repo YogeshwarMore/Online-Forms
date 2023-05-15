@@ -1,20 +1,16 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { FormPopupComponent } from '../form-popup/form-popup.component';
-
-
-interface Field {
-  name: string;
-  isOptional: boolean;
-  type: string;
-  options?: string[];
-}
+import { forms } from '../Model/forms';
+import { ServicesService } from '../services/services.service';
+import { field } from '../Model/field';
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
   styleUrls: ['./form.component.scss']
 })
+
 export class FormComponent {
 
   userlist = [
@@ -26,76 +22,98 @@ export class FormComponent {
     { id: 6, name: 'Mary Dcousta', formResponse: 'Response3' }
   ];
 
-  fields: Array<Field> = [];
+  formname:string="";
+  desc:string ="";
+  tools: any;
+  type:any;
+
+  forms: forms={
+    formname:this.formname,
+    description:this.desc,
+    versionnumber:0,
+    fieldsList:[]
+  };
   
-  constructor(public dialog: MatDialog) {
+  constructor(public dialog: MatDialog,public service:ServicesService) {
+    this.service.Gettool().subscribe(res=>
+      {
+        this.tools = res;
+      });
   }
-  
-  
+
+  saveforms(){
+    this.service.saveForms(this.forms,1);
+  }
+
   addField(type : string) {
+    this.type=type;
     const dialogRef = this.dialog.open(FormPopupComponent, {
-      width: '500px',
+      width: '250px',
       data:{name : type}
     });
     
     dialogRef.afterClosed().subscribe(res => {
+      this.forms.formname=this.formname;
+      this.forms.description=this.desc;
+      this.forms.versionnumber=0;
+      
+      if(type == "Text"){
+        const newField: field = {
+          indexs: 1,
+          isoptional: res.data1.isoptional,
+          toolid: 1,
+          names: res.data1.name,
+          fieldName: res.data1.fieldName
+        };
+        
+        this.forms.fieldsList.push(newField);
+        
+        
+      } else if (type == "Radio Button" ) {
+        const newradio: field = {
+          fieldName: res.data1.fieldName,
+          indexs: 1,
+          isoptional: res.data1.isoptional,
+          toolid: 3,
+          names: res.data1.name
+        };
+        this.forms.fieldsList.push(newradio);
+        
+      } else if (type == "Check Box") {
+        const newcheck: field = {
+          fieldName: res.data1.fieldName,
+          indexs: 1,
+          isoptional: res.data1.isoptional,
+          toolid: 2,
+          names: res.data1.name
+        };
+        this.forms.fieldsList.push(newcheck);
+        
+      }else if(type =="button")
+      {
+        const newbutton: field = {
+          fieldName: res.data1.fieldName,
+          indexs: 1,
+          isoptional: res.data1.isoptional,
+          toolid: 8,
+          names: res.data1.name
+        };
+        this.forms.fieldsList.push(newbutton);
 
-      if(type == "text" && res.data1.f){
-        const newTextField: Field = {
-          name: res.data1.f,
-          isOptional: res.data1.isOptional,
-          type: "text"
-          
-        };
-        this.fields.push(newTextField);
-      } else if (type == "radio" && res.data1.f) {
-        const newRadioField: Field = {
-          name: res.data1.f,
-          isOptional: res.data1.isOptional,
-          type: "radio",
-          options: res.data1.options
-        };
-        this.fields.push(newRadioField);
-      } else if (type == "checkbox"&& res.data1.f) {
-        const newCheckboxField: Field = {
-          name: res.data1.f,
-          isOptional: res.data1.isOptional,
-          type: "checkbox",
-          options: res.data1.options
-        };
-        this.fields.push(newCheckboxField);
-      }else if(type =="button"&& res.data1.f)
+      }else if(type =="DateTime")
       {
-        const newbutton: Field={
-        name:res.data1.f,
-        isOptional: false,
-        type:"button"
-      };
-      this.fields.push(newbutton);
-      }else if(type =="DatePicker"&& res.data1.f)
-      {
-        const newbutton: Field={
-        name:res.data1.f,
-        isOptional: res.data1.isOptional,
-        type:"DatePicker"
-      };
-      this.fields.push(newbutton);
-      }
-    });
-    
-    console.log(this.fields);
-    
+        const newDate: field = {
+          fieldName: res.data1.fieldName,
+          indexs: 1,
+          isoptional: res.data1.isoptional,
+          toolid: 5,
+          names: res.data1.name
+        };
+        this.forms.fieldsList.push(newDate);
+
+        }
+        console.log(this.forms);
+    });    
   }
 
-  
-
-  // When user close the dialog
-  // dialogWithForm.afterClosed().subscribe(result => {
-  // console.log('You have closed the dialog');
-  // if (result) {
-  // this.test.name = result.firstName;
-  // this.lastName = result.lastName;
-  // this.fields.push(this.test);
-  // }
-  // });
 }

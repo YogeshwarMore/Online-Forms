@@ -11,6 +11,7 @@ import { forms } from '../Model/forms';
 export class NavbarComponent implements OnInit{
 
   forms:Array<forms>=[];
+
   constructor(private service:ServicesService){
    this.service.GetForms().subscribe(res=>
     {
