@@ -18,22 +18,23 @@ export class ServicesService {
   }
   saveForms(data:any,groupid:any){
    
-
+    
     let newForms: forms = {
-      formname: data.formname,
-      description: data.description,
-      versionnumber: data.versionnumber,
+      formname: data.formname ? data.formname : null,
+      description: data.description ? data.description : null,
+      versionnumber: data.versionnumber ? data.versionnumber : null,
       fieldsList: []
     };
     
     for(let f of data.fieldsList){
     let newField: field = {
-      indexs: f.indexs,
-      fieldName: f.fieldName,
-      isoptional: f.isoptional,
-      toolid: f.toolid,
-      names: f.names
+      indexs: f.indexs ? f.indexs : null,
+      fieldName: f.fieldName ? f.fieldName : null,
+      isoptional: f.isoptional ? f.isoptional : false,
+      toolid: f.toolid ? f.toolid : null,
+      names: f.names ? f.names : null
     };
+
 
     newForms.fieldsList.push(newField);
 
