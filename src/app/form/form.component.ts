@@ -22,42 +22,43 @@ export class FormComponent {
     { id: 6, name: 'Mary Dcousta', formResponse: 'Response3' }
   ];
 
-  formname:string="";
-  desc:string ="";
+  formname: string = "";
+  desc: string = "";
   tools: any;
-  type:any;
+  type: any;
 
-  forms: forms={
-    formname:this.formname,
-    description:this.desc,
-    versionnumber:0,
-    fieldsList:[]
+  forms: forms = {
+    formname: this.formname,
+    description: this.desc,
+    versionnumber: 0,
+    fieldsList: []
   };
-  
-  constructor(public dialog: MatDialog,public service:ServicesService) {
-    this.service.Gettool().subscribe(res=>
-      {
-        this.tools = res;
-      });
+
+  constructor(public dialog: MatDialog, public service: ServicesService) {
+    this.service.Gettool().subscribe(res => {
+      this.tools = res;
+    });
   }
 
-  saveforms(){
-    this.service.saveForms(this.forms,1);
+  saveforms() {
+    this.service.saveForms(this.forms, 1);
   }
 
-  addField(type : string) {
-    this.type=type;
+  addField(type: string) {
+    this.type = type;
     const dialogRef = this.dialog.open(FormPopupComponent, {
       width: '250px',
-      data:{name : type}
+      data: { name: type },
+      panelClass: 'dialog-container'
+
     });
-    
+
     dialogRef.afterClosed().subscribe(res => {
-      this.forms.formname=this.formname;
-      this.forms.description=this.desc;
-      this.forms.versionnumber=0;
-      
-      if(type == "Text"){
+      this.forms.formname = this.formname;
+      this.forms.description = this.desc;
+      this.forms.versionnumber = 0;
+
+      if (type == "Text") {
         const newField: field = {
           indexs: 1,
           isoptional: res.data1.isoptional,
@@ -65,11 +66,11 @@ export class FormComponent {
           names: res.data1.name,
           fieldName: res.data1.fieldName
         };
-        
+
         this.forms.fieldsList.push(newField);
-        
-        
-      } else if (type == "Radio Button" ) {
+
+
+      } else if (type == "Radio Button") {
         const newradio: field = {
           fieldName: res.data1.fieldName,
           indexs: 1,
@@ -78,7 +79,7 @@ export class FormComponent {
           names: res.data1.name
         };
         this.forms.fieldsList.push(newradio);
-        
+
       } else if (type == "Check Box") {
         const newcheck: field = {
           fieldName: res.data1.fieldName,
@@ -88,9 +89,8 @@ export class FormComponent {
           names: res.data1.name
         };
         this.forms.fieldsList.push(newcheck);
-        
-      }else if(type =="button")
-      {
+
+      } else if (type == "button") {
         const newbutton: field = {
           fieldName: res.data1.fieldName,
           indexs: 1,
@@ -100,8 +100,7 @@ export class FormComponent {
         };
         this.forms.fieldsList.push(newbutton);
 
-      }else if(type =="DateTime")
-      {
+      } else if (type == "DateTime") {
         const newDate: field = {
           fieldName: res.data1.fieldName,
           indexs: 1,
@@ -111,9 +110,9 @@ export class FormComponent {
         };
         this.forms.fieldsList.push(newDate);
 
-        }
-        console.log(this.forms);
-    });    
+      }
+      console.log(this.forms);
+    });
   }
 
 }

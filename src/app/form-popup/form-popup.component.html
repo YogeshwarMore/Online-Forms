@@ -1,24 +1,23 @@
-<h1 mat-dialog-title>
-    Fill Basic Details
-</h1>
-<div mat-dialog-content>
-    <mat-form-field>
-        <input type="type" placeholder="label Name" matInput [(ngModel)]="Name">
-    </mat-form-field>
+<div class="popup">
+    <h1 mat-dialog-title>
+        Fill Basic Details
+    </h1>
+    <div mat-dialog-content>
+        <input class="label" type="type" placeholder="label Name" matInput [(ngModel)]="Name"><br>
 
-    <ng-container *ngFor="let option of options; let i = index;">
-        <input  *ngIf="type === 'Radio Button'" type="radio"  placeholder="option {{i + 1}}" [placeholder]="option">
-        <input  *ngIf="type === 'Check Box'" type="checkbox"  placeholder="option {{i + 1}}" [placeholder]="option">
-        <label>{{option}}</label>
-    </ng-container>
+        <ng-container *ngFor="let option of options; let i = index;">
+            <input *ngIf="type === 'Radio Button'" type="radio" placeholder="option {{i + 1}}" [placeholder]="option">
+            <input *ngIf="type === 'Check Box'" type="checkbox" placeholder="option {{i + 1}}" [placeholder]="option">
+            <label>{{option}}</label><br>
+        </ng-container>
+        <mat-slide-toggle *ngIf="type != 'button'" [(ngModel)]="isOptional" color="primary"><span
+                class="required-text">Required</span></mat-slide-toggle>
+    </div>
 
-    <button *ngIf="type == 'Radio Button'|| type == 'Check Box'" mat-raised-button (click)="addOption()">Add option</button>
-
-    <mat-slide-toggle *ngIf="type != 'button'"
-        [(ngModel)]="isOptional">isOptional</mat-slide-toggle>
-</div>
-
-<div mat-dialog-actions>
-    <button mat-button (click)="OnSave()">Submit</button>
-    <button mat-button [mat-dialog-close]>Close</button>
+    <div mat-dialog-actions>
+        <button *ngIf="type == 'Radio Button'|| type == 'Check Box'" (click)="addOption()">Add
+            option</button>
+        <button (click)="OnSave()">Submit</button>
+        <button [mat-dialog-close]>Close</button>
+    </div>
 </div>

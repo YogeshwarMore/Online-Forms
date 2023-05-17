@@ -2,38 +2,28 @@
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  background-color: rgb(240, 229, 241);
 }
 
-.top, .bottom {
+.top,
+.bottom {
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   padding: 40px 20px 20px 20px;
-  border-radius: 10px;
+  border-radius: 20px;
   margin: 20px;
-  background-color:  rgb(240, 229, 241);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  background-color: white;
 }
 
-.bottom{
+.bottom {
   margin-top: 0px;
 }
 
-.top h2 {
-  position: absolute;
-  text-decoration: underline;
-  top: 70px; /* Adjust this value to move the heading up or down */
-  left: 20px; /* Adjust this value to move the heading left or right */
-  margin-top: 20px;
-  margin-left: 10px;
-  font-size: 20px;
-  color: purple;
-}
-.bottom-section {
-  position: relative;
-}
-
+.top h2,
 .bottom h2 {
   position: absolute;
   text-decoration: underline;
@@ -41,8 +31,29 @@
   margin-left: 10px;
   margin-top: -50px;
   font-size: 20px;
-  color: purple;
+  color: blueviolet;
 }
+
+.top h2 {
+  position: absolute;
+  text-decoration: underline;
+  top: 70px;
+  margin-top: 20px;
+
+}
+
+.bottom h2 {
+  position: absolute;
+  text-decoration: underline;
+  margin-top: -50px;
+
+}
+
+.bottom-section {
+  position: relative;
+}
+
+
 
 .templates-container {
   display: flex;
@@ -52,7 +63,8 @@
   margin-top: 20px;
 }
 
-.top template, .bottom template {
+.top template,
+.bottom template {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -70,12 +82,13 @@
   width: 180px;
   margin-bottom: 10px;
   margin-left: 50px;
-  border-radius: 10px;
+  border-radius: 20px;
+  box-shadow: 2px 2px 4px 4px rgb(217, 209, 226);
 }
 
 .template-text {
   font-size: 16px;
-  color: purple;
+  color: blueviolet;
   margin-top: 10px;
   text-align: center;
   display: block;
@@ -83,13 +96,16 @@
 
 
 @media only screen and (max-width: 768px) {
-  .top, .bottom {
+
+  .top,
+  .bottom {
     padding: 20px;
   }
 
   h3 {
     font-size: 16px;
   }
+
   h2 {
     font-size: 16px;
   }
@@ -140,6 +156,7 @@
     font-size: 12px;
   }
 }
+
 .left {
   display: flex;
   justify-content: flex-start;
@@ -182,11 +199,11 @@
   .left {
     margin-left: 0;
   }
-  
+
   .left select {
     width: 100%;
   }
-  
+
   .right {
     margin-right: 0;
   }
