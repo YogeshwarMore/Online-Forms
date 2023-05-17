@@ -81,157 +81,155 @@ button:hover {
 }
 
 .container {
-<<<<<<< HEAD
-    display: flex;  
-    flex-direction: row;
-    width: 98%;
-    text-align: center;
-          }
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  text-align: center;
+}
 
-      .left {
-      flex: 1;
-      background-color: rgb(255, 255, 255);
-      }
-    
-    .left input:first-child{
-      text-align: center;
-      font-size: xx-large;
-      font-family: Arial, Helvetica, sans-serif;
-      width: 90%;
-      border: none; 
-      outline: none; 
-      background-color: transparent;
-    }
-    
-      .example-form {
-        text-align: center;
-        min-width: 150px;
-        max-width: 500px;
-        width: 100%;
-        
-      }
-      
-      .example-full-width {
-        width: 100%;
-      }
-    
-      .textfield {
-        display: block;
-        text-align: center;
-        margin-bottom: 20px;
-      }
-      
-      .textfield label {
-        display: block;
-        font-size: 16px;
-        font-weight: bold;
-        margin-bottom: 10px;
-        color: #333;
-      }
-      
-      .textfield input[type="text"] {
-        padding: 12px;
-        border-radius: 5px;
-        border: 2px solid #ccc;
-        font-size: 16px;
-        color: #555;
-        transition: border-color 0.3s ease-in-out;
-        box-shadow: none;
-      }
-      
-      .textfield input[type="text"]:hover,
-      .textfield input[type="text"]:focus {
-        border-color: #8c8c8c;
-      }
-      
-      .textfield input[type="text"]:focus {
-        outline: none;
-        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-      }
-      
-    
-      .right {  
-    flex: 1;
-    border-top:1px solid #e6e6e6;
-    }
-    
-    
-    .responses-header {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-    }
+.left {
+  flex: 1;
+  background-color: rgb(255, 255, 255);
+}
 
-    .responses {
-      border: 1px solid black;
-      padding: 20px;
-    }
-    
-    h3, h4{
-      color: purple;
-    }
-    
-    h3 {
-      margin-top: 20px;
-    }
-    
-    h4 {
-      margin-top: 40px;
-    }
-    
+.left input:first-child {
+  text-align: center;
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 90%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+.example-form {
+  text-align: center;
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+.textfield {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.textfield label {
+  display: block;
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.textfield input[type="text"] {
+  padding: 12px;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  font-size: 16px;
+  color: #555;
+  transition: border-color 0.3s ease-in-out;
+  box-shadow: none;
+}
+
+.textfield input[type="text"]:hover,
+.textfield input[type="text"]:focus {
+  border-color: #8c8c8c;
+}
+
+.textfield input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
 
 
-    .user-list {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-    
-    .user-wrapper {
-      flex-grow: 1;
-    }
-    
-    .icons {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-    }
-    
-    .icon-button {
-      margin-bottom: 5px;
-    }
-    
-    
-   
-   
-    
-    
-    /* For screens with a maximum width of 480px */
+.right {
+  flex: 1;
+  border-top: 1px solid #e6e6e6;
+}
+
+
+.responses-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.responses {
+  border: 1px solid black;
+  padding: 20px;
+}
+
+h3,
+h4 {
+  color: purple;
+}
+
+h3 {
+  margin-top: 20px;
+}
+
+h4 {
+  margin-top: 40px;
+}
+
+
+
+.user-list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-wrapper {
+  flex-grow: 1;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.icon-button {
+  margin-bottom: 5px;
+}
+
+
+
+
+
+
+/* For screens with a maximum width of 480px */
 @media only screen and (max-width: 480px) {
   .forms-container {
     width: 100%;
     padding: 30px;
   }
+
   .container {
     flex-direction: column;
   }
+
   .left input {
     font-size: x-large;
   }
+
   .textfield label {
     font-size: 14px;
   }
+
   .textfield input[type="text"] {
     padding: 10px;
     font-size: 14px;
   }
-=======
-  display: flex;
-  flex-direction: row;
-  width: 98%;
-  text-align: center;
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
 }
 
 .left {
