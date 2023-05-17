@@ -26,8 +26,7 @@ export class ServicesService {
     return this.http.get<forms[]>("http://localhost:8081/tools");
   }
   saveForms(data: any, groupid: any) {
-
-
+    
     let newForms: forms = {
       formname: data.formname ? data.formname : null,
       description: data.description ? data.description : null,
@@ -43,10 +42,7 @@ export class ServicesService {
         toolid: f.toolid ? f.toolid : null,
         names: f.names ? f.names : null
       };
-
-
       newForms.fieldsList.push(newField);
-
   }
   console.log(newForms);
       this.http.post('http://localhost:8081/forms/creating', newForms).subscribe(
