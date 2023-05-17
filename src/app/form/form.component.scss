@@ -1,23 +1,87 @@
-
 body {
-  margin-top: 0;
+  margin: 0;
   padding: 0;
-  padding-top: 30px;
   overflow: auto;
   background-color: rgb(240, 229, 241);
 }
+
+body,
+.container,
+.textfield,
+.textfield label,
+.textfield input[type="text"],
+.left input:first-child,
+.receiving-responses,
+input,
+#Test_Date // #Test_DateTime 
+
+  {
+  color: blueviolet;
+}
+
+.formname,
+.description,
+hr {
+  margin-top: 10px;
+}
+
+hr,
+mat-divider {
+  opacity: 0.4;
+  border-top: 2px solid blueviolet;
+}
+
+// .receiving-responses {
+//   color: blueviolet;
+// }
+
+#Test_Date {
+  box-shadow: 1px 1px 1px rgb(168, 161, 161);
+  height: 20px;
+  padding: 4px 5px;
+  border-color: blueviolet;
+  border-radius: 10px;
+}
+
+::placeholder {
+  color: blueviolet;
+  opacity: 0.4;
+}
+
+
+
+button {
+  margin-top: 50px;
+  margin-left: 20px;
+  background-color: blueviolet;
+  color: white;
+  border-radius: 20px;
+  border-color: rgb(141, 42, 233);
+  padding: 6px 8px;
+  box-shadow: 0 2px 4px rgb(168, 161, 161);
+  text-align: center;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: rgb(95, 19, 167);
+}
+
 .forms-container {
+  margin-top: 20px;
   margin-bottom: 50px;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 80%;
   overflow: auto;
-  border-radius: 40px;
+  border-radius: 20px;
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
   padding: 50px;
 }
+
 .container {
+<<<<<<< HEAD
     display: flex;  
     flex-direction: row;
     width: 98%;
@@ -162,79 +226,277 @@ body {
     padding: 10px;
     font-size: 14px;
   }
+=======
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  text-align: center;
+>>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
 }
 
-/* For screens with a minimum width of 481px and maximum width of 768px */
-@media only screen and (min-width: 481px) and (max-width: 768px) {
-  .forms-container {
-    width: 90%;
-    padding: 40px;
-  }
-  .container {
-    flex-direction: column;
-  }
-  .left input {
-    font-size: xx-large;
-  }
-  .textfield label {
-    font-size: 16px;
-  }
-  .textfield input[type="text"] {
-    padding: 12px;
-    font-size: 16px;
-  }
+.left {
+  display: grid;
+  grid-template-columns: max-content;
+  grid-gap: 10px;
+  align-items: center;
 }
 
-/* For screens with a minimum width of 769px */
-@media only screen and (min-width: 769px) {
-  .forms-container {
-    width: 80%;
-    padding: 50px;
-  }
-  .container {
-    flex-direction: row;
-  }
-  .left input {
-    font-size: xx-large;
-  }
-  .textfield label {
-    font-size: 18px;
-  }
-  .textfield input[type="text"] {
-    padding: 14px;
-    font-size: 18px;
-  }
-}
-/* iPads (portrait and landscape) */
-@media only screen 
-and (min-device-width: 768px) 
-and (max-device-width: 1024px) {
-  .forms-container {
-    width: 90%;
-    padding: 30px;
-  }
-  
-  .container {
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  .left input {
-    font-size: x-large;
-  }
+.text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
 }
 
-/* iPad Pro (landscape) */
-@media only screen 
-and (min-device-width: 1024px) 
-and (max-device-width: 1366px) 
-and (orientation: landscape) {
-  .container {
-    flex-direction: row;
-    justify-content: center;
-  }
+.text input[type="text"] {
+  width: 200px;
+  height: 20px;
+  padding: 5px;
+  border: 1px solid blueviolet;
+  border-radius: 10px;
+  margin-right: 10px;
 }
 
-    
-    
-    
+.text label {
+  display: flex;
+  justify-content: flex-end;
+  width: fit-content;
+  margin-right: 10px;
+  margin-bottom: 5px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+
+
+.radio input[type="radio"],
+.checkbox input[type="checkbox"] {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.radio label,
+.checkbox label {
+  display: flex;
+  margin-bottom: 5px;
+  text-align: center;
+}
+
+// .text label {
+//   margin-right: 10px;
+// }
+
+// .text input[type="text"] {
+//   flex-grow: 1;
+//   width: 200px;
+//   padding: 5px;
+//   border: 1px solid blueviolet;
+//   border-radius: 10px;
+//   margin-left: auto;
+//   margin-right: auto;
+// }
+
+// .radio {
+//   display: flex;
+//   flex-wrap: wrap;
+// }
+
+// .radio input[type="radio"] {
+//   margin-right: 2px;
+
+// }
+
+
+
+
+/* Display each set of two radio buttons and labels in separate lines */
+// .radio:nth-child(2n+1) {
+//   flex-basis: 100%;
+// }
+
+
+
+// .radio label {}
+
+.radio input[type="radio"]:empty {}
+
+input[type="text"]:empty {}
+
+input[type="radio"]:empty {}
+
+input[type="checkbox"]:empty {}
+
+
+input[type="date"]:empty {}
+
+
+
+
+.formname,
+.description {
+  text-align: center;
+  font-size: xx-large;
+  font-family: Arial, Helvetica, sans-serif;
+  width: 90%;
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+// .dialog-container {
+//   border-radius: 90px !important;
+//   border-color: aqua;
+// }
+
+.textfield {
+  display: block;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+// .textfield label {
+//   display: block;
+//   font-size: 16px;
+//   font-weight: bold;
+//   margin-bottom: 10px;
+// }
+
+// .textfield input[type="text"] {
+//   padding: 12px;
+//   border-radius: 5px;
+//   border: 2px solid #ccc;
+//   font-size: 16px;
+//   transition: border-color 0.3s ease-in-out;
+//   box-shadow: none;
+// }
+
+.textfield input[type="text"]:focus {
+  outline: none;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
+}
+
+.right {
+  flex: 1;
+  border-top: 1px solid #e6e6e6;
+}
+
+.user-list {
+  font-size: larger;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-wrapper {
+  flex-grow: 1;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.icon-button {
+  cursor: pointer;
+  margin-bottom: 5px;
+  color: rgb(123, 65, 177);
+}
+
+// @media only screen and (max-width: 480px) {
+//   .forms-container {
+//     width: 100%;
+//     padding: 30px;
+//   }
+
+//   .container {
+//     flex-direction: column;
+//   }
+
+//   .left input {
+//     font-size: x-large;
+//   }
+
+//   .textfield label {
+//     font-size: 14px;
+//   }
+
+//   .textfield input[type="text"] {
+//     padding: 10px;
+//     font-size: 14px;
+//   }
+// }
+
+// @media only screen and (min-width: 481px) and (max-width: 768px) {
+//   .forms-container {
+//     width: 90%;
+//     padding: 40px;
+//   }
+
+//   .container {
+//     flex-direction: column;
+//   }
+
+//   .left input {
+//     font-size: xx-large;
+//   }
+
+//   .textfield label {
+//     font-size: 16px;
+//   }
+
+//   .textfield input[type="text"] {
+//     padding: 12px;
+//     font-size: 16px;
+//   }
+// }
+
+// @media only screen and (min-width: 769px) {
+//   .forms-container {
+//     width: 80%;
+//     padding: 50px;
+//   }
+
+//   .container {
+//     flex-direction: row;
+//   }
+
+//   .left input {
+//     font-size: xx-large;
+//   }
+
+//   .textfield label {
+//     font-size: 18px;
+//   }
+
+//   .textfield input[type="text"] {
+//     padding: 14px;
+//     font-size: 18px;
+//   }
+// }
+
+// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+//   .forms-container {
+//     width: 90%;
+//     padding: 30px;
+//   }
+
+//   .container {
+//     flex-direction: column;
+//     align-items: center;
+//   }
+
+//   .left input {
+//     font-size: x-large;
+//   }
+// }
+
+// @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
+//   .container {
+//     flex-direction: row;
+//     justify-content: center;
+//   }
+// }

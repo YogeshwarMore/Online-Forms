@@ -4,9 +4,12 @@
   <div class="forms-container">
     <mat-tab-group>
       <mat-tab label="Form">
+        <mat-divider></mat-divider>
+
 
         <div class="container">
 
+<<<<<<< HEAD
           <div class="left">
 
             <input type="text" name="myInput" [(ngModel)]="formname" placeholder="Form Name">
@@ -53,72 +56,107 @@
               </div>
             </ng-container>
           </div>
+=======
+>>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
 
           <div class="right">
-
             <mat-tab-group>
               <mat-tab label="Input">
-                <div class="textfield">
+                <!-- <div class="textfield">
                   <label>label</label>
                   <input type="text" placeholder="New Field">
-                </div>
+                </div> -->
                 <button (click)="addField('Text')">Add Field</button>
-
               </mat-tab>
-
               <mat-tab label="Radios / Checkboxes">
-                <label>radio button</label>
+                <!-- <label>radio button</label>
                 <input type="radio" value="option 1">
-                <input type="radio" value="option 2">
+                <input type="radio" value="option 2"> -->
                 <button (click)="addField('Radio Button')">Add Radio</button>
 
-                <label>radio button</label>
+                <!-- <label>radio button</label>
                 <input type="checkbox" value="option 1">
-                <input type="checkbox" value="option 2">
+                <input type="checkbox" value="option 2"> -->
                 <button (click)="addField('Check Box')">Add checkbox</button>
               </mat-tab>
-
               <mat-tab label="Buttons">
-                <button mat-raised-button (click)="addField('button')">Add Button</button>
+                <button (click)="addField('button')">Add Button</button>
               </mat-tab>
-
               <mat-tab label="Date / Time" (click)="addField('DatePicker')">
-                <mat-form-field class="example-full-width" appearance="fill">
-                  <mat-label>Choose a date</mat-label>
-                  <input matInput [matDatepicker]="picker">
-                  <mat-hint>MM/DD/YYYY</mat-hint>
-                  <mat-datepicker #picker></mat-datepicker>
-                </mat-form-field>
-                <button mat-raised-button (click)="addField('DateTime')">Open</button>
+                <input type="date" id="Test_Date">
+                <!-- <input type="datetime-local" id="Test_DateTime"> -->
+                <button (click)="addField('DateTime')">Add DateField</button>
+                <!-- <button (click)="addField('Date')">add DateTimeField</button> -->
               </mat-tab>
             </mat-tab-group>
           </div>
-        </div>
-        <button (click)="saveforms()">Save Form</button>
-      </mat-tab>
 
+
+          <mat-divider [vertical]="true"></mat-divider>
+
+
+          <div class="left">
+            <div class="">
+              <input class="formname" type="text" name="myInput" [(ngModel)]="formname" placeholder="Form Name">
+              <input class="description" type="text" name="lname" [(ngModel)]="desc" placeholder="Description"
+                style="font-size: medium;">
+              <hr>
+            </div>
+
+            <ng-container *ngFor="let field of forms.fieldsList">
+              <div class="Labels">
+                <div class="text" *ngIf="field.toolid === 1">
+                  <div class="label-input-container">
+                    <label>{{ field.fieldName }}</label>
+                    <input type="text" [name]="field.fieldName">
+                  </div>
+                </div>
+                <div class="label-input-container">
+                  <div class="radio" *ngIf="field.toolid === 3">
+                    <label>{{ field.fieldName }}</label>
+                    <ng-container *ngFor="let option of field.names">
+                      <input type="radio" [name]="field.fieldName" [value]="field.fieldName">{{ option }}
+                    </ng-container>
+                  </div>
+                </div>
+                <div class="checkbox" *ngIf="field.toolid === 2">
+                  <label>{{ field.fieldName }}</label>
+                  <ng-container *ngFor="let option of field.names">
+                    <input type="checkbox" [name]="field.fieldName" [value]="field.fieldName">{{ option }}
+                  </ng-container>
+                </div>
+                <div class="" *ngIf="field.toolid === 8">
+                  <button>{{field.fieldName}}</button>
+                </div>
+                <div class="date" *ngIf="field.toolid === 5">
+                  <label>{{field.fieldName}}</label>
+                  <input type="date" id="Test_Date">
+                </div>
+              </div>
+            </ng-container>
+            <div class="button-container">
+              <button (click)="saveforms()">Save Form</button>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
       <mat-tab label="Responses">
-        <mat-divider></mat-divider>
         <div class="responses-header">
           <h3>Number of responses:</h3>
-          <mat-slide-toggle>Recieving Responses</mat-slide-toggle>
+          <mat-slide-toggle color="primary"><span class="receiving-responses">Receiving
+              Responses</span></mat-slide-toggle>
           <h4>List of users/IDs:</h4>
           <div class="user-list" *ngFor="let user of userlist">
             <div class="user-wrapper">
               <a routerLink="/response/{{ user.id }}" class="user-item">{{ user.name }}</a>
             </div>
-
             <div class="icons">
-              <mat-icon class="icon-button" routerLink="">delete</mat-icon>
-              <mat-icon class="icon-button" routerLink="">print</mat-icon>
+              <mat-icon class="icon-button" onclick="">delete</mat-icon>
+              <mat-icon class="icon-button" onclick="">print</mat-icon>
             </div>
-
           </div>
-
         </div>
-
       </mat-tab>
-      
     </mat-tab-group>
   </div>
 </body>
