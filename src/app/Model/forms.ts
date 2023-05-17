@@ -6,6 +6,8 @@ export interface forms{
         description: string;
         versionnumber: number;
         fieldsList:field[];
+        versionsList?:any[];
+        
       }
 
    

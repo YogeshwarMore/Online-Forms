@@ -1,4 +1,5 @@
 export interface field{
+    fieldid?:number;
     fieldName: string;
     indexs: number;
     isoptional: boolean;
