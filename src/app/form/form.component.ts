@@ -29,24 +29,8 @@ export class FormComponent implements OnInit {
 
 
   userlist = [
-<<<<<<< HEAD
     { id: 1, name: 'John Doe',
       formResponse: 'Response1' },];
-=======
-    { id: 1, name: 'John Doe', formResponse: 'Response1' },
-    { id: 2, name: 'Jane Smith', formResponse: 'Response2' },
-    { id: 3, name: 'Bob Johnson', formResponse: 'Response3' },
-    { id: 4, name: 'Kate Johnson', formResponse: 'Response3' },
-    { id: 5, name: 'Helmon peters', formResponse: 'Response3' },
-    { id: 6, name: 'Mary Dcousta', formResponse: 'Response3' }
-  ];
-
-  formname: string = "";
-  desc: string = "";
-  tools: any;
-  type: any;
-
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
   forms: forms = {
     formname: this.formname,
     description: this.desc,
@@ -54,7 +38,6 @@ export class FormComponent implements OnInit {
     fieldsList: []
   };
 
-<<<<<<< HEAD
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
       if(params['data']==undefined)
@@ -98,39 +81,15 @@ loadFields()
     this.service.saveForms(this.forms, 1);
   }
 
-=======
-  constructor(public dialog: MatDialog, public service: ServicesService) {
-    this.service.Gettool().subscribe(res => {
-      this.tools = res;
-    });
-  }
-
-  saveforms() {
-    this.service.saveForms(this.forms, 1);
-  }
-
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
   addField(type: string) {
     this.type = type;
     const dialogRef = this.dialog.open(FormPopupComponent, {
       width: '250px',
-<<<<<<< HEAD
       data: { name: type }
     });
 
     dialogRef.afterClosed().subscribe(res => {
 
-=======
-      data: { name: type },
-      panelClass: 'dialog-container'
-
-    });
-
-    dialogRef.afterClosed().subscribe(res => {
-      this.forms.formname = this.formname;
-      this.forms.description = this.desc;
-      this.forms.versionnumber = 0;
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
 
       if (type == "Text") {
         const newField: field = {
@@ -141,13 +100,9 @@ loadFields()
           fieldName: res.data1.fieldName
         };
 
-<<<<<<< HEAD
         
         this.forms.fieldsList.push(newField);
         this.forms.fieldsList.slice(newField.indexs,0);
-=======
-        this.forms.fieldsList.push(newField);
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
 
 
       } else if (type == "Radio Button") {
@@ -159,10 +114,7 @@ loadFields()
           names: res.data1.name
         };
         this.forms.fieldsList.push(newradio);
-<<<<<<< HEAD
         this.forms.fieldsList.slice(newradio.indexs);
-=======
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
 
       } else if (type == "Check Box") {
         const newcheck: field = {
@@ -195,11 +147,7 @@ loadFields()
         this.forms.fieldsList.push(newDate);
 
       }
-<<<<<<< HEAD
       
-=======
-      console.log(this.forms);
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
     });
   }
 

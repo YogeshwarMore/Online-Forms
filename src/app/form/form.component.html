@@ -9,55 +9,6 @@
 
         <div class="container">
 
-<<<<<<< HEAD
-          <div class="left">
-
-            <input type="text" name="myInput" [(ngModel)]="formname" placeholder="Form Name">
-            <br>
-            <input type="text" id="lname" name="lname" [(ngModel)]="desc" placeholder="Description" style="font-size: small;">
-            <hr>
-            <ng-container *ngFor="let field of forms.fieldsList; let i = index ">
-              <div class="list-item" >
-            
-                <div *ngIf="field.toolid === 1">
-                  <label>{{ field.fieldName }}</label>
-                  <input type="text" [name]="field.fieldName">
-                </div>
-            
-                <div *ngIf="field.toolid === 3">
-                  <label>{{ field.fieldName }}</label>
-                  <ng-container *ngFor="let option of field.names">
-                    <input type="radio" [name]="field.fieldName" [value]="field.fieldName">{{ option }}
-                  </ng-container>
-                </div>
-            
-                <div *ngIf="field.toolid === 2">
-                  <label>{{ field.fieldName }}</label>
-                  <ng-container *ngFor="let option of field.names">
-                    <input type="checkbox" [name]="field.fieldName" [value]="field.fieldName">{{ option }}
-                  </ng-container>
-                </div>
-            
-                <div *ngIf="field.toolid === 8">
-                  <button>{{field.fieldName}}</button>
-                </div>
-                
-                <div *ngIf="field.toolid === 5">
-                  <mat-form-field class="example-full-width" appearance="fill">
-                    <mat-label>{{field.fieldName}}</mat-label>
-                    <input matInput [matDatepicker]="picker">
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker #picker></mat-datepicker>
-                  </mat-form-field>
-                  <button mat-raised-button (click)="picker.open()">Open</button>
-                </div>
-                
-                <span class="index">{{ i }}</span>
-              </div>
-            </ng-container>
-          </div>
-=======
->>>>>>> 89f4d68668da71697cc9580e1703ca09117ac647
 
           <div class="right">
             <mat-tab-group>
