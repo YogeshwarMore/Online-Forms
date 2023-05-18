@@ -6,9 +6,9 @@
 
     <div class="search-form">
 
-      <input matInput [matAutocomplete]="auto" placeholder="Search..">
+      <input matInput [matAutocomplete]="auto" placeholder="Search.." >
       <mat-autocomplete #auto>
-        <mat-option *ngFor="let form of forms">{{form.formname}}</mat-option>
+        <mat-option *ngFor="let form of forms" (click)="getform(form)">{{form.formname}}</mat-option>
       </mat-autocomplete>
 
     </div>

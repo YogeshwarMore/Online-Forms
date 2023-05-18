@@ -3,7 +3,9 @@
         Fill Basic Details
     </h1>
     <div mat-dialog-content>
-        <input class="label" type="type" placeholder="label Name" matInput [(ngModel)]="Name"><br>
+        <input class="label" type="type" placeholder="Label Name" matInput [(ngModel)]="Name"><br>
+        <input class="label" *ngIf="type === 'radio' || type === 'checkbox'" type="type" placeholder="Option...n" matInput [(ngModel)]="optionName"><br>
+        
 
         <ng-container *ngFor="let option of options; let i = index;">
             <input *ngIf="type === 'radio'" type="radio" placeholder="option {{i + 1}}" [placeholder]="option">

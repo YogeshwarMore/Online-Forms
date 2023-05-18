@@ -32,6 +32,8 @@ import {MatDatepickerModule} from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {DragDropModule } from "@angular/cdk/drag-drop";
+import {MatSnackBarModule} from "@angular/material/snack-bar";
+import { FillFormComponent } from './fill-form/fill-form.component'
 
 
 @NgModule({
@@ -45,6 +47,7 @@ import {DragDropModule } from "@angular/cdk/drag-drop";
     FormPopupComponent,
     NavbarOnlyComponent,
     DynamicFormComponent,
+    FillFormComponent,
     
   ],
   imports: [
@@ -71,7 +74,8 @@ import {DragDropModule } from "@angular/cdk/drag-drop";
     MatDatepickerModule,
     MatNativeDateModule,
     MatExpansionModule,
-    DragDropModule
+    DragDropModule,
+    MatSnackBarModule
    
     
   

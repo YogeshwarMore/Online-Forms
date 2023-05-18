@@ -26,8 +26,11 @@ export class ServicesService {
     return this.http.get<forms[]>("http://localhost:8081/tools");
   }
   saveForms(data: any, groupid: any) {
+
+    
     
     let newForms: forms = {
+      formid:data.formid ? data.formid : null,
       formname: data.formname ? data.formname : null,
       description: data.description ? data.description : null,
       versionnumber: data.versionnumber ? data.versionnumber : null,

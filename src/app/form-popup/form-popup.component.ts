@@ -11,7 +11,8 @@ export class FormPopupComponent implements OnInit{
 
   type: any;
   Name: any;
-  isOptional: any;
+  isOptional: any=false;
+  optionName:any;
   options: string[] =[];
 
 
@@ -21,8 +22,8 @@ export class FormPopupComponent implements OnInit{
   }
 
     addOption(): void {
-    this.options.push(this.Name);
-    this.Name = '';
+    this.options.push(this.optionName);
+    this.optionName = '';
   }
  
   OnSave(){

@@ -28,10 +28,9 @@ export class NavbarComponent implements OnInit{
   }
   getform(id:forms){
     this.versionid=id.versionsList?.reduce((max, version) => (version.versionid > max ? version.versionid : max), -Infinity);
-    
- 
     const serializedData = JSON.stringify(id);
-  this.router.navigate(['/form'], { queryParams: { data: serializedData,data2: this.versionid } });
+  this.router.navigate(['/form'], { queryParams: { data: serializedData, data2: this.versionid } });
+  console.log(id);
   }
   
 }
