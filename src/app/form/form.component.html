@@ -32,12 +32,12 @@
               <hr>
             </div>
             <ng-container *ngFor="let field of forms.fieldsList; let i = index ">
-              <div class="Labels" cdkDrag [cdkDragData]="indexs">
+              <div class="Labels" cdkDrag >
                 <div class="text" *ngIf="field.toolid === 1" >
                   <div class="label-input-container">
                     <label >{{ i + 1 }}. {{ field.fieldName }}</label>
                     <input type='text' [name]="field.fieldName">
-                    <button (click)="editField(field)">Edit</button>
+                    <button (click)="editField(field,type)">Edit</button>
                     <button (click)="deleteField(field)">Delete</button>
                   </div>
                 </div>
@@ -46,7 +46,7 @@
                   <ng-container *ngFor="let option of field.names">
                     <input type="radio" [name]="field.fieldName" [value]="option">{{ option }}
                   </ng-container>
-                  <button (click)="editField(field)">Edit</button>
+                  <button (click)="editField(field,type)">Edit</button>
                   <button (click)="deleteField(field)">Delete</button>
                 </div>
                 <div class="checkbox" *ngIf="field.toolid === 2">
@@ -54,18 +54,18 @@
                   <ng-container *ngFor="let option of field.names">
                     <input type="checkbox" [name]="field.fieldName" [value]="option">{{ option }}
                   </ng-container>
-                  <button (click)="editField(field)">Edit</button>
+                  <button (click)="editField(field,type)">Edit</button>
                   <button (click)="deleteField(field)">Delete</button>
                 </div>
                 <div *ngIf="field.toolid === 8">
                   <button> {{ field.fieldName }}</button>
-                  <button (click)="editField(field)">Edit</button>
+                  <button (click)="editField(field,type)">Edit</button>
                   <button (click)="deleteField(field)">Delete</button>
                 </div>
                 <div class="date" *ngIf="field.toolid === 5">
                   <label>{{ i + 1 }}. {{ field.fieldName }}</label>
                   <input type="date" id="Test_Date" >
-                  <button (click)="editField(field)">Edit</button>
+                  <button (click)="editField(field,type)">Edit</button>
                   <button (click)="deleteField(field)">Delete</button>
                 </div>
               </div>

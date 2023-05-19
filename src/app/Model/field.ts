@@ -5,4 +5,5 @@ export interface field{
     isoptional: boolean;
     toolid: number;
     names: string[];
+    ischecked?:any;
 }

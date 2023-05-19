@@ -19,6 +19,7 @@ export class FormPopupComponent implements OnInit{
   constructor( public dialogRef: MatDialogRef<FormPopupComponent>,@Inject(MAT_DIALOG_DATA)public data:any) { }
   ngOnInit(): void {
     this.type=this.data.name;
+    console.log(this.type,this.data.name);
   }
 
     addOption(): void {

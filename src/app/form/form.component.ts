@@ -23,7 +23,6 @@ export class FormComponent implements OnInit {
   field!: field[];
   
   
-
   userlist = [
     { id: 1, name: 'John Doe', formResponse: 'Response1' },
   ];
@@ -53,15 +52,14 @@ export class FormComponent implements OnInit {
       if(params['data']==undefined)
       return;
       const serializedData = params['data'];
+      const serializedData2 = params['data2'];
       const data: forms = JSON.parse(serializedData);
-      if(this.formid!=undefined )
       this.formid=data.formid;
       this.formname = data.description;
       this.desc = data.formname;
-      if(data.versionnumber != undefined)
-      this.version = params['data2'];
-      
-      this.service.GetFormField(1, params['data2']).subscribe((res) => {
+      this.version = JSON.parse(serializedData2).versionnumber;
+      const i=JSON.parse(serializedData2).versionid;
+      this.service.GetFormField(1, i).subscribe((res) => {
         this.field = res;
         this.forms.fieldsList = this.field;
       });
@@ -104,10 +102,10 @@ export class FormComponent implements OnInit {
     this.forms.fieldsList = [];
   }
 
-  editField(field: field): void {
+  editField(field: field,type:string): void {
     const dialogRef = this.dialog.open(FormPopupComponent, {
       width: '250px',
-      data: { name: this.type, fieldName: field.fieldName, isoptional: field.isoptional }
+      data: { name: type, fieldName: field.fieldName, isoptional: field.isoptional }
     });
   
     dialogRef.afterClosed().subscribe(res => {

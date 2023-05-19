@@ -27,7 +27,7 @@ export class ServicesService {
   }
   saveForms(data: any, groupid: any) {
 
-    
+   
     
     let newForms: forms = {
       formid:data.formid ? data.formid : null,
@@ -45,6 +45,7 @@ export class ServicesService {
         toolid: f.toolid ? f.toolid : null,
         names: f.names ? f.names : null
       };
+      console.log(f.indexs,newField.indexs);
       newForms.fieldsList.push(newField);
   }
   console.log(newForms);
@@ -52,6 +53,13 @@ export class ServicesService {
         (response) => console.log(response),
         (error) => console.log(error)
       );
+  }
+
+  savefilleddata(versionid:number,userid:number,filleddata:any){
+    this.http.post('http://localhost:8081/forms/'+versionid,'/'+userid, filleddata).subscribe(
+      (response) => console.log(response),
+      (error) => console.log(error)
+    );
   }
 
 }

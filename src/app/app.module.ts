@@ -33,7 +33,8 @@ import { MatNativeDateModule } from '@angular/material/core';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {DragDropModule } from "@angular/cdk/drag-drop";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
-import { FillFormComponent } from './fill-form/fill-form.component'
+import { FillFormComponent } from './fill-form/fill-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { FillFormComponent } from './fill-form/fill-form.component'
     MatNativeDateModule,
     MatExpansionModule,
     DragDropModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    ReactiveFormsModule
    
     
   
