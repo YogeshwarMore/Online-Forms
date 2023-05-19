@@ -13,27 +13,26 @@ div,
 div h1,
 div div {
     text-align: center;
-    // display: flex;
     justify-content: center;
 }
 
 div h1,
 input,
 .required-text {
-    color: blueviolet;
-
+    color: #673ab7;
 }
 
 .label {
     box-shadow: 1px 1px 1px rgb(168, 161, 161);
     border-radius: 10px;
     height: 30px;
-    border-color: blueviolet;
+    border-color: #673ab7;
 }
 
 input[type="text"],
 input[type="radio"],
-input[type="checkbox"] {
+input[type="checkbox"],
+input[type="type"] {
     margin-bottom: 8px;
 }
 
@@ -42,7 +41,7 @@ label {
 }
 
 ::placeholder {
-    color: blueviolet;
+    color: #673ab7;
     opacity: 0.4;
 }
 
@@ -54,23 +53,13 @@ mat-slide-toggle {
     margin-top: 40px;
 }
 
-// .required-text {
-//     color: rgb(133, 66, 196);
-// }
-
-// mat-dialog-actions {
-//     margin-top: 24px;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-// }
 button {
     margin-top: 20px;
     margin-left: 10px;
     background-color: blueviolet;
     color: white;
+    border: none;
     border-radius: 20px;
-    border-color: rgb(141, 42, 233);
     padding: 6px 8px;
     box-shadow: 0 2px 4px rgb(168, 161, 161);
     text-align: center;
@@ -79,4 +68,5 @@ button {
 
 button:hover {
     background-color: rgb(95, 19, 167);
+    transform: scale(1) translate(2px, -2px);
 }

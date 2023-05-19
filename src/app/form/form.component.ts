@@ -19,13 +19,17 @@ export class FormComponent implements OnInit {
   formid: any = 1;
   tools: any;
   type: any;
-  indexs:number=0;
+  indexs: number = 0;
   field!: field[];
-  
-  
+
+
 
   userlist = [
     { id: 1, name: 'John Doe', formResponse: 'Response1' },
+    { id: 2, name: 'Kate Johnson', formResponse: 'Response2' },
+    { id: 3, name: 'Will Parker', formResponse: 'Response3' },
+    { id: 4, name: 'Jane Dcousta', formResponse: 'Response4' },
+    { id: 5, name: 'Matthew Perry', formResponse: 'Response5' },
   ];
 
   forms: forms = {
@@ -35,32 +39,32 @@ export class FormComponent implements OnInit {
     fieldsList: [],
   };
 
-  
+
 
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
     private route: ActivatedRoute
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.service.Gettool().subscribe((res) => {
       this.tools = res;
     });
-    
+
     this.route.queryParams.subscribe((params) => {
 
-      if(params['data']==undefined)
-      return;
+      if (params['data'] == undefined)
+        return;
       const serializedData = params['data'];
       const data: forms = JSON.parse(serializedData);
-      if(this.formid!=undefined )
-      this.formid=data.formid;
+      if (this.formid != undefined)
+        this.formid = data.formid;
       this.formname = data.description;
       this.desc = data.formname;
-      if(data.versionnumber != undefined)
-      this.version = params['data2'];
-      
+      if (data.versionnumber != undefined)
+        this.version = params['data2'];
+
       this.service.GetFormField(1, params['data2']).subscribe((res) => {
         this.field = res;
         this.forms.fieldsList = this.field;
@@ -91,12 +95,11 @@ export class FormComponent implements OnInit {
       alert("No Field Added");
       return;
     }
-    let j=1;
-    for(let i of this.forms.fieldsList)
-    {
-      if(i.fieldName==null)
-      return alert("field name is null");
-      i.indexs=j;
+    let j = 1;
+    for (let i of this.forms.fieldsList) {
+      if (i.fieldName == null)
+        return alert("field name is null");
+      i.indexs = j;
       j++;
     }
 
@@ -109,7 +112,7 @@ export class FormComponent implements OnInit {
       width: '250px',
       data: { name: this.type, fieldName: field.fieldName, isoptional: field.isoptional }
     });
-  
+
     dialogRef.afterClosed().subscribe(res => {
       if (res) {
         field.names = res.data1.name;
@@ -126,6 +129,14 @@ export class FormComponent implements OnInit {
     }
   }
 
+  deleteres(field: any): void {
+    console.log(field);
+    const index = this.userlist.indexOf(field);
+    if (index !== -1) {
+      this.userlist.splice(index, 1);
+    }
+  }
+
   addField(type: string): void {
     this.type = type;
     const dialogRef = this.dialog.open(FormPopupComponent, {
@@ -134,7 +145,7 @@ export class FormComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe((res) => {
-      if(!res) return
+      if (!res) return
       if (type === 'text') {
         const newField: field = {
           indexs: this.indexs,
@@ -144,7 +155,7 @@ export class FormComponent implements OnInit {
           fieldName: res.data1.fieldName,
         };
         console.log(this.forms);
-        
+
         this.forms.fieldsList.push(newField);
       } else if (type === 'radio') {
         const newradio: field = {
@@ -188,6 +199,6 @@ export class FormComponent implements OnInit {
         this.forms.fieldsList.push(newDate);
       }
     });
-    
+
   }
 }

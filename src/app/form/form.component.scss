@@ -13,58 +13,103 @@ body,
 .left input:first-child,
 .receiving-responses,
 input,
-#Test_Date // #Test_DateTime 
-
-  {
-  color: blueviolet;
-}
-
+#Test_Date,
 .formname,
 .description,
-hr {
-  margin-top: 10px;
+hr,
+mat-divider,
+::placeholder,
+button,
+.forms-container,
+.example-form,
+.example-full-width,
+.left,
+.text,
+.right,
+.responses-header,
+.responses,
+h3,
+h4,
+.user-list,
+.user-wrapper,
+mat-icon {
+  color: #673ab7;
+}
+
+
+body,
+.container,
+.textfield,
+.textfield label,
+.textfield input[type="text"],
+.left input:first-child,
+.receiving-responses,
+input,
+#Test_Date,
+.textfield input[type="text"]:hover,
+.textfield input[type="text"]:focus,
+.button,
+.forms-container,
+.example-form,
+.example-full-width,
+.left,
+.text,
+.right,
+.responses-header,
+.responses,
+.user-list {
+  text-align: center;
+}
+
+body,
+.container,
+.textfield,
+.textfield label,
+.textfield input[type="text"],
+.left input:first-child,
+.receiving-responses,
+input,
+#Test_Date,
+.button,
+.forms-container,
+.example-form,
+.example-full-width,
+.left,
+.text,
+.right,
+.responses-header,
+.responses,
+.user-list {
+  color: #673ab7;
+  margin-bottom: 0;
 }
 
 hr,
 mat-divider {
   opacity: 0.4;
-  border-top: 2px solid blueviolet;
-}
-
-// .receiving-responses {
-//   color: blueviolet;
-// }
-
-#Test_Date {
-  box-shadow: 1px 1px 1px rgb(168, 161, 161);
-  height: 20px;
-  padding: 4px 5px;
-  border-color: blueviolet;
-  border-radius: 10px;
+  border-top: 2px solid #673ab7;
 }
 
 ::placeholder {
-  color: blueviolet;
+  color: #673ab7;
   opacity: 0.4;
 }
 
-
-
 button {
-  margin-top: 50px;
-  margin-left: 20px;
+  margin-top: 20px;
+  margin-left: 10px;
   background-color: blueviolet;
   color: white;
+  border: none;
   border-radius: 20px;
-  border-color: rgb(141, 42, 233);
   padding: 6px 8px;
-  box-shadow: 0 2px 4px rgb(168, 161, 161);
   text-align: center;
   cursor: pointer;
 }
 
 button:hover {
   background-color: rgb(95, 19, 167);
+  transform: scale(1) translate(2px, -2px);
 }
 
 .forms-container {
@@ -87,11 +132,6 @@ button:hover {
   text-align: center;
 }
 
-.left {
-  flex: 1;
-  background-color: rgb(255, 255, 255);
-}
-
 .left input:first-child {
   text-align: center;
   font-size: xx-large;
@@ -107,7 +147,6 @@ button:hover {
   min-width: 150px;
   max-width: 500px;
   width: 100%;
-
 }
 
 .example-full-width {
@@ -128,18 +167,7 @@ button:hover {
   color: #333;
 }
 
-.textfield input[type="text"] {
-  padding: 12px;
-  border-radius: 5px;
-  border: 2px solid #ccc;
-  font-size: 16px;
-  color: #555;
-  transition: border-color 0.3s ease-in-out;
-  box-shadow: none;
-}
-
-.textfield input[type="text"]:hover,
-.textfield input[type="text"]:focus {
+.textfield input[type="text"]:hover {
   border-color: #8c8c8c;
 }
 
@@ -148,12 +176,10 @@ button:hover {
   box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
 }
 
-
 .right {
   flex: 1;
   border-top: 1px solid #e6e6e6;
 }
-
 
 .responses-header {
   display: flex;
@@ -166,11 +192,6 @@ button:hover {
   padding: 20px;
 }
 
-h3,
-h4 {
-  color: purple;
-}
-
 h3 {
   margin-top: 20px;
 }
@@ -179,57 +200,11 @@ h4 {
   margin-top: 40px;
 }
 
-
-
 .user-list {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-}
-
-.user-wrapper {
-  flex-grow: 1;
-}
-
-.icons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.icon-button {
-  margin-bottom: 5px;
-}
-
-
-
-
-
-
-/* For screens with a maximum width of 480px */
-@media only screen and (max-width: 480px) {
-  .forms-container {
-    width: 100%;
-    padding: 30px;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-
-  .left input {
-    font-size: x-large;
-  }
-
-  .textfield label {
-    font-size: 14px;
-  }
-
-  .textfield input[type="text"] {
-    padding: 10px;
-    font-size: 14px;
-  }
 }
 
 .left {
@@ -246,13 +221,14 @@ h4 {
   margin-bottom: 10px;
 }
 
-.text input[type="text"] {
+.text input[type="text"],
+input[type="date"] {
   width: 200px;
   height: 20px;
   padding: 5px;
-  border: 1px solid blueviolet;
+  border: 1px solid #673ab7;
   border-radius: 10px;
-  margin-right: 10px;
+  margin-top: 5px;
 }
 
 .text label {
@@ -260,77 +236,12 @@ h4 {
   justify-content: flex-end;
   width: fit-content;
   margin-right: 10px;
-  margin-bottom: 5px;
+  margin-top: 10px;
   font-weight: 500;
   letter-spacing: 1px;
-  text-align: center;
-  white-space: nowrap;
-}
-
-
-
-.radio input[type="radio"],
-.checkbox input[type="checkbox"] {
-  display: inline-block;
-  margin-right: 5px;
-}
-
-.radio label,
-.checkbox label {
- 
   margin-bottom: 5px;
   text-align: center;
 }
-
-// .text label {
-//   margin-right: 10px;
-// }
-
-// .text input[type="text"] {
-//   flex-grow: 1;
-//   width: 200px;
-//   padding: 5px;
-//   border: 1px solid blueviolet;
-//   border-radius: 10px;
-//   margin-left: auto;
-//   margin-right: auto;
-// }
-
-// .radio {
-//   display: flex;
-//   flex-wrap: wrap;
-// }
-
-// .radio input[type="radio"] {
-//   margin-right: 2px;
-
-// }
-
-
-
-
-/* Display each set of two radio buttons and labels in separate lines */
-// .radio:nth-child(2n+1) {
-//   flex-basis: 100%;
-// }
-
-
-
-// .radio label {}
-
-// .radio input[type="radio"]:empty {}
-
-// input[type="text"]:empty {}
-
-// input[type="radio"]:empty {}
-
-// input[type="checkbox"]:empty {}
-
-
-// input[type="date"]:empty {}
-
-
-
 
 .formname,
 .description {
@@ -343,158 +254,13 @@ h4 {
   background-color: transparent;
 }
 
-// .dialog-container {
-//   border-radius: 90px !important;
-//   border-color: aqua;
-// }
-
-.textfield {
-  display: block;
-  text-align: center;
-  margin-bottom: 20px;
-}
-
-// .textfield label {
-//   display: block;
-//   font-size: 16px;
-//   font-weight: bold;
-//   margin-bottom: 10px;
-// }
-
-// .textfield input[type="text"] {
-//   padding: 12px;
-//   border-radius: 5px;
-//   border: 2px solid #ccc;
-//   font-size: 16px;
-//   transition: border-color 0.3s ease-in-out;
-//   box-shadow: none;
-// }
-
-.textfield input[type="text"]:focus {
-  outline: none;
-  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.1);
-}
-
-.right {
-  flex: 1;
-  border-top: 1px solid #e6e6e6;
-}
-
-.user-list {
-  font-size: larger;
-  display: flex;
-  justify-content: space-between;
+mat-icon {
+  margin-top: 10px;
+  margin-left: 20px;
   align-items: center;
-  margin-bottom: 10px;
-}
-
-.user-wrapper {
-  flex-grow: 1;
-}
-
-.icons {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-}
-
-.icon-button {
   cursor: pointer;
-  margin-bottom: 5px;
-  color: rgb(123, 65, 177);
 }
 
-// @media only screen and (max-width: 480px) {
-//   .forms-container {
-//     width: 100%;
-//     padding: 30px;
-//   }
-
-//   .container {
-//     flex-direction: column;
-//   }
-
-//   .left input {
-//     font-size: x-large;
-//   }
-
-//   .textfield label {
-//     font-size: 14px;
-//   }
-
-//   .textfield input[type="text"] {
-//     padding: 10px;
-//     font-size: 14px;
-//   }
-// }
-
-// @media only screen and (min-width: 481px) and (max-width: 768px) {
-//   .forms-container {
-//     width: 90%;
-//     padding: 40px;
-//   }
-
-//   .container {
-//     flex-direction: column;
-//   }
-
-//   .left input {
-//     font-size: xx-large;
-//   }
-
-//   .textfield label {
-//     font-size: 16px;
-//   }
-
-//   .textfield input[type="text"] {
-//     padding: 12px;
-//     font-size: 16px;
-//   }
-// }
-
-// @media only screen and (min-width: 769px) {
-//   .forms-container {
-//     width: 80%;
-//     padding: 50px;
-//   }
-
-//   .container {
-//     flex-direction: row;
-//   }
-
-//   .left input {
-//     font-size: xx-large;
-//   }
-
-//   .textfield label {
-//     font-size: 18px;
-//   }
-
-//   .textfield input[type="text"] {
-//     padding: 14px;
-//     font-size: 18px;
-//   }
-// }
-
-// @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-//   .forms-container {
-//     width: 90%;
-//     padding: 30px;
-//   }
-
-//   .container {
-//     flex-direction: column;
-//     align-items: center;
-//   }
-
-//   .left input {
-//     font-size: x-large;
-//   }
-// }
-
-// @media only screen and (min-device-width: 1024px) and (max-device-width: 1366px) and (orientation: landscape) {
-//   .container {
-//     flex-direction: row;
-//     justify-content: center;
-//   }
-// }
+mat-icon:hover {
+  transform: scale(1) translate(2px, -2px);
+}
