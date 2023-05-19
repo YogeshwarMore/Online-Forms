@@ -14,11 +14,6 @@
   position: relative;
 }
 
-::placeholder {
-  color: blueviolet;
-  opacity: 0.5;
-}
-
 .search-form {
   display: flex;
   position: absolute;
@@ -30,28 +25,27 @@
   padding: 6px;
   height: 36px;
   transform: translateX(-50%);
+}
 
-  input {
-    border: 2px solid white;
-    box-shadow: rgb(168, 161, 161);
-    border-radius: 20px;
-    font-size: 14px;
-    padding: 6px;
-    width: 150px;
-    margin-right: 6px;
-  }
+.search-form input {
+  border: 2px solid white;
+  box-shadow: rgb(168, 161, 161);
+  border-radius: 20px;
+  font-size: 14px;
+  padding: 6px;
+  width: 150px;
+  margin-right: 6px;
 }
 
 .account {
   display: flex;
   align-items: center;
-
-  button {
-    margin-left: 10px;
-  }
-
 }
 
+button {
+  margin-left: 10px;
+  border-radius: 20px;
+}
 
 @media only screen and (max-width: 600px) {
   .center-items {
@@ -77,10 +71,10 @@
   .account {
     margin-top: 10px;
     justify-content: center;
+  }
 
-    button {
-      margin-left: 6px;
-    }
+  .account button {
+    margin-left: 6px;
   }
 }
 

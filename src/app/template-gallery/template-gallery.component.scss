@@ -31,7 +31,7 @@
   margin-left: 10px;
   margin-top: -50px;
   font-size: 20px;
-  color: blueviolet;
+  color: #673ab7;
 }
 
 .top h2 {
@@ -39,21 +39,17 @@
   text-decoration: underline;
   top: 70px;
   margin-top: 20px;
-
 }
 
 .bottom h2 {
   position: absolute;
   text-decoration: underline;
   margin-top: -50px;
-
 }
 
 .bottom-section {
   position: relative;
 }
-
-
 
 .templates-container {
   display: flex;
@@ -70,7 +66,7 @@
   align-items: center;
   margin: 20px;
   cursor: pointer;
-  flex-basis: calc((100% / 5) - 40px); // set flex-basis to 20% minus margin
+  flex-basis: calc((100% / 5) - 40px);
 }
 
 .template:hover {
@@ -88,123 +84,45 @@
 
 .template-text {
   font-size: 16px;
-  color: blueviolet;
+  color: #673ab7;
   margin-top: 10px;
   text-align: center;
   display: block;
 }
 
-
 @media only screen and (max-width: 768px) {
 
-  .top,
-  .bottom {
-    padding: 20px;
-  }
-
-  h3 {
-    font-size: 16px;
-  }
-
-  h2 {
-    font-size: 16px;
-  }
-
-  .new-form {
-    margin-top: 10px;
-  }
-
-  .new-form-button {
-    height: 50px;
-    width: 50px;
-  }
-
-  .new-form-text {
-    font-size: 14px;
-  }
-
-  .bottom {
-    display: none;
-  }
-
-  .template {
-    margin: 10px;
-    flex-basis: calc((100% / 3) - 20px); // set flex-basis to 33.33% minus margin
+  .top h2,
+  .bottom h2 {
+    position: static;
+    margin-top: 20px;
+    text-align: center;
   }
 
   .template-image {
-    height: 100px;
-    width: 100px;
+    margin-left: 0;
   }
-
-  .template-text {
-    font-size: 14px;
-  }
-}
-
-@media only screen and (max-width: 576px) {
-  .template {
-    flex-basis: calc((100% / 2) - 20px); // set flex-basis to 50% minus margin
-  }
-
-  .template-image {
-    height: 80px;
-    width: 80px;
-  }
-
-  .template-text {
-    font-size: 12px;
-  }
-}
-
-.left {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-left: 230px;
-  margin-top: -175px;
-}
-
-.left:hover {
-  transform: scale(1.05) translate(5px, -5px);
-}
-
-.left label {
-  margin-right: 10px;
-}
-
-.left select {
-  width: 220px;
-  height: 40px;
-  padding: 5px;
-  border-radius: 20px;
-  border: none;
-  background-color: #e2ace9;
-  font-size: 16px;
-  color: #333;
-}
-
-.left option {
-  background-color: #e4cce4;
-  color: #333;
-}
-
-.right {
-  display: flex;
-  align-items: center;
-  margin-right: 20px;
 }
 
 @media only screen and (max-width: 600px) {
-  .left {
-    margin-left: 0;
+
+  .top h2,
+  .bottom h2 {
+    margin-top: 0;
+    font-size: 18px;
   }
 
-  .left select {
-    width: 100%;
+  .templates-container {
+    margin-top: 10px;
   }
 
-  .right {
-    margin-right: 0;
+  .template-image {
+    height: 120px;
+    width: 120px;
+    margin-bottom: 5px;
+  }
+
+  .template-text {
+    font-size: 14px;
   }
 }
