@@ -9,18 +9,20 @@
           <div class="right">
             <mat-tab-group>
               <mat-tab label="Input">
-                <button (click)="addField('text')">Add Field</button>
+                <button (click)="addField(1)">Add Field</button>
               </mat-tab>
               <mat-tab label="Radios / Checkboxes">
-                <button (click)="addField('radio')">Add Radio</button>
-                <button (click)="addField('checkbox')">Add Checkbox</button>
+                <button (click)="addField(3)">Add Radio</button>
+                <button (click)="addField(2)">Add Checkbox</button>
               </mat-tab>
               <mat-tab label="Buttons">
-                <button (click)="addField('button')">Add Button</button>
+                <button (click)="addField(8)">Add Button</button>
+                <button (click)="addButton(8)">Submit</button>
+                <button (click)="addButton(8)">Reset</button>
               </mat-tab>
               <mat-tab label="Date / Time">
                 <input type="date" id="Test_Date">
-                <button (click)="addField('DateTime')">Add Date Field</button>
+                <button (click)="addField(5)">Add Date Field</button>
               </mat-tab>
             </mat-tab-group>
           </div>

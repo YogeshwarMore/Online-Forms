@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
-import { forms } from '../Model/forms';
+import { forms } from '../model/forms';
 import { ServicesService } from '../services/services.service';
-import {field} from '../Model/field';
+import { field } from '../model/field';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { filledform } from '../Model/filledform';
+import { filledform } from '../model/filledform';
+import { from } from 'rxjs';
 
 
-interface demo{
-  id:number,
-  name:string,
-  ischecked:any 
-
+interface demo {
+  id: number,
+  value?: string,
+  name: string,
+  fieldid: number,
+  optionid?: number
 }
 @Component({
   selector: 'app-fill-form',
@@ -18,89 +20,119 @@ interface demo{
   styleUrls: ['./fill-form.component.scss']
 })
 export class FillFormComponent implements OnInit {
-  names!:string;
-  demo:demo[]=[];
-
+  names: string[] = [];
+  demo: demo[] = [];
   form!: FormGroup;
-  field!:field[];
-  i:number=0;
-  option:any;
-  filledform:filledform[]=[{
-      formfieldid : 1,
-      ischecked : 1,
-      textvalue :  '' ,
-      numericvalue : 1,
-      datetimevalue : '' ,
-      optionid : 1
-    }
-  ];
+  field!: field[];
+  i: number = 0;
+  option!: string;
+  filledform: filledform[] = [];
+
   forms: forms = {
     formname: '',
     description: '',
     versionnumber: 0,
-    fieldsList:[],
+    fieldsList: [],
   };
 
-  
-  constructor(public service:ServicesService, private formBuilder: FormBuilder){ this.form = this.formBuilder.group({});}
+  constructor(public service: ServicesService, private formBuilder: FormBuilder) { this.form = this.formBuilder.group({}); }
   ngOnInit(): void {
 
-    this.service.GetFormField(1,1).subscribe(res=>{
+    this.service.GetFormField(1, 2).subscribe(res => {
       this.field = res;
-        this.forms.fieldsList = this.field;
+      console.log(res, this.field);
+      this.forms.fieldsList = this.field;
     })
     console.log(this.field);
   }
 
-  updateCheckedOptions(field: any, i: any) {
+  valuestore(field: field, i: number) {
     const index = this.demo.findIndex(d => d.id === i);
+    console.log(this.names[i])
     if (index !== -1) {
-      this.demo.splice(index, 1);
-      console.log("pop");
+      this.demo[index].value = this.names[i];
     } else {
-      console.log("push");
       const newDemo: demo = {
         id: i,
+        value: this.names[i],
         name: field.fieldName,
-        ischecked: field.formfieldid
+        fieldid: field.formfieldid ?? 0
       };
       this.demo.push(newDemo);
     }
-    console.log(this.demo);
+
+    console.log(this.names[i]);
   }
 
-  // valuestore(type:any)
-  // {
-  //   if(type==1)
-  //   {
-  //     const newfield:filledform={
-  //       formfieldid : 1, //                   data from api required new api
-  //       ischecked : null,
-  //       textvalue :  this.names ,
-  //       numericvalue : null,
-  //       datetimevalue : null ,
-  //       optionid : null
-  //     }
-  //   this.filledform.push(newfield);
-  //     console.log(this.filledform);
-  //   }
-  //     else if(type==3)
-  //     { const newradio:filledform={
-  //       formfieldid : 1, //                   data from api required new api
-  //       ischecked : null,
-  //       textvalue :  this.names ,
-  //       numericvalue : null,
-  //       datetimevalue : null ,
-  //       optionid : null
 
-  //     }
-  //     this.filledform.push(newradio);
-  //   }
-  //   // console.log(this.filledform);
-  // }
-  
-  submitForm(){
-   
+
+  updateCheckedOptions(option: string, field: field, i: number) {
+    const index = this.demo.findIndex(d => d.value === option);
+    if (field.toolid == 3)
+      this.demo = this.demo.filter(demoItem => demoItem.fieldid !== field.formfieldid);
+
+    if (index !== -1) {
+      this.demo.splice(index, 1);
+
+    } else {
+
+      const newDemo: demo = {
+        id: i,
+        name: field.fieldName,
+        value: option,
+        fieldid: field.formfieldid ?? 0,
+        optionid: 0
+      };
+      this.service.getOptionId(option).subscribe(
+        (optionId: number) => {
+          newDemo.optionid = optionId;
+          this.demo.push(newDemo);
+        },
+        (error) => {
+          console.error(error);
+        }
+      );
+    }
+  }
+
+  check(id: any) {
+    if (id !== null && id !== undefined)
+      return 1;
+    else
+      return 0;
+  }
+
+  submitForm() {
+
+    // this.demo = Object.values(
+    //   this.demo.reduce((result, demoItem) => {
+    //     if (!result[demoItem.fieldid]) {
+    //       result[demoItem.fieldid] = { ...demoItem };
+    //     } else {
+    //       result[demoItem.fieldid].value += `, ${demoItem.value || ''}`;
+    //     }
+    //     return result;
+    //   }, {} as { [key: number]: demo })
+    // );
+
+    console.log(this.demo);
+
+    for (const data of this.demo) {
+
+      const filledField: filledform = {
+        formfieldid: data.fieldid,
+        ischecked: this.check(data.optionid),
+        textvalue: data.value ?? null,
+        numericvalue: null, // Set numeric value if applicable
+        datetimevalue: null, // Set datetime value if applicable
+        optionid: data.optionid ?? null // Set option id if applicable
+      };
+      this.filledform.push(filledField);
+
+    }
+    console.log(this.filledform);
+    this.service.saveFilledData(1, 1, this.filledform);
+
   }
 
 }

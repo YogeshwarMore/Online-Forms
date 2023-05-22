@@ -3,21 +3,24 @@
         Fill Basic Details
     </h1>
     <div mat-dialog-content>
-        <input class="label" type="type" placeholder="Label Name" matInput [(ngModel)]="Name"><br>
-        <input class="label" *ngIf="type === 'radio' || type === 'checkbox'" type="type" placeholder="Option...n" matInput [(ngModel)]="optionName"><br>
-        
+        <input class="label" type="text" placeholder="Label Name" matInput [(ngModel)]="Name"
+            (keyup.enter)="OnSave()"><br>
+        <input class="label" *ngIf="type=== 2 || type=== 3" type="text" placeholder="Option...n" matInput
+            [(ngModel)]="optionName" (keyup.enter)="addOption()"><br>
+
 
         <ng-container *ngFor="let option of options; let i = index;">
-            <input *ngIf="type === 'radio'" type="radio" placeholder="option {{i + 1}}" [placeholder]="option">
-            <input *ngIf="type === 'checkbox'" type="checkbox" placeholder="option {{i + 1}}" [placeholder]="option">
+            <input *ngIf="type=== 3" type="radio" placeholder="option {{i + 1}}" [placeholder]="option">
+            <mat-icon (click)="remove(i)">del</mat-icon>
+            <input *ngIf="type=== 2" type="checkbox" placeholder="option {{i + 1}}" [placeholder]="option">
             <label>{{option}}</label><br>
         </ng-container>
-        <mat-slide-toggle *ngIf="type != 'button'" [(ngModel)]="isOptional" color="primary"><span
+        <mat-slide-toggle *ngIf="type!= 8" [(ngModel)]="isOptional" color="primary"><span
                 class="required-text">Required</span></mat-slide-toggle>
     </div>
 
     <div mat-dialog-actions>
-        <button *ngIf="type == 'radio'|| type == 'checkbox'" (click)="addOption()">Add
+        <button *ngIf="type== 2|| type== 3" (click)="addOption()">Add
             option</button>
         <button (click)="OnSave()">Submit</button>
         <button [mat-dialog-close]>Close</button>

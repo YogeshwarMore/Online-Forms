@@ -3,9 +3,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormPopupComponent } from '../form-popup/form-popup.component';
-import { forms } from '../Model/forms';
+import { forms } from '../model/forms';
 import { ServicesService } from '../services/services.service';
-import { field } from '../Model/field';
+import { field } from '../model/field';
 
 @Component({
   selector: 'app-form',
@@ -16,7 +16,7 @@ export class FormComponent implements OnInit {
   formname: string = '';
   desc: string = '';
   version: number = 1;
-  formid: any = 1;
+  formid: any = null;
   tools: any;
   type: any;
   indexs: number = 0;
@@ -59,8 +59,8 @@ export class FormComponent implements OnInit {
       const serializedData2 = params['data2'];
       const data: forms = JSON.parse(serializedData);
       this.formid = data.formid;
-      this.formname = data.description;
-      this.desc = data.formname;
+      this.formname = data.formname;
+      this.desc = data.description;
       this.version = JSON.parse(serializedData2).versionnumber;
       const i = JSON.parse(serializedData2).versionid;
       this.service.GetFormField(1, i).subscribe((res) => {
@@ -101,14 +101,22 @@ export class FormComponent implements OnInit {
       j++;
     }
 
-    this.service.saveForms(this.forms, 1);
-    this.forms.fieldsList = [];
+    this.service.saveForms(this.forms, this.forms.fieldsList);
+    this.forms =
+    {
+      formname: '',
+      description: '',
+      versionnumber: 0,
+      fieldsList: [],
+    }
   }
 
-  editField(field: field, type: string): void {
+  editField(field: field, type: number): void {
+    if (field.toolid !== null && field.toolid !== undefined)
+      type = field.toolid;
     const dialogRef = this.dialog.open(FormPopupComponent, {
       width: '250px',
-      data: { name: type, fieldName: field.fieldName, isoptional: field.isoptional }
+      data: { name: type }
     });
 
     dialogRef.afterClosed().subscribe(res => {
@@ -127,7 +135,7 @@ export class FormComponent implements OnInit {
     }
   }
 
-  deleteres(field: any): void {
+  deleteres(field: any): void {  // for deleting the options after adding in popup not impli
     console.log(field);
     const index = this.userlist.indexOf(field);
     if (index !== -1) {
@@ -135,16 +143,38 @@ export class FormComponent implements OnInit {
     }
   }
 
-  addField(type: string): void {
+  addButton(type: number) {
+    if (type == 8) {
+      const newSubmit: field = {
+        indexs: this.indexs,
+        isoptional: false,
+        toolid: 8,
+        names: [],
+        fieldName: 'submit',
+      };
+      this.forms.fieldsList.push(newSubmit);
+    } else if (type == 8) {
+      const newReset: field = {
+        indexs: this.indexs,
+        isoptional: false,
+        toolid: 8,
+        names: [],
+        fieldName: 'reset',
+      };
+      this.forms.fieldsList.push(newReset);
+    }
+  }
+
+  addField(type: number): void {
     this.type = type;
     const dialogRef = this.dialog.open(FormPopupComponent, {
       width: '250px',
-      data: { name: type },
+      data: { name: type }
     });
 
     dialogRef.afterClosed().subscribe((res) => {
       if (!res) return
-      if (type === 'text') {
+      if (type === 1) {
         const newField: field = {
           indexs: this.indexs,
           isoptional: res.data1.isoptional,
@@ -155,7 +185,7 @@ export class FormComponent implements OnInit {
         console.log(this.forms);
 
         this.forms.fieldsList.push(newField);
-      } else if (type === 'radio') {
+      } else if (type === 3) {
         const newradio: field = {
           fieldName: res.data1.fieldName,
           indexs: this.indexs,
@@ -165,7 +195,7 @@ export class FormComponent implements OnInit {
         };
 
         this.forms.fieldsList.push(newradio);
-      } else if (type === 'checkbox') {
+      } else if (type === 2) {
         const newcheck: field = {
           fieldName: res.data1.fieldName,
           indexs: this.indexs,
@@ -175,7 +205,7 @@ export class FormComponent implements OnInit {
         };
 
         this.forms.fieldsList.push(newcheck);
-      } else if (type === 'button') {
+      } else if (type === 8) {
         const newbutton: field = {
           fieldName: res.data1.fieldName,
           indexs: this.indexs,
@@ -185,7 +215,7 @@ export class FormComponent implements OnInit {
         };
 
         this.forms.fieldsList.push(newbutton);
-      } else if (type === 'DateTime') {
+      } else if (type === 5) {
         const newDate: field = {
           fieldName: res.data1.fieldName,
           indexs: this.indexs,

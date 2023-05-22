@@ -1,9 +1,9 @@
-export interface field{
-    fieldid?:number;
+export interface field {
+    formfieldid?: number;
     fieldName: string;
     indexs: number;
     isoptional: boolean;
     toolid: number;
     names: string[];
-    ischecked?:any;
+    ischecked?: any;
 }
