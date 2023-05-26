@@ -70,7 +70,6 @@ body,
 .receiving-responses,
 input,
 #Test_Date,
-.button,
 .forms-container,
 .example-form,
 .example-full-width,
@@ -97,7 +96,7 @@ mat-divider {
 
 button {
   margin-top: 20px;
-  margin-left: 10px;
+  margin-left: 20px;
   background-color: blueviolet;
   color: white;
   border: none;
@@ -212,6 +211,10 @@ h4 {
   grid-template-columns: max-content;
   grid-gap: 10px;
   align-items: center;
+}
+
+.left-align {
+  margin-left: 20px;
 }
 
 .text {

@@ -11,15 +11,16 @@ const routes: Routes = [
   { path: 'template-gallery', component: TemplateGalleryComponent },
   { path: 'dummy', component: DummyComponent },
   { path: 'edit-response', component: NavbarComponent },
-  { path: 'feedback', component: FeedbackPageComponent},
-  {path: 'form', component: FormComponent},
-  {path :'fillform', component:FillFormComponent},
-  { path: '**', redirectTo: '', pathMatch: 'full',component:NavbarComponent }
+  { path: 'feedback', component: FeedbackPageComponent },
+  { path: 'editresponse', component: FillFormComponent },
+  { path: 'form', component: FormComponent },
+  { path: 'fillform', component: FillFormComponent },
+  { path: '**', redirectTo: '', pathMatch: 'full', component: NavbarComponent }
 
- 
+
   // other routes
 ];
- 
+
 
 
 

@@ -38,7 +38,7 @@ export class FillFormComponent implements OnInit {
   constructor(public service: ServicesService, private formBuilder: FormBuilder) { this.form = this.formBuilder.group({}); }
   ngOnInit(): void {
 
-    this.service.GetFormField(1, 2).subscribe(res => {
+    this.service.GetFormField(1, 1).subscribe(res => {
       this.field = res;
       console.log(res, this.field);
       this.forms.fieldsList = this.field;

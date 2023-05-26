@@ -1,41 +1,47 @@
-<form (ngSubmit)="submitForm()">
-  <ng-container *ngFor="let field of forms.fieldsList; let i = index">
-    <div class="Labels" cdkDrag>
-      <div class="text" *ngIf="field.toolid === 1">
-        <div class="label-input-container">
-          <label>{{ i + 1 }}. {{ field.fieldName }}</label>
-          <input type="text" [name]="field.fieldName" [(ngModel)]="names[i]" (change)="valuestore(field,i)">
+<body>
+  <div class="forms-container">
+    <form (ngSubmit)="submitForm()">
+      <ng-container *ngFor="let field of forms.fieldsList; let i = index">
+        <div class="Labels">
+          <div class="text" *ngIf="field.toolid === 1">
+            <div class="label-input-container">
+              <label>{{ i + 1 }}. {{ field.fieldName }}</label>
+              <input type="text" [name]="field.fieldName" [(ngModel)]="names[i]" (change)="valuestore(field,i)">
 
+            </div>
+          </div>
+          <div class="text" *ngIf="field.toolid === 3">
+            <label>{{ i + 1 }}. {{ field.fieldName }}</label>
+            <ng-container *ngFor="let option of field.names">
+              <input type="radio" [name]="field.fieldName" [value]="option"
+                (change)="updateCheckedOptions(option,field,i)">
+              {{ option }}
+            </ng-container>
+
+          </div>
+          <div class="text" *ngIf="field.toolid === 2">
+            <label>{{ i + 1 }}. {{ field.fieldName }}</label>
+            <ng-container *ngFor="let option of field.names; let j=index">
+              <input type="checkbox" [name]="field.fieldName" [value]="option"
+                (change)="updateCheckedOptions(option,field,i)">
+              {{ option }}
+            </ng-container>
+
+          </div>
+          <div *ngIf="field.toolid === 8">
+            <button mat-icon-button>{{ i + 1 }}. {{ field.fieldName }}</button>
+
+          </div>
+          <div class="text" *ngIf="field.toolid === 5">
+            <label>{{ i + 1 }}. {{ field.fieldName }}</label>
+            <input type="date" id="Test_Date" [(ngModel)]="names[i]" [ngModelOptions]="{ standalone: true }"
+              (change)="valuestore(field, i)">
+
+          </div>
         </div>
-      </div>
-      <div class="radio" *ngIf="field.toolid === 3">
-        <label>{{ i + 1 }}. {{ field.fieldName }}</label>
-        <ng-container *ngFor="let option of field.names">
-          <input type="radio" [name]="field.fieldName" [value]="option" (change)="updateCheckedOptions(option,field,i)">
-          {{ option }}
-        </ng-container>
+      </ng-container>
+      <button type="submit" routerLink="/feedback">Submit</button>
+    </form>
+  </div>
 
-      </div>
-      <div class="checkbox" *ngIf="field.toolid === 2">
-        <label>{{ i + 1 }}. {{ field.fieldName }}</label>
-        <ng-container *ngFor="let option of field.names; let j=index">
-          <input type="checkbox" [name]="field.fieldName" [value]="option"
-            (change)="updateCheckedOptions(option,field,i)">
-          {{ option }}
-        </ng-container>
-
-      </div>
-      <div *ngIf="field.toolid === 8">
-        <button mat-icon-button>{{ i + 1 }}. {{ field.fieldName }}</button>
-
-      </div>
-      <div class="date" *ngIf="field.toolid === 5">
-        <label>{{ i + 1 }}. {{ field.fieldName }}</label>
-        <input type="date" id="Test_Date" [(ngModel)]="names[i]" [ngModelOptions]="{ standalone: true }"
-          (change)="valuestore(field, i)">
-
-      </div>
-    </div>
-  </ng-container>
-  <button type="submit">Submit</button>
-</form>
+</body>
