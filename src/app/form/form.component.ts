@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { FormPopupComponent } from '../form-popup/form-popup.component';
 import { forms } from '../model/forms';
 import { ServicesService } from '../services/services.service';
 import { field } from '../model/field';
+import { user } from '../model/User';
+import { data } from '../model/formfilleddata';
+
 
 @Component({
   selector: 'app-form',
@@ -21,15 +24,25 @@ export class FormComponent implements OnInit {
   type: any;
   indexs: number = 0;
   field!: field[];
-
-
-  userlist = [
-    { id: 1, name: 'John Doe', formResponse: 'Response1' },
-    { id: 2, name: 'Kate Johnson', formResponse: 'Response2' },
-    { id: 3, name: 'Will Parker', formResponse: 'Response3' },
-    { id: 4, name: 'Jane Dcousta', formResponse: 'Response4' },
-    { id: 5, name: 'Matthew Perry', formResponse: 'Response5' },
+  i: number = 0;
+  userdata: data[] = [
+    {
+      user: {
+        userid: 0,
+        userfirstname: "",
+        userlastname: "",
+        useremailid: "",
+        username: "",
+        userpassword: ""
+      },
+      filldate: "",
+      details: [{
+        fieldname: "",
+        value: ""
+      }]
+    }
   ];
+
 
   forms: forms = {
     formname: '',
@@ -38,18 +51,21 @@ export class FormComponent implements OnInit {
     fieldsList: [],
   };
 
-
-
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
+
     this.service.Gettool().subscribe((res) => {
       this.tools = res;
     });
+
+
+
 
     this.route.queryParams.subscribe((params) => {
 
@@ -62,12 +78,20 @@ export class FormComponent implements OnInit {
       this.formname = data.formname;
       this.desc = data.description;
       this.version = JSON.parse(serializedData2).versionnumber;
-      const i = JSON.parse(serializedData2).versionid;
-      this.service.GetFormField(1, i).subscribe((res) => {
+      this.i = JSON.parse(serializedData2).versionid;
+      this.service.GetFormField(1, this.i).subscribe((res) => {
         this.field = res;
         this.forms.fieldsList = this.field;
       });
     });
+
+    this.service.getUserData(this.i).subscribe((res) => {
+
+      this.userdata = res;
+      console.log(this.userdata, "fj", res)
+
+    });
+
   }
 
   drop(event: CdkDragDrop<field[]>): void {
@@ -109,6 +133,8 @@ export class FormComponent implements OnInit {
       versionnumber: 0,
       fieldsList: [],
     }
+    this.formname = "";
+    this.desc = "";
   }
 
   editField(field: field, type: number): void {
@@ -135,12 +161,10 @@ export class FormComponent implements OnInit {
     }
   }
 
-  deleteres(field: any): void {  // for deleting the options after adding in popup not impli
-    console.log(field);
-    const index = this.userlist.indexOf(field);
-    if (index !== -1) {
-      this.userlist.splice(index, 1);
-    }
+  userdataa(field: data) {
+    const jsonData = JSON.stringify(field);
+    this.router.navigate(['/userdata'], { queryParams: { data: jsonData } });
+
   }
 
   addButton(type: number) {

@@ -4,6 +4,8 @@ import { Observable, catchError, of } from "rxjs";
 import { forms } from '../model/forms';
 import { field } from '../model/field';
 import { filledform } from '../model/filledform';
+import { Form } from '@angular/forms';
+import { data } from '../model/formfilleddata';
 
 @Injectable({
   providedIn: 'root'
@@ -34,6 +36,16 @@ export class ServicesService {
   getOptionId(name: string): Observable<number> {
     const url = `http://localhost:8081/forms/options/${name}`;
     return this.http.get<number>(url);
+  }
+
+  getUserData(id: number): Observable<data[]> {
+    const url = `http://localhost:8081/forms/${id}`;
+    return this.http.get<data[]>(url);
+  }
+
+  getFormDetails(id: number): Observable<any> {
+    const url = `http://localhost:8081/forms/details/${id}`;
+    return this.http.get<any>(url);
   }
 
   saveForms(form: forms, field: field[]) {

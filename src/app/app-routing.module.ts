@@ -6,6 +6,7 @@ import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { FormComponent } from './form/form.component';
 import { FillFormComponent } from './fill-form/fill-form.component';
+import { UserDataComponent } from './user-data/user-data.component';
 
 const routes: Routes = [
   { path: 'template-gallery', component: TemplateGalleryComponent },
@@ -15,7 +16,9 @@ const routes: Routes = [
   { path: 'editresponse', component: FillFormComponent },
   { path: 'form', component: FormComponent },
   { path: 'fillform', component: FillFormComponent },
+  { path: 'userdata', component: UserDataComponent },
   { path: '**', redirectTo: '', pathMatch: 'full', component: NavbarComponent }
+
 
 
   // other routes

@@ -42,7 +42,6 @@ body,
 .textfield,
 .textfield label,
 .textfield input[type="text"],
-.left input:first-child,
 .receiving-responses,
 input,
 #Test_Date,
@@ -66,7 +65,6 @@ body,
 .textfield,
 .textfield label,
 .textfield input[type="text"],
-.left input:first-child,
 .receiving-responses,
 input,
 #Test_Date,
@@ -81,6 +79,21 @@ input,
 .user-list {
   color: #673ab7;
   margin-bottom: 0;
+}
+
+.formfield {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border-radius: 20px;
+  background-color: #fff;
+  padding: 50px;
 }
 
 hr,
@@ -124,6 +137,7 @@ button:hover {
   padding: 50px;
 }
 
+
 .container {
   display: flex;
   flex-direction: row;
@@ -135,7 +149,6 @@ button:hover {
   text-align: center;
   font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
-  width: 90%;
   border: none;
   outline: none;
   background-color: transparent;
@@ -217,11 +230,24 @@ h4 {
   margin-left: 20px;
 }
 
+.Labels {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
 .text {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  align-items: center;
   margin-bottom: 10px;
+  color: #673ab7;
+}
+
+.op {
+  display: flex;
+  flex-direction: row;
+  background-color: #673ab7;
 }
 
 .text input[type="text"],

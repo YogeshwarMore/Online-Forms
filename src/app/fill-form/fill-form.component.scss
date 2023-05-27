@@ -5,7 +5,22 @@ body {
     background-color: rgb(240, 229, 241);
 }
 
+.heading {
+    margin: 6px;
+    font-size: x-large;
+    align-items: center;
+}
+
+.desc {
+    font-size: medium !important;
+}
+
+
 .forms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin-top: 20px;
     margin-bottom: 50px;
     margin-left: auto;
@@ -35,16 +50,27 @@ button:hover {
     transform: scale(1) translate(2px, -2px);
 }
 
+.Labels {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
 .text {
     display: flex;
     flex-direction: column;
-    align-items: center;
     margin-bottom: 10px;
     color: #673ab7;
 }
 
-.text input[type="text"],
-input[type="date"] {
+.op {
+    display: flex;
+    flex-direction: row;
+    background-color: #673ab7;
+}
+
+input[type="date"],
+input[type="text"] {
     width: 200px;
     height: 20px;
     padding: 5px;

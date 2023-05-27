@@ -35,6 +35,7 @@ import {DragDropModule } from "@angular/cdk/drag-drop";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import { FillFormComponent } from './fill-form/fill-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { UserDataComponent } from './user-data/user-data.component';
 
 
 @NgModule({
@@ -49,6 +50,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     NavbarOnlyComponent,
     DynamicFormComponent,
     FillFormComponent,
+    UserDataComponent,
     
   ],
   imports: [

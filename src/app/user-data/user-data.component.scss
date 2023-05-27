@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background-color: rgb(240, 229, 241);
+}
+
+.forms-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    overflow: auto;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    padding: 50px;
+}

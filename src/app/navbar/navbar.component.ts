@@ -9,8 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.scss']
 })
-export class NavbarComponent implements OnInit {
-
+export class NavbarComponent {
   forms: Array<forms> = [];
   versionid: any = {
     versionid: 1,
@@ -23,14 +22,11 @@ export class NavbarComponent implements OnInit {
 
     });
   }
-  ngOnInit(): void {
 
-  }
   getform(id: forms) {
     const highestVersion = id.versionsList?.reduce((maxVersion, version) => {
       return version.versionNumber > maxVersion.versionNumber ? version : maxVersion;
     });
-    console.log(highestVersion);
     const serializedData = JSON.stringify(id);
     const serializedData2 = JSON.stringify(highestVersion);
     this.router.navigate(['/form'], { queryParams: { data: serializedData, data2: serializedData2 } });

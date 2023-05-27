@@ -1,5 +1,7 @@
 <body>
   <div class="forms-container">
+    <label class="heading">{{forms.formname}}</label>
+    <label class="heading , desc">{{forms.description}}</label>
     <form (ngSubmit)="submitForm()">
       <ng-container *ngFor="let field of forms.fieldsList; let i = index">
         <div class="Labels">
@@ -12,28 +14,31 @@
           </div>
           <div class="text" *ngIf="field.toolid === 3">
             <label>{{ i + 1 }}. {{ field.fieldName }}</label>
-            <ng-container *ngFor="let option of field.names">
-              <input type="radio" [name]="field.fieldName" [value]="option"
-                (change)="updateCheckedOptions(option,field,i)">
-              {{ option }}
-            </ng-container>
-
+            <div class="ops">
+              <ng-container *ngFor="let option of field.names">
+                <input type="radio" [name]="field.fieldName" [value]="option"
+                  (change)="updateCheckedOptions(option,field,i)">
+                {{ option }}
+              </ng-container>
+            </div>
           </div>
           <div class="text" *ngIf="field.toolid === 2">
             <label>{{ i + 1 }}. {{ field.fieldName }}</label>
-            <ng-container *ngFor="let option of field.names; let j=index">
-              <input type="checkbox" [name]="field.fieldName" [value]="option"
-                (change)="updateCheckedOptions(option,field,i)">
-              {{ option }}
-            </ng-container>
+            <div class="ops">
+              <ng-container *ngFor="let option of field.names; let j=index">
+                <input type="checkbox" [name]="field.fieldName" [value]="option"
+                  (change)="updateCheckedOptions(option,field,i)">
+                {{ option }}
+              </ng-container>
+            </div>
 
           </div>
           <div *ngIf="field.toolid === 8">
-            <button mat-icon-button>{{ i + 1 }}. {{ field.fieldName }}</button>
+            <button mat-icon-button> {{ field.fieldName }}</button>
 
           </div>
           <div class="text" *ngIf="field.toolid === 5">
-            <label>{{ i + 1 }}. {{ field.fieldName }}</label>
+            <label>{{ field.fieldName }}</label>
             <input type="date" id="Test_Date" [(ngModel)]="names[i]" [ngModelOptions]="{ standalone: true }"
               (change)="valuestore(field, i)">
 

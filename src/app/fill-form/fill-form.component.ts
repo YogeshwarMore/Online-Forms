@@ -43,7 +43,14 @@ export class FillFormComponent implements OnInit {
       console.log(res, this.field);
       this.forms.fieldsList = this.field;
     })
-    console.log(this.field);
+    this.service.getFormDetails(1).subscribe(res => {
+      this.forms.formname = res.formname;
+      this.forms.description = res.description;
+      console.log(this.forms);
+    })
+
+
+
   }
 
   valuestore(field: field, i: number) {
@@ -123,15 +130,15 @@ export class FillFormComponent implements OnInit {
         formfieldid: data.fieldid,
         ischecked: this.check(data.optionid),
         textvalue: data.value ?? null,
-        numericvalue: null, // Set numeric value if applicable
-        datetimevalue: null, // Set datetime value if applicable
-        optionid: data.optionid ?? null // Set option id if applicable
+        numericvalue: null,
+        datetimevalue: null,
+        optionid: data.optionid ?? null
       };
       this.filledform.push(filledField);
 
     }
     console.log(this.filledform);
-    this.service.saveFilledData(1, 1, this.filledform);
+    this.service.saveFilledData(1, 2, this.filledform);
 
   }
 
