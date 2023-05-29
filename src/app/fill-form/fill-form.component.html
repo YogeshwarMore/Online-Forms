@@ -2,6 +2,7 @@
   <div class="forms-container">
     <label class="heading">{{forms.formname}}</label>
     <label class="heading , desc">{{forms.description}}</label>
+    <hr width="70%">
     <form (ngSubmit)="submitForm()">
       <ng-container *ngFor="let field of forms.fieldsList; let i = index">
         <div class="Labels">
@@ -34,7 +35,7 @@
 
           </div>
           <div *ngIf="field.toolid === 8">
-            <button mat-icon-button> {{ field.fieldName }}</button>
+            <button type="submit" routerLink="/feedback" (click)="submitForm()"> {{ field.fieldName }}</button>
 
           </div>
           <div class="text" *ngIf="field.toolid === 5">
@@ -45,7 +46,7 @@
           </div>
         </div>
       </ng-container>
-      <button type="submit" routerLink="/feedback">Submit</button>
+      <!-- <button type="submit" routerLink="/feedback">Submit</button> -->
     </form>
   </div>
 

@@ -1,23 +1,25 @@
-<div class="forms-container">
-    <div>
-        <h2>User Information:</h2>
-        <p>User ID: {{ userdata.user.userid }}</p>
-        <p>First Name: {{ userdata.user.userfirstname }}</p>
-        <p>Last Name: {{ userdata.user.userlastname }}</p>
-        <p>Email: {{ userdata.user.useremailid }}</p>
-        <p>Username: {{ userdata.user.username }}</p>
+<body>
+    <div class="forms-container">
+        <div>
+            <h2>User Information:</h2>
+            <p>User ID: {{ userdata.user.userid }}</p>
+            <p>First Name: {{ userdata.user.userfirstname }}</p>
+            <p>Last Name: {{ userdata.user.userlastname }}</p>
+            <p>Email: {{ userdata.user.useremailid }}</p>
+            <p>Username: {{ userdata.user.username }}</p>
 
-    </div>
+        </div>
 
-    <div>
-        <h2>Fill Date: {{ userdata.filldate }}</h2>
+        <div>
+            <h2>Fill Date: {{ userdata.filldate }}</h2>
+        </div>
+        <div>
+            <h2>Details:</h2>
+            <ul>
+                <li *ngFor="let detail of userdata.details">
+                    {{ detail.fieldname }}: {{ detail.value }}
+                </li>
+            </ul>
+        </div>
     </div>
-    <div>
-        <h2>Details:</h2>
-        <ul>
-            <li *ngFor="let detail of userdata.details">
-                <strong>{{ detail.fieldname }}:</strong> {{ detail.value }}
-            </li>
-        </ul>
-    </div>
-</div>
+</body>

@@ -11,10 +11,37 @@ body {
     align-items: center;
 }
 
+.text input[type="text"],
+input[type="date"] {
+    width: 200px;
+    height: 20px;
+    padding: 5px;
+    border: 1px solid #673ab7;
+    color: #673ab7;
+    border-radius: 10px;
+    margin-top: 5px;
+}
+
+input[type="date"] {
+    text-align: center;
+}
+
 .desc {
     font-size: medium !important;
 }
 
+.heading {
+    text-align: center;
+    font-size: xx-large;
+    font-family: Arial, Helvetica, sans-serif;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #673ab7;
+}
 
 .forms-container {
     display: flex;
@@ -25,7 +52,7 @@ body {
     margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 30%;
     overflow: auto;
     border-radius: 20px;
     background-color: #fff;
@@ -33,9 +60,14 @@ body {
     padding: 50px;
 }
 
+hr {
+    opacity: 0.4;
+    border-top: 2px solid #673ab7;
+}
+
 button {
     margin-top: 20px;
-    margin-left: 20px;
+    margin-left: 70px;
     background-color: blueviolet;
     color: white;
     border: none;
