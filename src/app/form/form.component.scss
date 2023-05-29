@@ -84,16 +84,14 @@ input,
 .formfield {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-top: 20px;
-  margin-bottom: 50px;
+  margin-top: 5px;
+  margin-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  width: 70%;
   border-radius: 20px;
   background-color: #fff;
-  padding: 10px;
+  padding: 20px;
 }
 
 hr,
@@ -108,8 +106,8 @@ mat-divider {
 }
 
 button {
-  margin-top: 20px;
-  margin-left: 20px;
+  margin-top: 25px;
+  margin-left: 50px;
   background-color: blueviolet;
   color: white;
   border: none;
@@ -188,8 +186,9 @@ button:hover {
 }
 
 .right {
-  flex: 1;
+  flex: 1 1;
   border-top: 1px solid #e6e6e6;
+  margin-right: 20px;
 }
 
 .responses-header {
@@ -226,7 +225,7 @@ h4 {
 }
 
 .left-align {
-  margin-left: 20px;
+  margin-left: 40px;
 }
 
 .Labels {
@@ -256,7 +255,6 @@ input[type="date"] {
   padding: 5px;
   border: 1px solid #673ab7;
   border-radius: 10px;
-  margin-top: 5px;
 }
 
 .text label {
@@ -264,10 +262,10 @@ input[type="date"] {
   justify-content: flex-end;
   width: fit-content;
   margin-right: 10px;
-  margin-top: 10px;
+  margin-top: 20px;
+  margin-bottom: 20px;
   font-weight: 500;
   letter-spacing: 1px;
-  margin-bottom: 5px;
   text-align: center;
 }
 
@@ -277,16 +275,23 @@ input[type="date"] {
   font-size: xx-large;
   font-family: Arial, Helvetica, sans-serif;
   width: 90%;
+  margin-top: 5px;
+  margin-bottom: 5px;
   border: none;
   outline: none;
   background-color: transparent;
 }
 
-mat-icon {
-  margin-top: 10px;
-  margin-left: 20px;
+.edit-delete-buttons,
+.print-delete-buttons {
+  margin-top: 20px;
+  margin-left: 10px;
   align-items: center;
   cursor: pointer;
+}
+
+mat-icon {
+  margin-left: 10px;
 }
 
 mat-icon:hover {
