@@ -1,11 +1,12 @@
-<app-navbar-only></app-navbar-only>
-
 <body>
+  <app-navbar-only></app-navbar-only>
   <div class="forms-container">
     <mat-tab-group>
       <mat-tab class="custom-font" label="Form">
         <mat-divider></mat-divider>
         <div class="container">
+
+
           <div class="right">
             <mat-tab-group>
               <mat-tab label="Input">
@@ -26,7 +27,10 @@
               </mat-tab>
             </mat-tab-group>
           </div>
-          <mat-divider [vertical]="true"></mat-divider>
+          <mat-divider [vertical]="true" style="opacity: 4;">
+          </mat-divider>
+
+
           <div class="left" cdkDropList (cdkDropListDropped)="drop($event)">
             <div class="left-align">
               <input class="formname" type="text" name="myInput" [(ngModel)]="formname" placeholder="Form Name">
@@ -41,8 +45,6 @@
                     <div class="label-input-container">
                       <label>{{ i + 1 }}. {{ field.fieldName }}</label>
                       <input type='text' [name]="field.fieldName">
-                      <mat-icon (click)="editField(field,type)">edit</mat-icon>
-                      <mat-icon (click)="deleteField(field)">delete</mat-icon>
                     </div>
                   </div>
                   <div class="text" *ngIf="field.toolid === 3">
@@ -52,11 +54,8 @@
                         <ng-container *ngFor="let option of field.names">
                           <input type="radio" [name]="field.fieldName" [value]="option">{{ option }}
                         </ng-container>
-                        <mat-icon (click)="editField(field,type)">edit</mat-icon>
-                        <mat-icon (click)="deleteField(field)">delete</mat-icon>
                       </div>
                     </div>
-
                   </div>
                   <div class="text" *ngIf="field.toolid === 2">
                     <div class="label-input-container">
@@ -65,33 +64,30 @@
                         <ng-container *ngFor="let option of field.names">
                           <input type="checkbox" [name]="field.fieldName" [value]="option">{{ option }}
                         </ng-container>
-                        <mat-icon (click)="editField(field,type)">edit</mat-icon>
-                        <mat-icon (click)="deleteField(field)">delete</mat-icon>
                       </div>
                     </div>
-
                   </div>
                   <div *ngIf="field.toolid === 8">
                     <button> {{ field.fieldName }}</button>
-                    <mat-icon (click)="editField(field,type)">edit</mat-icon>
-                    <mat-icon (click)="deleteField(field)">delete</mat-icon>
                   </div>
                   <div class="text" *ngIf="field.toolid === 5">
                     <div class="label-input-container">
                       <label>{{ i + 1 }}. {{ field.fieldName }}</label>
                       <input type="date" id="Test_Date">
-                      <mat-icon (click)="editField(field,type)">edit</mat-icon>
-                      <mat-icon (click)="deleteField(field)">delete</mat-icon>
                     </div>
+                  </div>
+                  <div class="edit-delete-buttons">
+                    <mat-icon class="edit-icon" (click)="editField(field,type)">edit</mat-icon>
+                    <mat-icon class="delete-icon" (click)="deleteField(field)">delete</mat-icon>
                   </div>
                 </div>
               </ng-container>
             </div>
-
             <div class="button-container">
               <button (click)="saveForms()">Save Form</button>
             </div>
           </div>
+
         </div>
       </mat-tab>
       <mat-tab class="custom-font" label="Responses">
@@ -106,9 +102,9 @@
               <a routerLink="/response" class="user-item" (click)="userdataa(user1)">{{
                 user1.user.username }}</a>
             </div>
-            <div class="icons">
-              <mat-icon>delete</mat-icon>
-              <mat-icon class="icon-button" onclick="">print</mat-icon>
+            <div class="print-delete-buttons">
+              <mat-icon class="print-icon">print</mat-icon>
+              <mat-icon class="delete-icon">delete</mat-icon>
             </div>
           </div>
         </div>
