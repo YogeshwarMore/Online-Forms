@@ -4,7 +4,8 @@ import { ServicesService } from '../services/services.service';
 import { field } from '../model/field';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { filledform } from '../model/filledform';
-import { from } from 'rxjs';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 interface demo {
@@ -25,6 +26,9 @@ export class FillFormComponent implements OnInit {
   form!: FormGroup;
   field!: field[];
   i: number = 0;
+  j: number = 0;
+
+
   option!: string;
   filledform: filledform[] = [];
 
@@ -35,10 +39,15 @@ export class FillFormComponent implements OnInit {
     fieldsList: [],
   };
 
-  constructor(public service: ServicesService, private formBuilder: FormBuilder) { this.form = this.formBuilder.group({}); }
+  constructor(public service: ServicesService, private route: ActivatedRoute, private formBuilder: FormBuilder) { this.form = this.formBuilder.group({}); }
   ngOnInit(): void {
 
-    this.service.GetFormField(1, 1).subscribe(res => {
+    this.route.queryParams.subscribe((params) => {
+      this.i = params['i'];
+      this.j = params['j'];
+    });
+
+    this.service.GetFormField(this.i, this.j).subscribe(res => {
       this.field = res;
       console.log(res, this.field);
       this.forms.fieldsList = this.field;
@@ -138,7 +147,7 @@ export class FillFormComponent implements OnInit {
 
     }
     console.log(this.filledform);
-    this.service.saveFilledData(1, 2, this.filledform);
+    this.service.saveFilledData(this.j, 2, this.filledform);
 
   }
 

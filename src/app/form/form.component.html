@@ -114,5 +114,8 @@
         </div>
       </mat-tab>
     </mat-tab-group>
+    <div *ngIf="formname !== ''">
+      <button (click)="sharelink()">Copy Form Link</button>
+    </div>
   </div>
 </body>

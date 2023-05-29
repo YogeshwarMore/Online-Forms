@@ -8,6 +8,7 @@ import { ServicesService } from '../services/services.service';
 import { field } from '../model/field';
 import { user } from '../model/User';
 import { data } from '../model/formfilleddata';
+import { DataService } from '../services/data-service';
 
 
 @Component({
@@ -43,19 +44,28 @@ export class FormComponent implements OnInit {
     }
   ];
 
-
   forms: forms = {
     formname: '',
     description: '',
     versionnumber: 0,
-    fieldsList: [],
+    fieldsList: [{
+      formfieldid: 0,
+      fieldName: '',
+      indexs: 0,
+      isoptional: false,
+      toolid: 0,
+      names: [],
+      ischecked: false,
+    }],
   };
+
 
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private dataSharingService: DataService
   ) { }
 
   ngOnInit(): void {
@@ -66,29 +76,38 @@ export class FormComponent implements OnInit {
 
 
 
+    const data = this.dataSharingService.getSharedData();
+    if ((data != undefined && data != null)) {
+      this.formid = data.d1.formid;
+      this.formname = data.d1.formname;
+      this.desc = data.d1.description;
+      this.version = data.d2.versionNumber;
+      this.i = data.d2.versionid;
 
-    this.route.queryParams.subscribe((params) => {
-
-      if (params['data'] == undefined)
-        return;
-      const serializedData = params['data'];
-      const serializedData2 = params['data2'];
-      const data: forms = JSON.parse(serializedData);
-      this.formid = data.formid;
-      this.formname = data.formname;
-      this.desc = data.description;
-      this.version = JSON.parse(serializedData2).versionnumber;
-      this.i = JSON.parse(serializedData2).versionid;
       this.service.GetFormField(1, this.i).subscribe((res) => {
         this.field = res;
         this.forms.fieldsList = this.field;
       });
-    });
+    }
+    // this.route.queryParams.subscribe((params) => {
+
+    //   if (params['data'] == undefined)
+    //     return;
+    //   const serializedData = params['data'];
+    //   const serializedData2 = params['data2'];
+    //   const data: forms = JSON.parse(serializedData);
+    //   this.formid = data.formid;
+    //   this.formname = data.formname;
+    //   this.desc = data.description;
+    //   this.version = JSON.parse(serializedData2).versionnumber;
+    //   this.i = JSON.parse(serializedData2).versionid;
+    //   console.log(this.i);
+
+    // });
 
     this.service.getUserData(this.i).subscribe((res) => {
 
       this.userdata = res;
-      console.log(this.userdata, "fj", res)
 
     });
 
@@ -253,4 +272,15 @@ export class FormComponent implements OnInit {
     });
 
   }
+
+
+  sharelink() {
+    const i = this.formid;
+    const j = this.i;
+
+    const url = `http://localhost:4200/fillform?i=${i}&j=${j}`;
+    console.log(url);
+
+  }
+
 }
