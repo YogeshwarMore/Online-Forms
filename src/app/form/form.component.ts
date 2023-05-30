@@ -48,15 +48,7 @@ export class FormComponent implements OnInit {
     formname: '',
     description: '',
     versionnumber: 0,
-    fieldsList: [{
-      formfieldid: 0,
-      fieldName: '',
-      indexs: 0,
-      isoptional: false,
-      toolid: 0,
-      names: [],
-      ischecked: false,
-    }],
+    fieldsList: [],
   };
 
 
