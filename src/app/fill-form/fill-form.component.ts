@@ -13,7 +13,8 @@ interface demo {
   value?: string,
   name: string,
   fieldid: number,
-  optionid?: number
+  optionid?: number,
+  isoptional: boolean
 }
 @Component({
   selector: 'app-fill-form',
@@ -72,7 +73,8 @@ export class FillFormComponent implements OnInit {
         id: i,
         value: this.names[i],
         name: field.fieldName,
-        fieldid: field.formfieldid ?? 0
+        fieldid: field.formfieldid ?? 0,
+        isoptional: field.isoptional
       };
       this.demo.push(newDemo);
     }
@@ -97,7 +99,8 @@ export class FillFormComponent implements OnInit {
         name: field.fieldName,
         value: option,
         fieldid: field.formfieldid ?? 0,
-        optionid: 0
+        optionid: 0,
+        isoptional: field.isoptional
       };
       this.service.getOptionId(option).subscribe(
         (optionId: number) => {
@@ -135,6 +138,8 @@ export class FillFormComponent implements OnInit {
 
     for (const data of this.demo) {
 
+
+
       const filledField: filledform = {
         formfieldid: data.fieldid,
         ischecked: this.check(data.optionid),
@@ -143,9 +148,19 @@ export class FillFormComponent implements OnInit {
         datetimevalue: null,
         optionid: data.optionid ?? null
       };
+
       this.filledform.push(filledField);
+    }
+
+    for (const field of this.forms.fieldsList) {
+
+      if (field.isoptional === true)
+        if (this.demo.filter(d => d.fieldid == field.formfieldid).length == 0)
+          return
 
     }
+
+
     console.log(this.filledform);
     this.service.saveFilledData(this.j, 2, this.filledform);
 
