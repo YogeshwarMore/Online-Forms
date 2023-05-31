@@ -40,7 +40,7 @@ export class FillFormComponent implements OnInit {
     fieldsList: [],
   };
 
-  constructor(public service: ServicesService, private route: ActivatedRoute, private formBuilder: FormBuilder) { this.form = this.formBuilder.group({}); }
+  constructor(public service: ServicesService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { this.form = this.formBuilder.group({}); }
   ngOnInit(): void {
 
     this.route.queryParams.subscribe((params) => {
@@ -50,13 +50,11 @@ export class FillFormComponent implements OnInit {
 
     this.service.GetFormField(this.i, this.j).subscribe(res => {
       this.field = res;
-      console.log(res, this.field);
       this.forms.fieldsList = this.field;
     })
     this.service.getFormDetails(1).subscribe(res => {
       this.forms.formname = res.formname;
       this.forms.description = res.description;
-      console.log(this.forms);
     })
 
 
@@ -65,7 +63,6 @@ export class FillFormComponent implements OnInit {
 
   valuestore(field: field, i: number) {
     const index = this.demo.findIndex(d => d.id === i);
-    console.log(this.names[i])
     if (index !== -1) {
       this.demo[index].value = this.names[i];
     } else {
@@ -79,7 +76,6 @@ export class FillFormComponent implements OnInit {
       this.demo.push(newDemo);
     }
 
-    console.log(this.names[i]);
   }
 
 
@@ -134,11 +130,9 @@ export class FillFormComponent implements OnInit {
     //   }, {} as { [key: number]: demo })
     // );
 
-    console.log(this.demo);
+
 
     for (const data of this.demo) {
-
-
 
       const filledField: filledform = {
         formfieldid: data.fieldid,
@@ -152,16 +146,17 @@ export class FillFormComponent implements OnInit {
       this.filledform.push(filledField);
     }
 
+
     for (const field of this.forms.fieldsList) {
 
       if (field.isoptional === true)
-        if (this.demo.filter(d => d.fieldid == field.formfieldid).length == 0)
+        if (this.demo.filter(d => d.fieldid == field.formfieldid).length == 0) {
+          alert("fill required fields");
+          this.filledform = [];
           return
-
+        }
     }
 
-
-    console.log(this.filledform);
     this.service.saveFilledData(this.j, 2, this.filledform);
 
   }

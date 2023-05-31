@@ -7,6 +7,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FormComponent } from './form/form.component';
 import { FillFormComponent } from './fill-form/fill-form.component';
 import { UserDataComponent } from './user-data/user-data.component';
+import { LoginComponent } from './login/login.component';
 
 const routes: Routes = [
   { path: 'template-gallery', component: TemplateGalleryComponent },
@@ -17,7 +18,7 @@ const routes: Routes = [
   { path: 'form', component: FormComponent },
   { path: 'fillform', component: FillFormComponent },
   { path: 'userdata', component: UserDataComponent },
-  { path: '**', redirectTo: '', pathMatch: 'full', component: NavbarComponent }
+  { path: '**', redirectTo: '', pathMatch: 'full', component: LoginComponent }
 
 
 

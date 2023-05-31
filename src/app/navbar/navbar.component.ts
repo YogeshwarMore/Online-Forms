@@ -22,6 +22,8 @@ export class NavbarComponent {
       this.forms = res;
 
     });
+
+    this.emitdata.setSharedData("");
   }
 
   getform(id: forms) {

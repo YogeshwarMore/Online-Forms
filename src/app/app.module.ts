@@ -36,7 +36,11 @@ import { MatSnackBarModule } from "@angular/material/snack-bar";
 import { FillFormComponent } from './fill-form/fill-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { UserDataComponent } from './user-data/user-data.component';
-
+import { SocialLoginModule, SocialAuthServiceConfig, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleLoginProvider
+} from '@abacritt/angularx-social-login';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +55,7 @@ import { UserDataComponent } from './user-data/user-data.component';
     DynamicFormComponent,
     FillFormComponent,
     UserDataComponent,
+    LoginComponent,
 
   ],
   imports: [
@@ -79,13 +84,31 @@ import { UserDataComponent } from './user-data/user-data.component';
     MatExpansionModule,
     DragDropModule,
     MatSnackBarModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SocialLoginModule,
+    GoogleSigninButtonModule
 
 
 
   ],
   exports: [RouterModule],
-  providers: [],
+  providers: [{
+    provide: 'SocialAuthServiceConfig',
+    useValue: {
+      autoLogin: false,
+      providers: [
+        {
+          id: GoogleLoginProvider.PROVIDER_ID,
+          provider: new GoogleLoginProvider(
+            '558684210677-dqdfsgrnp6017mvk68eantctc9o6bqpt.apps.googleusercontent.com'
+          )
+        }
+      ],
+      onError: (err) => {
+        console.error(err);
+      }
+    } as SocialAuthServiceConfig,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

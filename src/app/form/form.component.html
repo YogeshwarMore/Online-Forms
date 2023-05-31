@@ -81,7 +81,7 @@
                   </div>
                   <div *ngIf="field.toolid !== 0" class="edit-delete-buttons">
                     <mat-icon class="edit-icon" (click)="editField(field,type)">edit_square</mat-icon>
-                    <mat-icon class="delete-icon" (click)="deleteField(field)">delete</mat-icon>
+                    <mat-icon (click)="deleteField(field)">delete</mat-icon>
                   </div>
                 </div>
               </ng-container>

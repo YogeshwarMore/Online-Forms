@@ -6,13 +6,14 @@ import { field } from '../model/field';
 import { filledform } from '../model/filledform';
 import { Form } from '@angular/forms';
 import { data } from '../model/formfilleddata';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ServicesService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   GetForms(): Observable<forms[]> {
     return this.http.get<forms[]>("http://localhost:8081/forms");
@@ -61,7 +62,7 @@ export class ServicesService {
     this.http.post(`http://localhost:8081/forms/${versionId}/${userId}`, filledData)
       .subscribe(
         (response) => {
-
+          this.router.navigate(['/feedback']);
         },
         (error) => {
           alert("There is a system error");

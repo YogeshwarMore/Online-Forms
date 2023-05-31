@@ -1,7 +1,7 @@
 <body>
   <div class="forms-container">
     <label class="heading">{{ forms.formname }}</label>
-    <label class="heading, desc">{{ forms.description }}</label>
+    <label class=" desc">{{ forms.description }}</label>
     <hr width="70%">
     <form (ngSubmit)="submitForm()">
       <ng-container *ngFor="let field of forms.fieldsList; let i = index">
@@ -36,7 +36,7 @@
             </div>
           </div>
           <div *ngIf="field.toolid === 8">
-            <button type="submit" (click)="submitForm()">{{ field.fieldName }}</button>
+            <button type="submit">{{ field.fieldName }}</button>
           </div>
           <div class="text" *ngIf="field.toolid === 5">
             <label>{{ field.fieldName }} <span *ngIf="field.isoptional" style="font: bold; color: red;">*</span></label>
