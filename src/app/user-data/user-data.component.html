@@ -1,23 +1,25 @@
 <body>
+    <app-navbar-only></app-navbar-only>
     <div class="forms-container">
-        <div>
-            <h2>User Information:</h2>
-            <p>User ID: {{ userdata.user.userid }}</p>
-            <p>First Name: {{ userdata.user.userfirstname }}</p>
-            <p>Last Name: {{ userdata.user.userlastname }}</p>
-            <p>Email: {{ userdata.user.useremailid }}</p>
-            <p>Username: {{ userdata.user.username }}</p>
-
+        <div class="details">
+            <div class="user-info">
+                <h2>User Details</h2>
+                <div class="fill-date">
+                    <strong>Fill Date:</strong> {{ userdata.filldate }}
+                </div>
+                <strong>User ID:</strong> {{ userdata.user.userid }}<br><br>
+                <strong>First Name:</strong> {{ userdata.user.userfirstname }}<br><br>
+                <strong>Last Name:</strong> {{ userdata.user.userlastname }}<br><br>
+                <strong>Email:</strong> {{ userdata.user.useremailid }}<br><br>
+                <strong>Username:</strong> {{ userdata.user.username }}<br>
+            </div>
         </div>
-
-        <div>
-            <h2>Fill Date: {{ userdata.filldate }}</h2>
-        </div>
-        <div>
-            <h2>Details:</h2>
+        <mat-divider></mat-divider>
+        <div class="data">
+            <h2>Filled Form Data</h2>
             <ul>
-                <li *ngFor="let detail of userdata.details">
-                    {{ detail.fieldname }}: {{ detail.value }}
+                <li *ngFor="let detail of userdata.details" style="margin-bottom: 20px;">
+                    <strong>{{ detail.fieldname }}:</strong> {{ detail.value }}
                 </li>
             </ul>
         </div>

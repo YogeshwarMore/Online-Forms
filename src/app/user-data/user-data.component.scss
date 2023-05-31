@@ -23,7 +23,60 @@ body {
 }
 
 h2,
-p,
-ul li {
+ul li,
+.user-info,
+.fill-date {
     color: #673ab7;
+}
+
+h2 {
+    display: flex;
+    justify-content: center;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 100%;
+}
+
+.user-info {
+    flex: 1;
+    margin-right: 10px;
+    justify-content: space-between;
+}
+
+.fill-date {
+    flex: 1 1;
+    text-align: right;
+}
+
+mat-divider {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    opacity: 10;
+    color: purple;
+}
+
+.data {
+    text-align: left;
+}
+
+.data h2 {
+    margin-bottom: 10px;
+}
+
+.data ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.data li {
+    margin-bottom: 5px;
+}
+
+.data li strong {
+    margin-right: 5px;
 }
