@@ -270,8 +270,18 @@ export class FormComponent implements OnInit {
     const i = this.formid;
     const j = this.i;
 
-    const url = `http://localhost:4200/fillform?i=${i}&j=${j}`;
-    console.log(url);
+    const textToCopy = `http://localhost:4200/fillform?i=${i}&j=${j}`;
+
+    const textarea = document.createElement('textarea');
+    textarea.value = textToCopy;
+    document.body.appendChild(textarea);
+
+    textarea.select();
+
+    document.execCommand('copy');
+
+    document.body.removeChild(textarea);
+
 
   }
 

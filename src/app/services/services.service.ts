@@ -61,7 +61,7 @@ export class ServicesService {
     this.http.post(`http://localhost:8081/forms/${versionId}/${userId}`, filledData)
       .subscribe(
         (response) => {
-          alert("Response has been submitted");
+
         },
         (error) => {
           alert("There is a system error");
