@@ -29,7 +29,6 @@ export class FillFormComponent implements OnInit {
   i: number = 0;
   j: number = 0;
 
-
   option!: string;
   filledform: filledform[] = [];
 
@@ -48,16 +47,22 @@ export class FillFormComponent implements OnInit {
       this.j = params['j'];
     });
 
+    if (this.service.getRoles() !== 'user') {
+
+      localStorage.setItem('versionid', this.j + "");
+      localStorage.setItem('formid', this.i + "");
+      console.log(this.i + this.j);
+      this.router.navigate(['userlogin']);
+    }
+
     this.service.GetFormField(this.i, this.j).subscribe(res => {
       this.field = res;
       this.forms.fieldsList = this.field;
     })
-    this.service.getFormDetails(1).subscribe(res => {
+    this.service.getFormDetails(this.i).subscribe(res => {
       this.forms.formname = res.formname;
       this.forms.description = res.description;
     })
-
-
 
   }
 
@@ -77,8 +82,6 @@ export class FillFormComponent implements OnInit {
     }
 
   }
-
-
 
   updateCheckedOptions(option: string, field: field, i: number) {
     const index = this.demo.findIndex(d => d.value === option);
@@ -119,19 +122,6 @@ export class FillFormComponent implements OnInit {
 
   submitForm() {
 
-    // this.demo = Object.values(
-    //   this.demo.reduce((result, demoItem) => {
-    //     if (!result[demoItem.fieldid]) {
-    //       result[demoItem.fieldid] = { ...demoItem };
-    //     } else {
-    //       result[demoItem.fieldid].value += `, ${demoItem.value || ''}`;
-    //     }
-    //     return result;
-    //   }, {} as { [key: number]: demo })
-    // );
-
-
-
     for (const data of this.demo) {
 
       const filledField: filledform = {
@@ -156,8 +146,9 @@ export class FillFormComponent implements OnInit {
           return
         }
     }
+    const user = localStorage.getItem("userid");
 
-    this.service.saveFilledData(this.j, 2, this.filledform);
+    this.service.saveFilledData(this.j, user ? +user : 0, this.filledform);
 
   }
 

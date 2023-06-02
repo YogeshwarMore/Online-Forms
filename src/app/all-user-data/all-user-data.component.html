@@ -1,0 +1,26 @@
+<table>
+  <thead>
+    <tr>
+      <th>User ID</th>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Email</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Fill Date</th>
+      <th *ngFor="let fieldName of getFieldNames()">Field: {{ fieldName }}</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of userdata">
+      <td>{{ item.user.userid }}</td>
+      <td>{{ item.user.userfirstname }}</td>
+      <td>{{ item.user.userlastname }}</td>
+      <td>{{ item.user.useremailid }}</td>
+      <td>{{ item.user.username }}</td>
+      <td>{{ item.user.userpassword }}</td>
+      <td>{{ item.filldate }}</td>
+      <td *ngFor="let fieldName of getFieldNames()">{{ getFieldValue(item, fieldName) }}</td>
+    </tr>
+  </tbody>
+</table>
