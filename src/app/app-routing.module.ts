@@ -18,6 +18,7 @@ const routes: Routes = [
   { path: 'form', component: FormComponent },
   { path: 'fillform', component: FillFormComponent },
   { path: 'userdata', component: UserDataComponent },
+  { path: 'home', component: NavbarComponent },
   { path: '**', redirectTo: '', pathMatch: 'full', component: LoginComponent }
 
 

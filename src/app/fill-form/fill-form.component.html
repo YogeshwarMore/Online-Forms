@@ -9,13 +9,13 @@
           <div class="text" *ngIf="field.toolid === 1">
             <div class="label-input-container">
               <label>{{ i + 1 }}. {{ field.fieldName }} <span *ngIf="field.isoptional"
-                  style="font: bold; color: red;">*</span></label>
+                  style="font: bold; color: red; margin-top:2px; margin-left: 2px;">*</span></label>
               <input type="text" [name]="field.fieldName" [(ngModel)]="names[i]" (change)="valuestore(field, i)">
             </div>
           </div>
           <div class="text" *ngIf="field.toolid === 3">
             <label>{{ i + 1 }}. {{ field.fieldName }} <span *ngIf="field.isoptional"
-                style="font: bold; color: red;">*</span></label>
+                style="font: bold; color: red; margin-top:2px; margin-left: 2px;">*</span></label>
             <div class="ops">
               <ng-container *ngFor="let option of field.names">
                 <input type="radio" [name]="field.fieldName" [value]="option"
@@ -26,7 +26,7 @@
           </div>
           <div class="text" *ngIf="field.toolid === 2">
             <label>{{ i + 1 }}. {{ field.fieldName }} <span *ngIf="field.isoptional"
-                style="font: bold; color: red;">*</span></label>
+                style="font: bold; color: red; margin-top:2px; margin-left: 2px;">*</span></label>
             <div class="ops">
               <ng-container *ngFor="let option of field.names; let j = index">
                 <input type="checkbox" [name]="field.fieldName" [value]="option"
@@ -39,7 +39,8 @@
             <button type="submit">{{ field.fieldName }}</button>
           </div>
           <div class="text" *ngIf="field.toolid === 5">
-            <label>{{ field.fieldName }} <span *ngIf="field.isoptional" style="font: bold; color: red;">*</span></label>
+            <label>{{ field.fieldName }} <span *ngIf="field.isoptional"
+                style="font: bold; color: red; margin-top:2px; margin-left: 2px;">*</span></label>
             <input type="date" id="Test_Date" [(ngModel)]="names[i]" [ngModelOptions]="{ standalone: true }"
               (change)="valuestore(field, i)">
           </div>
