@@ -1,15 +1,16 @@
-import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { Component } from '@angular/core';
-import { Route, Router } from '@angular/router';
 import { userdata } from '../model/userdata';
+import { Router } from '@angular/router';
 import { ServicesService } from '../services/services.service';
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-user-login',
+  templateUrl: './user-login.component.html',
+  styleUrls: ['./user-login.component.scss']
 })
-export class LoginComponent {
+export class UserLoginComponent {
+
   user: any;
   loggedIn: any;
   userdata: userdata = {
@@ -19,7 +20,9 @@ export class LoginComponent {
     jwttoken: ''
   };
 
-  constructor(private authService: SocialAuthService, private router: Router, private service: ServicesService) { this.service.clear(); }
+  constructor(private authService: SocialAuthService,
+    private router: Router,
+    private service: ServicesService) { }
 
   ngOnInit() {
     this.authService.authState.subscribe((user) => {
@@ -37,8 +40,16 @@ export class LoginComponent {
         this.service.setRoles(re.role);
         this.service.setToken(re.jwtToken);
         localStorage.setItem("userid", re.userid);
-        if (re.role == 'admin') {
-          this.router.navigate(['/home']);
+
+        if (re.role === 'admin') {
+          const versionid = localStorage.getItem('versionid');
+          console.log(versionid);
+          const formid = localStorage.getItem('formid');
+          console.log(formid);
+          if (versionid) {
+            localStorage.removeItem('versionid');
+            this.router.navigate(['/fillform'], { queryParams: { i: formid, j: versionid } });
+          }
         }
 
       });
@@ -46,4 +57,5 @@ export class LoginComponent {
     });
 
   }
+
 }

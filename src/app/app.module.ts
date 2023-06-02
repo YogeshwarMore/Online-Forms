@@ -26,7 +26,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 import { NavbarOnlyComponent } from './navbar-only/navbar-only.component';
 import { MatInputModule } from '@angular/material/input';
-import { DynamicFormComponent } from './dynamic-form/dynamic-form.component';
+import { DynamicFormComponent } from './all-user-data/all-user-data.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
@@ -41,6 +41,7 @@ import {
   GoogleLoginProvider
 } from '@abacritt/angularx-social-login';
 import { LoginComponent } from './login/login.component';
+import { UserLoginComponent } from './user-login/user-login.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,8 @@ import { LoginComponent } from './login/login.component';
     FillFormComponent,
     UserDataComponent,
     LoginComponent,
+    UserLoginComponent,
+
 
   ],
   imports: [
@@ -87,9 +90,6 @@ import { LoginComponent } from './login/login.component';
     ReactiveFormsModule,
     SocialLoginModule,
     GoogleSigninButtonModule
-
-
-
   ],
   exports: [RouterModule],
   providers: [{

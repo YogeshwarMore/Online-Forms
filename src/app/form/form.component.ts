@@ -50,6 +50,7 @@ export class FormComponent implements OnInit {
     versionnumber: 0,
     fieldsList: [],
   };
+  role!: string | null;
 
 
   constructor(
@@ -58,7 +59,11 @@ export class FormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private dataSharingService: DataService
-  ) { }
+  ) {
+    const storedValue = localStorage.getItem("versionid");
+    this.i = storedValue ? +storedValue : 0;
+    console.log(this.i);
+  }
 
   ngOnInit(): void {
 
@@ -66,21 +71,27 @@ export class FormComponent implements OnInit {
       this.tools = res;
     });
 
+    this.service.GetFormField(1, this.i).subscribe((res) => {
+      console.log(res);
+      this.field = res;
+      this.forms.fieldsList = this.field;
+    });
 
+    this.formid = localStorage.getItem("formid");
+    const formname = localStorage.getItem("formname");
+    this.formname = formname ? formname : "";
+    const desc = localStorage.getItem("formdesc");
+    this.desc = desc ? desc : "";
+    const vnum = localStorage.getItem("versionnumber");
+    this.version = vnum ? +vnum : 0;
 
-    const data = this.dataSharingService.getSharedData();
-    if ((data != undefined && data != null)) {
-      this.formid = data.d1.formid;
-      this.formname = data.d1.formname;
-      this.desc = data.d1.description;
-      this.version = data.d2.versionNumber;
-      this.i = data.d2.versionid;
-
-      this.service.GetFormField(1, this.i).subscribe((res) => {
-        this.field = res;
-        this.forms.fieldsList = this.field;
-      });
+    this.role = this.service.getRoles();
+    if (this.role !== 'admin') {
+      this.router.navigate(['/']);
     }
+
+
+
     // this.route.queryParams.subscribe((params) => {
 
     //   if (params['data'] == undefined)
@@ -102,7 +113,7 @@ export class FormComponent implements OnInit {
       this.userdata = res;
 
     });
-
+    localStorage.setItem("versionid", this.i + "");
   }
 
   drop(event: CdkDragDrop<field[]>): void {
