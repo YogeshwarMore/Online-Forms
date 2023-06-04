@@ -39,6 +39,7 @@ export class FillFormComponent implements OnInit {
     fieldsList: [],
   };
 
+
   constructor(public service: ServicesService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { this.form = this.formBuilder.group({}); }
   ngOnInit(): void {
 
@@ -47,11 +48,16 @@ export class FillFormComponent implements OnInit {
       this.j = params['j'];
     });
 
-    if (this.service.getRoles() !== 'user') {
+    this.service.getUserData(this.j).subscribe((res) => {
+      const i = localStorage.getItem("userid");
+      const j = i ? +i : 0;
+      res.forEach(user => user.user.userid == j ? this.router.navigate(['/feedback']) : 0);
+    });
+
+    if (this.service.getRoles() !== 'user' && this.service.getRoles() !== 'admin') {
 
       localStorage.setItem('versionid', this.j + "");
       localStorage.setItem('formid', this.i + "");
-      console.log(this.i + this.j);
       this.router.navigate(['userlogin']);
     }
 

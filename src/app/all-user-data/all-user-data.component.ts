@@ -5,6 +5,8 @@ import { ServicesService } from '../services/services.service';
 import { DataService } from '../services/data-service';
 import { forms } from '../model/forms';
 import { data } from '../model/formfilleddata';
+import { field } from '../model/field';
+import { UserDataComponent } from '../user-data/user-data.component';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -43,20 +45,17 @@ export class DynamicFormComponent {
   desc: any;
   version: any;
   i: any;
-  field: import("c:/Users/bbdnet10235/Desktop/Learning/Online-Forms/src/app/model/field").field[] | undefined;
+  field: field[] | undefined;
 
 
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
     private route: ActivatedRoute,
-    private router: Router,
-    private dataSharingService: DataService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-
-
 
     this.formid = localStorage.getItem("formid");
     const formname = localStorage.getItem("formname");
@@ -68,7 +67,7 @@ export class DynamicFormComponent {
     const storedValue = localStorage.getItem("versionid");
     this.i = storedValue ? +storedValue : 0;
 
-    this.service.GetFormField(1, this.i).subscribe((res) => {
+    this.service.GetFormField(this.formid, this.i).subscribe((res) => {
       this.field = res;
       this.forms.fieldsList = this.field;
     });
@@ -78,10 +77,9 @@ export class DynamicFormComponent {
       this.router.navigate(['/']);
     }
 
-    console.log(this.i);
-    this.service.getUserData(2).subscribe((res) => {
+    this.service.getUserData(this.i).subscribe((res) => {
       this.userdata = res;
-
+      console.log(res, this.userdata);
     });
 
   }

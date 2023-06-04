@@ -5,10 +5,8 @@
     <div class="spacer"></div>
 
     <div class="account">
-      <button mat-raised-button [matMenuTriggerFor]="menu" title="Account">Account<mat-icon>person</mat-icon></button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Sign Out</button>
-      </mat-menu>
+      <button mat-raised-button title="Account"
+        (click)="this.service.clear()">Logout<mat-icon>person</mat-icon></button>
     </div>
   </div>
 </mat-toolbar>

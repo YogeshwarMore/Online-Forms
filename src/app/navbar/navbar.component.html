@@ -5,21 +5,17 @@
     <div class="spacer"></div>
 
     <div class="search-form">
-
-      <input matInput [matAutocomplete]="auto" placeholder="Search.." >
+      <input matInput [matAutocomplete]="auto" placeholder="Search.." [(ngModel)]="searchText" (input)="filterForms()">
       <mat-autocomplete #auto>
-        <mat-option *ngFor="let form of forms" (click)="getform(form)">{{form.formname}}</mat-option>
+        <mat-option *ngFor="let form of filteredForms" (click)="getform(form)">{{form.formname}}</mat-option>
       </mat-autocomplete>
-
     </div>
 
+
+
     <div class="account">
-      <button mat-raised-button [matMenuTriggerFor]="menu" title="Account">Account<mat-icon>person</mat-icon></button>
-      <mat-menu #menu="matMenu">
-        <button mat-menu-item>Sign Up</button>
-        <mat-divider></mat-divider>
-        <button mat-menu-item>Sign In</button>
-      </mat-menu>
+      <button mat-raised-button title="Account"
+        (click)="this.service.clear()">Logout<mat-icon>person</mat-icon></button>
     </div>
   </div>
 </mat-toolbar>
