@@ -1,5 +1,6 @@
-import { user } from "./User";
-import { details } from "./filledfield";
+import { user } from "../Model/User";
+import { details } from "../Model/filledfield";
+
 
 export interface data {
     user: user;

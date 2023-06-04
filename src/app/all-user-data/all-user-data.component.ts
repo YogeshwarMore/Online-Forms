@@ -5,6 +5,7 @@ import { ServicesService } from '../services/services.service';
 import { DataService } from '../services/data-service';
 import { forms } from '../model/forms';
 import { data } from '../model/formfilleddata';
+import { field } from '../model/field';
 
 @Component({
   selector: 'app-dynamic-form',
@@ -43,20 +44,16 @@ export class DynamicFormComponent {
   desc: any;
   version: any;
   i: any;
-  field: import("c:/Users/bbdnet10235/Desktop/Learning/Online-Forms/src/app/model/field").field[] | undefined;
-
+  field: field[] | undefined;
 
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
     private route: ActivatedRoute,
-    private router: Router,
-    private dataSharingService: DataService
+    private router: Router
   ) { }
 
   ngOnInit(): void {
-
-
 
     this.formid = localStorage.getItem("formid");
     const formname = localStorage.getItem("formname");
@@ -78,10 +75,8 @@ export class DynamicFormComponent {
       this.router.navigate(['/']);
     }
 
-    console.log(this.i);
-    this.service.getUserData(2).subscribe((res) => {
+    this.service.getUserData(this.i).subscribe((res) => {
       this.userdata = res;
-
     });
 
   }
@@ -108,5 +103,19 @@ export class DynamicFormComponent {
     return values.join(', '); // Concatenate the values with a comma and space
   }
 
+  exportToExcel(): void {
 
+    import("xlsx").then((xlsx) => {
+
+      const worksheet = xlsx.utils.table_to_sheet(document.querySelector("table"));
+
+      const workbook = xlsx.utils.book_new();
+
+      xlsx.utils.book_append_sheet(workbook, worksheet, "Sheet1");
+
+      xlsx.writeFile(workbook, "data.xlsx");
+
+    });
+
+  }
 }

@@ -6,7 +6,7 @@ import { FormPopupComponent } from '../form-popup/form-popup.component';
 import { forms } from '../model/forms';
 import { ServicesService } from '../services/services.service';
 import { field } from '../model/field';
-import { user } from '../model/User';
+import { user } from '../Model/User';
 import { data } from '../model/formfilleddata';
 import { DataService } from '../services/data-service';
 
