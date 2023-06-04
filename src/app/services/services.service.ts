@@ -77,6 +77,13 @@ export class ServicesService {
     );
   }
 
+  deleteUser(userid: number, vid: number) {
+    const headers = this.getHeaders();
+    this.http.delete('http://localhost:8081/forms/' + userid + vid, { headers }).subscribe(
+      (Response) => alert("delete success"),
+      (error) => alert("there is some error")
+    );
+  }
 
 
   check(user: userdata): Observable<any> {
@@ -121,6 +128,7 @@ export class ServicesService {
   public clear() {
 
     localStorage.clear();
+    this.router.navigate(["/"]);
 
   }
   public isLoggedIn() {

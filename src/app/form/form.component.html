@@ -106,9 +106,9 @@
               <a routerLink="/response" class="user-item" (click)="userdataa(user1)">{{
                 user1.user.username }}</a>
             </div>
-            <div class="print-delete-buttons">
+            <div class="print-delete-buttons" *ngIf="userdata.length !=0 ">
               <mat-icon class="print-icon">print</mat-icon>
-              <mat-icon class="delete-icon">delete</mat-icon>
+              <mat-icon class="delete-icon" (click)="deleteUser(user1)">delete</mat-icon>
             </div>
           </div>
         </div>

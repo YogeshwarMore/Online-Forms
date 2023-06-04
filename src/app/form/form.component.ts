@@ -21,7 +21,6 @@ export class FormComponent implements OnInit {
   desc: string = '';
   version: number = 1;
   formid: any = null;
-  tools: any;
   type: any;
   indexs: number = 0;
   field!: field[];
@@ -56,64 +55,42 @@ export class FormComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
-    private route: ActivatedRoute,
-    private router: Router,
-    private dataSharingService: DataService
+    private router: Router
   ) {
     const storedValue = localStorage.getItem("versionid");
     this.i = storedValue ? +storedValue : 0;
-    console.log(this.i);
   }
 
   ngOnInit(): void {
-
-    this.service.Gettool().subscribe((res) => {
-      this.tools = res;
-    });
-
-    this.service.GetFormField(1, this.i).subscribe((res) => {
-      console.log(res);
-      this.field = res;
-      this.forms.fieldsList = this.field;
-    });
-
-    this.formid = localStorage.getItem("formid");
-    const formname = localStorage.getItem("formname");
-    this.formname = formname ? formname : "";
-    const desc = localStorage.getItem("formdesc");
-    this.desc = desc ? desc : "";
-    const vnum = localStorage.getItem("versionnumber");
-    this.version = vnum ? +vnum : 0;
 
     this.role = this.service.getRoles();
     if (this.role !== 'admin') {
       this.router.navigate(['/']);
     }
+    console.log(this.i);
+    if (this.i > 0) {
+
+      this.service.GetFormField(this.i, this.i).subscribe((res) => {
+        console.log(res);
+        this.field = res;
+        this.forms.fieldsList = this.field;
+      });
+
+      this.formid = localStorage.getItem("formid");
+      const formname = localStorage.getItem("formname");
+      this.formname = formname ? formname : "";
+      const desc = localStorage.getItem("formdesc");
+      this.desc = desc ? desc : "";
+      const vnum = localStorage.getItem("versionnumber");
+      this.version = vnum ? +vnum : 0;
 
 
 
-    // this.route.queryParams.subscribe((params) => {
+      this.service.getUserData(this.i).subscribe((res) => {
+        this.userdata = res;
+      });
 
-    //   if (params['data'] == undefined)
-    //     return;
-    //   const serializedData = params['data'];
-    //   const serializedData2 = params['data2'];
-    //   const data: forms = JSON.parse(serializedData);
-    //   this.formid = data.formid;
-    //   this.formname = data.formname;
-    //   this.desc = data.description;
-    //   this.version = JSON.parse(serializedData2).versionnumber;
-    //   this.i = JSON.parse(serializedData2).versionid;
-    //   console.log(this.i);
-
-    // });
-
-    this.service.getUserData(this.i).subscribe((res) => {
-
-      this.userdata = res;
-
-    });
-    localStorage.setItem("versionid", this.i + "");
+    }
   }
 
   drop(event: CdkDragDrop<field[]>): void {
@@ -125,6 +102,7 @@ export class FormComponent implements OnInit {
     this.forms.formname = this.formname;
     this.forms.description = this.desc;
     this.forms.versionnumber = this.version;
+    this.forms.fieldsList = this.forms.fieldsList;
   }
 
   saveForms(): void {
@@ -146,7 +124,7 @@ export class FormComponent implements OnInit {
       i.indexs = j;
       j++;
     }
-
+    this.forms.versionnumber = this.version + 1;
     this.service.saveForms(this.forms, this.forms.fieldsList);
     this.forms =
     {
@@ -157,6 +135,7 @@ export class FormComponent implements OnInit {
     }
     this.formname = "";
     this.desc = "";
+    this.service.formdataclear();
   }
 
   editField(field: field, type: number): void {
@@ -182,11 +161,14 @@ export class FormComponent implements OnInit {
       this.forms.fieldsList.splice(index, 1);
     }
   }
+  deleteUser(userid: data) {
+    this.service.deleteUser(userid.user.userid, this.i);
+
+  }
 
   userdataa(field: data) {
     const jsonData = JSON.stringify(field);
     this.router.navigate(['/userdata'], { queryParams: { data: jsonData } });
-
   }
 
   addButton(type: number) {
@@ -278,6 +260,7 @@ export class FormComponent implements OnInit {
 
 
   sharelink() {
+
     const i = this.formid;
     const j = this.i;
 
@@ -285,15 +268,13 @@ export class FormComponent implements OnInit {
 
     console.log(textToCopy);
 
-    const textarea = document.createElement('textarea');
-    textarea.value = textToCopy;
-    document.body.appendChild(textarea);
-
-    textarea.select();
-
-    document.execCommand('copy');
-
-    document.body.removeChild(textarea);
+    navigator.clipboard.writeText(textToCopy)
+      .then(() => {
+        console.log('Text copied to clipboard');
+      })
+      .catch((error) => {
+        console.error('Unable to copy text to clipboard:', error);
+      });
 
 
   }

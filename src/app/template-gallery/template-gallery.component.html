@@ -47,35 +47,14 @@
         <h2>Recent Forms</h2>
       </div>
       <div class="templates-container">
-        <div class="template">
-          <a routerLink="survey-form.html">
-            <img src="https://chromeunboxed.com/wp-content/uploads/2022/06/Google-Forms-Feature-Generic-150x150.jpg"
-              alt="Template 1" class="template-image">
-          </a>
-          <span class="template-text">Survey Form</span>
-        </div>
-        <div class="template">
-          <a routerLink="contact-form.html">
-            <img
-              src="https://colorlib.com/cdn-cgi/image/width=1175,height=930,fit=crop,quality=80,format=auto,onerror=redirect,metadata=none/wp-content/uploads/sites/2/contact-form16.jpg"
-              alt="Template 2" class="template-image">
-          </a>
-          <span class="template-text">Contact Form</span>
-        </div>
-
-        <div class="template">
-          <a routerLink="reservation-form.html">
-            <img src="https://img.freepik.com/free-vector/online-registration-form_23-2147979930.jpg?w=2000"
-              alt="Template 4" class="template-image">
-          </a>
-          <span class="template-text">Registration Form</span>
-        </div>
-        <div class="template">
-          <a routerLink="reservation-form.html">
-            <img src="https://file.forms.app/sitefile/1669970831345.jpg" alt="Template 4" class="template-image">
-          </a>
-          <span class="template-text">Reservation Form</span>
-        </div>
+        <span *ngFor="let form of forms.slice(0, 4).reverse() let i=index ">
+          <div class="template">
+            <a (click)="navbar.getform(form)">
+              <img src="https://file.forms.app/sitefile/1669970831345.jpg" alt="Recent {{i}}" class="template-image">
+              <span class="template-text">{{form.formname}}</span>
+            </a>
+          </div>
+        </span>
       </div>
     </div>
 

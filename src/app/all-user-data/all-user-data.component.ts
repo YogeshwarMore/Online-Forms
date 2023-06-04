@@ -65,7 +65,7 @@ export class DynamicFormComponent {
     const storedValue = localStorage.getItem("versionid");
     this.i = storedValue ? +storedValue : 0;
 
-    this.service.GetFormField(1, this.i).subscribe((res) => {
+    this.service.GetFormField(this.formid, this.i).subscribe((res) => {
       this.field = res;
       this.forms.fieldsList = this.field;
     });

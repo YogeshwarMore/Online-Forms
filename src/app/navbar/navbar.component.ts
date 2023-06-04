@@ -18,33 +18,41 @@ export class NavbarComponent {
   };
   role: string | null = '';
 
-  constructor(private service: ServicesService, private router: Router, private route: ActivatedRoute, private emitdata: DataService) {
+  constructor(public service: ServicesService, private router: Router) {
     this.service.formdataclear();
+
     this.service.GetForms().subscribe(res => {
       this.forms = res;
-
     });
+
     this.role = this.service.getRoles();
     if (this.role !== 'admin') {
-      console.log("i am the culprit");
       this.router.navigate(['/']);
     }
-    this.emitdata.setSharedData("");
+
   }
+
+  filteredForms: any[] = [];
+  searchText: string = '';
+
+  filterForms() {
+    this.filteredForms = this.forms.filter(form => {
+      const searchTerm = this.searchText.toLowerCase();
+      const formName = form.formname.toLowerCase();
+
+      return formName.includes(searchTerm);
+    });
+  }
+
 
   getform(id: forms) {
 
     const highestVersion = id.versionsList?.reduce((maxVersion, version) => {
-      return version.versionNumber > maxVersion.versionNumber ? version : maxVersion;
+      return version.versionNumber > maxVersion.versionNumber ? maxVersion : version;
     });
 
-    // const data = {
-    //   d1: id,
-    //   d2: highestVersion
-    // }
-    this.service.addformdata(id.formid + "", highestVersion.versionid, id.formname, id.description, highestVersion.versionnumber)
 
-    // this.emitdata.setSharedData(data);
+    this.service.addformdata(id.formid + "", highestVersion.versionid, id.formname, id.description, highestVersion.versionnumber)
 
     localStorage.setItem("formid", id.formid + "");
     localStorage.setItem("versionid", highestVersion.versionid);
@@ -52,10 +60,6 @@ export class NavbarComponent {
 
     if (this.role == 'admin')
       this.router.navigate(['/form']);
-    // const serializedData = JSON.stringify(id);
-    // const serializedData2 = JSON.stringify(highestVersion);
-    // this.router.navigate(['/form'], { queryParams: { data: serializedData, data2: serializedData2 } });
-    // console.log(id);
   }
 
 }

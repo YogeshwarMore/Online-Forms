@@ -19,9 +19,10 @@ export class LoginComponent {
     jwttoken: ''
   };
 
-  constructor(private authService: SocialAuthService, private router: Router, private service: ServicesService) { this.service.clear(); }
+  constructor(private authService: SocialAuthService, private router: Router, private service: ServicesService) { }
 
   ngOnInit() {
+    this.service.clear();
     this.authService.authState.subscribe((user) => {
 
       this.user = user;

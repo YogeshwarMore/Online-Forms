@@ -41,7 +41,7 @@ export class UserLoginComponent {
         this.service.setToken(re.jwtToken);
         localStorage.setItem("userid", re.userid);
 
-        if (re.role === 'admin') {
+        if (re.role === 'admin' || re.role === 'user') {
           const versionid = localStorage.getItem('versionid');
           console.log(versionid);
           const formid = localStorage.getItem('formid');
