@@ -8,6 +8,7 @@ import { Form } from '@angular/forms';
 import { data } from '../model/formfilleddata';
 import { Router } from '@angular/router';
 import { userdata } from '../model/userdata';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,7 @@ import { userdata } from '../model/userdata';
 export class ServicesService {
 
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
   getHeaders() {
 
@@ -72,16 +73,16 @@ export class ServicesService {
     const headers = this.getHeaders();
     form.fieldsList = field;
     this.http.post('http://localhost:8081/forms/creating', form, { headers }).subscribe(
-      (response) => alert("response is submitted"),
-      (error) => alert("there is some system error")
+      (response) => this.snackBar.open("response is submitted"),
+      (error) => this.snackBar.open("there is some system error")
     );
   }
 
   deleteUser(userid: number, vid: number) {
     const headers = this.getHeaders();
     this.http.delete('http://localhost:8081/forms/' + userid + vid, { headers }).subscribe(
-      (Response) => alert("delete success"),
-      (error) => alert("there is some error")
+      (Response) => this.snackBar.open("delete success"),
+      (error) => this.snackBar.open("there is some error")
     );
   }
 
@@ -99,7 +100,7 @@ export class ServicesService {
           this.router.navigate(['/feedback']);
         },
         (error) => {
-          alert("There is a system error");
+          this.snackBar.open("There is a system error");
         }
       );
   }

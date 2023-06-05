@@ -26,6 +26,8 @@
 
         <td *ngFor="let fieldName of getFieldNames()">{{ getFieldValue(item, fieldName) }}</td>
       </tr>
-    </tbody><button (click)="exportToExcel()">Export to Excel</button>
+    </tbody>
+    <button (click)="exportToExcel()">Export to Excel</button>
   </table>
+  <button routerLink="/form" class="back" title="Go Back">Back</button>
 </body>

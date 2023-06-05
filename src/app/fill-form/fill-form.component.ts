@@ -5,6 +5,7 @@ import { field } from '../model/field';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { filledform } from '../model/filledform';
 import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
@@ -40,7 +41,7 @@ export class FillFormComponent implements OnInit {
   };
 
 
-  constructor(public service: ServicesService, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { this.form = this.formBuilder.group({}); }
+  constructor(public service: ServicesService, private snackBar: MatSnackBar, private route: ActivatedRoute, private formBuilder: FormBuilder, private router: Router) { this.form = this.formBuilder.group({}); }
   ngOnInit(): void {
 
     this.route.queryParams.subscribe((params) => {
@@ -147,7 +148,7 @@ export class FillFormComponent implements OnInit {
 
       if (field.isoptional === true)
         if (this.demo.filter(d => d.fieldid == field.formfieldid).length == 0) {
-          alert("fill required fields");
+          this.snackBar.open("fill required fields");
           this.filledform = [];
           return
         }

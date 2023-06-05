@@ -89,8 +89,18 @@ input,
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-  background-color: #fff;
+  background-color: #f3ecff;
+  border-radius: 20px;
   padding: 20px;
+}
+
+.heading {
+  width: 100%;
+}
+
+.h2 {
+  margin-right: 50%;
+  font-size: medium;
 }
 
 hr,
@@ -198,7 +208,9 @@ h3 {
   margin-top: 20px;
 }
 
-h4 {
+h3 {
+  font-weight: 400;
+  text-decoration: underline;
   margin-top: 40px;
 }
 
@@ -207,6 +219,12 @@ h4 {
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+.user-wrapper {
+  font-size: medium;
 }
 
 .left {
@@ -217,6 +235,7 @@ h4 {
 }
 
 .left-align {
+  margin-right: 60px;
   margin-left: 40px;
 }
 
@@ -293,4 +312,11 @@ mat-icon:hover {
 .print-icon,
 .delete-icon {
   margin-bottom: 10px;
+}
+
+.background {
+  border-radius: 20px;
+  margin-top: 30px;
+  background-color: #f3ecff;
+  width: 100%;
 }

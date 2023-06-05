@@ -9,6 +9,7 @@ import { field } from '../model/field';
 import { user } from '../Model/User';
 import { data } from '../model/formfilleddata';
 import { DataService } from '../services/data-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -55,7 +56,7 @@ export class FormComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
-    private router: Router
+    private router: Router, private snackBar: MatSnackBar
   ) {
     const storedValue = localStorage.getItem("versionid");
     this.i = storedValue ? +storedValue : 0;
@@ -109,20 +110,22 @@ export class FormComponent implements OnInit {
     this.loadFields();
 
     if (!this.forms.formname || !this.forms.description) {
-      alert("Insert Form Name or Desc");
+      this.snackBar.open("Insert Form Name or Desc");
       return;
     }
 
     if (this.forms.fieldsList.length === 0) {
-      alert("No Field Added");
+      this.snackBar.open("No Field Added");
       return;
     }
-    let j = 1;
-    for (let i of this.forms.fieldsList) {
-      if (i.fieldName == null)
-        return alert("field name is null");
-      i.indexs = j;
-      j++;
+    let indx = 1;
+    for (let field of this.forms.fieldsList) {
+      if (field.fieldName == null) {
+        this.snackBar.open("field name is null");
+        return;
+      }
+      field.indexs = indx;
+      indx++;
     }
     this.forms.versionnumber = this.version + 1;
     this.service.saveForms(this.forms, this.forms.fieldsList);

@@ -7,7 +7,6 @@ body {
 
 .container {
     margin-top: 20px;
-    margin-bottom: 50px;
     margin-left: auto;
     margin-right: auto;
     width: 80%;
@@ -31,9 +30,9 @@ th {
 }
 
 th {
-    background-color: #f3ecff;
+    color: white;
+    background-color: blueviolet;
     padding: 10px;
-    font-weight: bold;
 }
 
 thead {
@@ -55,4 +54,8 @@ button {
 button:hover {
     background-color: rgb(95, 19, 167);
     transform: scale(1) translate(2px, -2px);
+}
+
+.back {
+    margin-left: 160px;
 }

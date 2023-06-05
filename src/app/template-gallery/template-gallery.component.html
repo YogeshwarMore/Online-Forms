@@ -16,7 +16,7 @@
           <span class="template-text">Blank Form</span>
         </div>
         <div class="template">
-          <a routerLink="/login-form.html">
+          <a routerLink="">
             <img
               src="https://img.freepik.com/premium-vector/login-page-3d-illustration-account-login-password-notifications-page-username-password-fields_372769-2194.jpg?w=2000"
               alt="Template 1" class="template-image">
@@ -47,7 +47,7 @@
         <h2>Recent Forms</h2>
       </div>
       <div class="templates-container">
-        <span *ngFor="let form of forms.slice(0, 4).reverse() let i=index ">
+        <span *ngFor="let form of forms.reverse().slice(0, 4) let i=index ">
           <div class="template">
             <a (click)="navbar.getform(form)">
               <img src="https://file.forms.app/sitefile/1669970831345.jpg" alt="Recent {{i}}" class="template-image">

@@ -17,7 +17,7 @@
                 <button (click)="addField(2)">Add Checkbox</button>
               </mat-tab>
               <mat-tab label="Buttons">
-                <button (click)="addField(8)">Add Button</button>
+                <!-- <button (click)="addField(8)">Add Button</button> -->
                 <button (click)="addButton(8)">Submit</button>
                 <button (click)="addButton(8)">Reset</button>
               </mat-tab>
@@ -96,19 +96,24 @@
       <mat-tab class="custom-font" label="Responses">
         <mat-divider></mat-divider>
         <div class="responses-header">
-          <h3>Number of responses: {{userdata.length}}</h3>
-          <button routerLink="/alluserdata">All User Data</button>
+          <div class="heading">
+            <span class="h2">Number of responses: {{userdata.length}}</span>
+            <button routerLink="/alluserdata">All User Data</button>
+          </div>
+
           <!-- <mat-slide-toggle color="primary"><span class="receiving-responses">Receiving
               Responses</span></mat-slide-toggle> -->
-          <h4>List of users/IDs:</h4>
-          <div class="user-list" *ngFor="let user1 of userdata">
-            <div class="user-wrapper">
-              <a routerLink="/response" class="user-item" (click)="userdataa(user1)">{{
-                user1.user.username }}</a>
-            </div>
-            <div class="print-delete-buttons" *ngIf="userdata.length !=0 ">
-              <mat-icon class="print-icon">print</mat-icon>
-              <mat-icon class="delete-icon" (click)="deleteUser(user1)">delete</mat-icon>
+          <div class="background">
+            <h3>Users Responses</h3>
+            <div class="user-list" *ngFor="let user1 of userdata">
+              <div class="user-wrapper">
+                <a routerLink="/response" class="user-item" (click)="userdataa(user1)">{{
+                  user1.user.username }}</a>
+              </div>
+              <div class="print-delete-buttons" *ngIf="userdata.length !=0 ">
+                <mat-icon class="print-icon">print</mat-icon>
+                <mat-icon class="delete-icon" (click)="deleteUser(user1)">delete</mat-icon>
+              </div>
             </div>
           </div>
         </div>

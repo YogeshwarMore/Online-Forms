@@ -1,12 +1,13 @@
 <body>
     <div class="container">
-        <div class="rectangle">
-            <div class="login">Login
-                <div class="button"><asl-google-signin-button></asl-google-signin-button></div>
+        <div class="content">
+            <h1>Sign In</h1><mat-icon>
+                account_circle
+            </mat-icon>
+            <p>Sign in using your Google account</p>
+            <div class="google-login">
+                <asl-google-signin-button></asl-google-signin-button>
             </div>
-        </div>
-        <div *ngIf="user">
-
         </div>
     </div>
 </body>

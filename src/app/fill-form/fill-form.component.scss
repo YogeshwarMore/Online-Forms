@@ -27,6 +27,7 @@ input[type="date"] {
 }
 
 .desc {
+    margin-top: 10px;
     font-size: medium !important;
 }
 
@@ -72,7 +73,7 @@ hr {
 
 button {
     margin-top: 20px;
-    margin-left: 90px;
+    margin-left: 20px;
     background-color: blueviolet;
     color: white;
     border: none;
@@ -94,6 +95,7 @@ button:hover {
 }
 
 .text {
+    margin-left: 20px;
     display: flex;
     flex-direction: column;
     margin-bottom: 10px;
@@ -113,6 +115,13 @@ input[type="text"] {
     padding: 5px;
     border: 1px solid #673ab7;
     border-radius: 10px;
+}
+
+form {
+    margin-top: 20px;
+    width: 100%;
+    background-color: #f3ecff;
+    border-radius: 20px;
 }
 
 .text label {
