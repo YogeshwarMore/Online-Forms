@@ -56,6 +56,7 @@ export class NavbarComponent {
 
     localStorage.setItem("formid", id.formid + "");
     localStorage.setItem("versionid", highestVersion.versionid);
+    localStorage.setItem("flag", id.flag + "");
 
 
     if (this.role == 'admin')

@@ -26,7 +26,6 @@ export class ServicesService {
 
   GetForms(): Observable<forms[]> {
     const headers = this.getHeaders();
-    console.log(headers);
     return this.http.get<forms[]>("http://localhost:8081/forms", { headers });
   }
   GetFilledForms(versionId: number): Observable<filledform[]> {
@@ -39,7 +38,7 @@ export class ServicesService {
     return this.http.get<field[]>(`http://localhost:8081/forms/formid/${formid}/versionid/${versionid}`, { headers })
       .pipe(
         catchError(error => {
-          console.error('Error fetching form fields:', error);
+          this.snackBar.open('Error fetching form fields:');
           return of([]);
         })
       );
@@ -64,7 +63,7 @@ export class ServicesService {
 
   getFormDetails(id: number): Observable<any> {
     const headers = this.getHeaders();
-    console.log(headers);
+
     const url = `http://localhost:8081/forms/details/${id}`;
     return this.http.get<any>(url, { headers });
   }
@@ -86,6 +85,13 @@ export class ServicesService {
     );
   }
 
+  updateFormrecived(boolean: boolean, formid: number) {
+    const headers = this.getHeaders();
+    this.http.put('http://localhost:8081/forms/flag/' + boolean + '/' + formid, null, { headers }).subscribe(
+      (response) => this.snackBar.open("receiving form " + boolean),
+      (error) => this.snackBar.open("There is some system error")
+    );
+  }
 
   check(user: userdata): Observable<any> {
     return this.http.post<any>('http://localhost:8081/authenticate', user);
@@ -106,7 +112,7 @@ export class ServicesService {
   }
 
   public setRoles(roles: string) {
-    console.log(roles);
+
 
     localStorage.setItem('roles', roles);
 

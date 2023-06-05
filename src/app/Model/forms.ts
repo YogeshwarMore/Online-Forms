@@ -7,6 +7,7 @@ export interface forms {
   versionnumber: number;
   fieldsList: field[];
   versionsList?: any[];
+  flag?: number;
 
 }
 

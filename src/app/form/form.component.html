@@ -101,8 +101,9 @@
             <button routerLink="/alluserdata">All User Data</button>
           </div>
 
-          <!-- <mat-slide-toggle color="primary"><span class="receiving-responses">Receiving
-              Responses</span></mat-slide-toggle> -->
+          <mat-slide-toggle color="primary" [(ngModel)]="toggleValue" (change)="onToggleChange()">Receiving
+            Responses</mat-slide-toggle>
+
           <div class="background">
             <h3>Users Responses</h3>
             <div class="user-list" *ngFor="let user1 of userdata">

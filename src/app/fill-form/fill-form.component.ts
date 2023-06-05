@@ -9,6 +9,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 
 
+
 interface demo {
   id: number,
   value?: string,
@@ -69,7 +70,14 @@ export class FillFormComponent implements OnInit {
     this.service.getFormDetails(this.i).subscribe(res => {
       this.forms.formname = res.formname;
       this.forms.description = res.description;
+
+      if (res.flag == 0) {
+        alert("Submition is Closed");
+        this.router.navigate(["/feedback"]);
+      }
     })
+
+
 
   }
 

@@ -26,6 +26,7 @@ export class FormComponent implements OnInit {
   indexs: number = 0;
   field!: field[];
   i: number = 0;
+  toggleValue: boolean = localStorage.getItem("flag") == "1" ? true : false;
   userdata: data[] = [
     {
       user: {
@@ -62,6 +63,13 @@ export class FormComponent implements OnInit {
     this.i = storedValue ? +storedValue : 0;
   }
 
+
+  onToggleChange() {
+    this.service.updateFormrecived(this.toggleValue, this.formid);
+    localStorage.removeItem("flag");
+    localStorage.setItem("flag", this.toggleValue == true ? "1" : "0")
+  }
+
   ngOnInit(): void {
 
     this.role = this.service.getRoles();
@@ -75,6 +83,7 @@ export class FormComponent implements OnInit {
         console.log(res);
         this.field = res;
         this.forms.fieldsList = this.field;
+
       });
 
       this.formid = localStorage.getItem("formid");
