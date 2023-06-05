@@ -42,6 +42,10 @@ import {
 } from '@abacritt/angularx-social-login';
 import { LoginComponent } from './login/login.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { SubmissionClosedComponent } from './submission-closed/submission-closed.component';
+import { AlreadySubmittedComponent } from './already-submitted/already-submitted.component';
+import { AllFormsComponent } from './all-forms/all-forms.component';
+
 
 @NgModule({
   declarations: [
@@ -58,6 +62,9 @@ import { UserLoginComponent } from './user-login/user-login.component';
     UserDataComponent,
     LoginComponent,
     UserLoginComponent,
+    SubmissionClosedComponent,
+    AlreadySubmittedComponent,
+    AllFormsComponent
 
 
   ],

@@ -19,7 +19,6 @@ export class TemplateGalleryComponent {
     this.service.GetForms().subscribe(res => {
       this.forms = res;
     });
-
   }
 
   navigateToExternalUrl(url: string) {

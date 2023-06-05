@@ -1,0 +1,17 @@
+<mat-accordion>
+    <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+        *ngFor="let form of forms let i=index">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{form.formid}}
+            </mat-panel-title>
+            <mat-panel-description>
+                {{form.formname}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <span *ngFor="let version of form.versionsList let i=index">
+            <p>{{version.versionid}}</p>
+        </span>
+
+    </mat-expansion-panel>
+</mat-accordion>

@@ -47,7 +47,7 @@
         <h2>Recent Forms</h2>
       </div>
       <div class="templates-container">
-        <span *ngFor="let form of forms.reverse().slice(0, 4) let i=index">
+        <span *ngFor="let form of forms.reverse().slice(0, 3) let i=index">
           <div class="template">
             <a (click)="navbar.getform(form)">
               <img src="https://file.forms.app/sitefile/1669970831345.jpg" alt="Recent {{i}}" class="template-image">
@@ -55,42 +55,13 @@
             </a>
           </div>
         </span>
+        <div class="template">
+          <a routerLink="/all-forms">
+            <img src="https://cdn-icons-png.flaticon.com/256/6156/6156318.png" alt="Template 3" class="template-image">
+          </a>
+          <span class="template-text">See All Forms</span>
+        </div>
       </div>
     </div>
   </div>
-  <!-- <mat-accordion> -->
-  <!-- <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Personal data
-        </mat-panel-title>
-        <mat-panel-description>
-          Type your name and age
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-
-      <mat-form-field>
-        <input matInput placeholder="First name">
-      </mat-form-field>
-
-      <mat-form-field>
-        <input matInput placeholder="Age">
-      </mat-form-field>
-    </mat-expansion-panel> -->
-  <!-- <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
-      *ngFor="let form of forms let i=index">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          {{form.formid}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{form.formname}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <span *ngFor="let version of form.versionsList let i=index">
-        <p>{{version.versionid}}</p>
-      </span>
-
-    </mat-expansion-panel>
-  </mat-accordion> -->
 </body>

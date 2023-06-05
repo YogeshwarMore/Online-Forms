@@ -88,8 +88,8 @@ export class ServicesService {
   updateFormrecived(boolean: boolean, formid: number) {
     const headers = this.getHeaders();
     this.http.put('http://localhost:8081/forms/flag/' + boolean + '/' + formid, null, { headers }).subscribe(
-      (response) => this.snackBar.open("receiving form " + boolean),
-      (error) => this.snackBar.open("There is some system error")
+      (response) => this.snackBar.open(""),
+      (error) => this.snackBar.open("receiving form " + boolean)
     );
   }
 

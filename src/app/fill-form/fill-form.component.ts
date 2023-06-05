@@ -53,7 +53,7 @@ export class FillFormComponent implements OnInit {
     this.service.getUserData(this.j).subscribe((res) => {
       const i = localStorage.getItem("userid");
       const j = i ? +i : 0;
-      res.forEach(user => user.user.userid == j ? this.router.navigate(['/feedback']) : 0);
+      res.forEach(user => user.user.userid == j ? this.router.navigate(['/already-submitted']) : 0);
     });
 
     if (this.service.getRoles() !== 'user' && this.service.getRoles() !== 'admin') {
@@ -72,8 +72,7 @@ export class FillFormComponent implements OnInit {
       this.forms.description = res.description;
 
       if (res.flag == 0) {
-        alert("Submition is Closed");
-        this.router.navigate(["/feedback"]);
+        this.router.navigate(["/submission-closed"]);
       }
     })
 

@@ -11,6 +11,9 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './services/auth.service';
 import { DynamicFormComponent } from './all-user-data/all-user-data.component';
 import { UserLoginComponent } from './user-login/user-login.component';
+import { AlreadySubmittedComponent } from './already-submitted/already-submitted.component';
+import { SubmissionClosedComponent } from './submission-closed/submission-closed.component';
+import { AllFormsComponent } from './all-forms/all-forms.component';
 
 const routes: Routes = [
   { path: 'template-gallery', component: TemplateGalleryComponent },
@@ -22,6 +25,9 @@ const routes: Routes = [
   { path: 'fillform', component: FillFormComponent },
   { path: 'userdata', component: UserDataComponent },
   { path: 'userlogin', component: UserLoginComponent },
+  { path: 'already-submitted', component: AlreadySubmittedComponent },
+  { path: 'submission-closed', component: SubmissionClosedComponent },
+  { path: 'all-forms', component: AllFormsComponent },
   { path: '**', redirectTo: '', pathMatch: 'full', component: LoginComponent }
 
 ];
