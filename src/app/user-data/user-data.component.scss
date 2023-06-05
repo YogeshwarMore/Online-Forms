@@ -30,8 +30,10 @@ ul li,
 }
 
 h2 {
+    margin-top: 20px;
     display: flex;
     justify-content: center;
+    text-decoration: underline;
 }
 
 .details {
@@ -39,15 +41,20 @@ h2 {
     justify-content: space-between;
     margin-bottom: 10px;
     width: 100%;
+    background-color: #f3ecff;
+    border-radius: 20px;
 }
 
 .user-info {
+    margin-left: 20px;
+    margin-bottom: 20px;
     flex: 1;
     margin-right: 10px;
     justify-content: space-between;
 }
 
 .fill-date {
+    margin-top: 20px;
     flex: 1 1;
     text-align: right;
 }
@@ -61,7 +68,10 @@ mat-divider {
 }
 
 .data {
+    border-radius: 20px;
     text-align: left;
+    width: 100%;
+    background-color: #f3ecff;
 }
 
 .data h2 {
@@ -79,4 +89,8 @@ mat-divider {
 
 .data li strong {
     margin-right: 5px;
+}
+
+.align {
+    margin-left: 20px;
 }

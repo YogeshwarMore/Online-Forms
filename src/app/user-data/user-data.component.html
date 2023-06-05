@@ -17,11 +17,15 @@
         <mat-divider></mat-divider>
         <div class="data">
             <h2>Filled Form Data</h2>
-            <ul>
-                <li *ngFor="let detail of userdata.details" style="margin-bottom: 20px;">
-                    <strong>{{ detail.fieldname }}:</strong> {{ detail.value }}
-                </li>
-            </ul>
+            <div class=" align">
+                <ul>
+
+                    <li *ngFor="let detail of userdata.details" style="margin-bottom: 20px;">
+                        <strong>{{ detail.fieldname }}:</strong> {{ detail.value }}
+                    </li>
+
+                </ul>
+            </div>
         </div>
     </div>
 </body>
