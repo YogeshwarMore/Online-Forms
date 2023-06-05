@@ -68,7 +68,7 @@ export class FormComponent implements OnInit {
     if (this.role !== 'admin') {
       this.router.navigate(['/']);
     }
-    console.log(this.i);
+
     if (this.i > 0) {
 
       this.service.GetFormField(this.i, this.i).subscribe((res) => {

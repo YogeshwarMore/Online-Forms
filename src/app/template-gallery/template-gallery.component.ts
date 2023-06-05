@@ -11,6 +11,8 @@ import { NavbarComponent } from '../navbar/navbar.component';
 
 })
 export class TemplateGalleryComponent {
+
+  panelOpenState: boolean = false;
   forms: Array<forms> = [];
   constructor(private router: Router, private service: ServicesService, public navbar: NavbarComponent) {
 
@@ -23,9 +25,6 @@ export class TemplateGalleryComponent {
   navigateToExternalUrl(url: string) {
     window.location.href = url;
   }
-
-
-
 
 }
 

@@ -80,7 +80,7 @@ export class ServicesService {
 
   deleteUser(userid: number, vid: number) {
     const headers = this.getHeaders();
-    this.http.delete('http://localhost:8081/forms/' + userid + vid, { headers }).subscribe(
+    this.http.delete('http://localhost:8081/forms/' + userid + '/' + vid, { headers }).subscribe(
       (Response) => this.snackBar.open("delete success"),
       (error) => this.snackBar.open("there is some error")
     );
