@@ -38,7 +38,9 @@ export class ServicesService {
     return this.http.get<field[]>(`http://localhost:8081/forms/formid/${formid}/versionid/${versionid}`, { headers })
       .pipe(
         catchError(error => {
-          this.snackBar.open('Error fetching form fields:');
+          this.snackBar.open('Error fetching form fields:', "", {
+            duration: 1000,
+          });
           return of([]);
         })
       );
@@ -72,24 +74,76 @@ export class ServicesService {
     const headers = this.getHeaders();
     form.fieldsList = field;
     this.http.post('http://localhost:8081/forms/creating', form, { headers }).subscribe(
-      (response) => this.snackBar.open("response is submitted"),
-      (error) => this.snackBar.open("there is some system error")
+      (response) => this.snackBar.open("response is submitted", "Close", {
+        duration: 1000,
+      }),
+      (error) => this.snackBar.open("there is some system error", "Close", {
+        duration: 1000,
+      })
     );
   }
 
   deleteUser(userid: number, vid: number) {
     const headers = this.getHeaders();
     this.http.delete('http://localhost:8081/forms/' + userid + '/' + vid, { headers }).subscribe(
-      (Response) => this.snackBar.open("delete success"),
-      (error) => this.snackBar.open("there is some error")
+      (Response) => {
+        this.snackBar.open('Delete success', 'Close', {
+          duration: 1000,
+          panelClass: ['success-snackbar'],
+        });
+        window.location.reload();
+      },
+      (error) => {
+        this.snackBar.open('There is some error', '', {
+          duration: 1000,
+          panelClass: ['error-snackbar'],
+        });
+      }
     );
   }
-
+  deleteForm(fid: any) {
+    const headers = this.getHeaders();
+    this.http.delete('http://localhost:8081/forms/formid/' + fid, { headers }).subscribe(
+      () => {
+        this.snackBar.open('Delete success', 'Close', {
+          duration: 1000,
+          panelClass: ['success-snackbar'],
+        });
+        window.location.reload();
+      },
+      (error) => {
+        this.snackBar.open('There is some error', '', {
+          duration: 1000,
+          panelClass: ['error-snackbar'],
+        });
+      }
+    );
+  }
+  deleteVersion(vid: any) {
+    const headers = this.getHeaders();
+    this.http.delete('http://localhost:8081/forms/versionid/' + vid, { headers }).subscribe(
+      () => {
+        this.snackBar.open('Delete success', 'Close', {
+          duration: 1000,
+          panelClass: ['success-snackbar'],
+        });
+        window.location.reload();
+      },
+      (error) => {
+        this.snackBar.open('There is some error', '', {
+          duration: 1000,
+          panelClass: ['error-snackbar'],
+        });
+      }
+    );
+  }
   updateFormrecived(boolean: boolean, formid: number) {
     const headers = this.getHeaders();
     this.http.put('http://localhost:8081/forms/flag/' + boolean + '/' + formid, null, { headers }).subscribe(
       (response) => this.snackBar.open(""),
-      (error) => this.snackBar.open("receiving form " + boolean)
+      (error) => this.snackBar.open("receiving form " + boolean, "", {
+        duration: 1000,
+      })
     );
   }
 
@@ -106,7 +160,10 @@ export class ServicesService {
           this.router.navigate(['/feedback']);
         },
         (error) => {
-          this.snackBar.open("There is a system error");
+          this.snackBar.open("There is a system error", '', {
+            duration: 1000,
+            panelClass: ['error-snackbar'],
+          });
         }
       );
   }

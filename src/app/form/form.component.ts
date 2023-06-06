@@ -9,13 +9,15 @@ import { field } from '../model/field';
 import { user } from '../Model/User';
 import { data } from '../model/formfilleddata';
 import { DataService } from '../services/data-service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { style } from '@angular/animations';
 
 
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.scss']
+  styleUrls: ['./form.component.scss'],
+  styles: [`.error-snackbar { color: red; }`],
 })
 export class FormComponent implements OnInit {
   formname: string = '';
@@ -45,6 +47,8 @@ export class FormComponent implements OnInit {
     }
   ];
 
+  savebtn: boolean = localStorage.getItem("savebtndis") ? false : true;
+
   forms: forms = {
     formname: '',
     description: '',
@@ -57,7 +61,8 @@ export class FormComponent implements OnInit {
   constructor(
     public dialog: MatDialog,
     public service: ServicesService,
-    private router: Router, private snackBar: MatSnackBar
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {
     const storedValue = localStorage.getItem("versionid");
     this.i = storedValue ? +storedValue : 0;
@@ -119,18 +124,27 @@ export class FormComponent implements OnInit {
     this.loadFields();
 
     if (!this.forms.formname || !this.forms.description) {
-      this.snackBar.open("Insert Form Name or Desc");
+      this.snackBar.open('Insert Form Name or Desc', 'Error', {
+        duration: 1000,
+        panelClass: ['error-snackbar']
+      });
       return;
     }
 
     if (this.forms.fieldsList.length === 0) {
-      this.snackBar.open("No Field Added");
+      this.snackBar.open('No Field Added', 'Error', {
+        duration: 1000,
+        panelClass: ['error-snackbar']
+      });
       return;
     }
     let indx = 1;
     for (let field of this.forms.fieldsList) {
       if (field.fieldName == null) {
-        this.snackBar.open("field name is null");
+        this.snackBar.open("field name is null", 'Error', {
+          duration: 1000,
+          panelClass: ['error-snackbar']
+        });
         return;
       }
       field.indexs = indx;
@@ -148,6 +162,10 @@ export class FormComponent implements OnInit {
     this.formname = "";
     this.desc = "";
     this.service.formdataclear();
+    this.snackBar.open('Your response is submitted', 'Success', {
+      duration: 1000,
+      panelClass: ['success-snackbar']
+    });
   }
 
   editField(field: field, type: number): void {
@@ -292,3 +310,6 @@ export class FormComponent implements OnInit {
   }
 
 }
+
+
+

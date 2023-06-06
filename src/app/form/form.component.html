@@ -40,6 +40,7 @@
               <input class="description" type="text" name="lname" [(ngModel)]="desc" placeholder="Description"
                 style="font-size: medium;">
               <hr width="70%">
+
             </div>
             <div class="formfield">
               <ng-container *ngFor="let field of forms.fieldsList; let i = index ">
@@ -87,7 +88,7 @@
               </ng-container>
             </div>
             <div class="button-container">
-              <button (click)="saveForms()">Save Form</button>
+              <button (click)="saveForms()" *ngIf="this.savebtn" style="margin-right: 30px;">Save Form</button>
             </div>
           </div>
 
@@ -99,11 +100,11 @@
           <div class="heading">
             <span class="h2">Number of responses: {{userdata.length}}</span>
             <button routerLink="/alluserdata">All User Data</button>
+            <mat-slide-toggle color="primary" [(ngModel)]="toggleValue" (change)="onToggleChange()"><span
+                class="toggle">Receiving
+                Responses</span></mat-slide-toggle>
+
           </div>
-
-          <mat-slide-toggle color="primary" [(ngModel)]="toggleValue" (change)="onToggleChange()">Receiving
-            Responses</mat-slide-toggle>
-
           <div class="background">
             <h3>Users Responses</h3>
             <div class="user-list" *ngFor="let user1 of userdata">

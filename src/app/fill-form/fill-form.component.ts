@@ -53,7 +53,7 @@ export class FillFormComponent implements OnInit {
     this.service.getUserData(this.j).subscribe((res) => {
       const i = localStorage.getItem("userid");
       const j = i ? +i : 0;
-      res.forEach(user => user.user.userid == j ? this.router.navigate(['/already-submitted']) : 0);
+      res.forEach(user => user.user.userid == j ? window.location.replace('/already-submitted') : 0);
     });
 
     if (this.service.getRoles() !== 'user' && this.service.getRoles() !== 'admin') {
@@ -72,7 +72,7 @@ export class FillFormComponent implements OnInit {
       this.forms.description = res.description;
 
       if (res.flag == 0) {
-        this.router.navigate(["/submission-closed"]);
+        window.location.replace('/submission-closed');
       }
     })
 
@@ -155,7 +155,9 @@ export class FillFormComponent implements OnInit {
 
       if (field.isoptional === true)
         if (this.demo.filter(d => d.fieldid == field.formfieldid).length == 0) {
-          this.snackBar.open("fill required fields");
+          this.snackBar.open("fill required fields", "", {
+            duration: 1000,
+          });
           this.filledform = [];
           return
         }

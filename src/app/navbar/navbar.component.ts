@@ -20,7 +20,7 @@ export class NavbarComponent {
 
   constructor(public service: ServicesService, private router: Router) {
     this.service.formdataclear();
-
+    localStorage.removeItem("savebtndis");
     this.service.GetForms().subscribe(res => {
       this.forms = res;
     });

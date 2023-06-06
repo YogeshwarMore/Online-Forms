@@ -1,0 +1,87 @@
+body {
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    background-color: rgb(240, 229, 241);
+}
+
+.container {
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    overflow: auto;
+    border-radius: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+    padding: 50px;
+}
+
+h2 {
+    color: #673ab7;
+}
+
+button {
+    margin-top: 25px;
+    background-color: blueviolet;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 6px 8px;
+    text-align: center;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: rgb(95, 19, 167);
+    transform: scale(1) translate(2px, -2px);
+}
+
+.back {
+    margin-left: 110px;
+}
+
+.accordion {
+    background-color: rgba(243, 236, 255, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+.panel {
+    background-color: rgba(243, 236, 255, 0.25);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+
+}
+
+mat-expansion-panel-header,
+mat-panel-title,
+mat-panel-description,
+mat-expansion-panel-header span p,
+mat-icon,
+.panel {
+    color: #673ab7;
+}
+
+mat-expansion-panel-header,
+mat-expansion-panel-header span:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+mat-divider {
+    margin-bottom: 20px;
+}
+
+.delete {
+    margin-right: 10px;
+}
+
+mat-icon {
+    font-size: 20px;
+}
+
+mat-icon:hover {
+    transform: scale(1) translate(2px, -2px);
+}
+
+mat-expansion-panel-header {
+    margin-top: 10px;
+}

@@ -89,7 +89,8 @@ input,
   margin-left: auto;
   margin-right: auto;
   width: 70%;
-  background-color: #f3ecff;
+  background-color: rgba(243, 236, 255, 0.25);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   padding: 20px;
 }
@@ -140,7 +141,7 @@ button:hover {
   overflow: auto;
   border-radius: 20px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
   padding: 50px;
 }
 
@@ -235,7 +236,7 @@ h3 {
 }
 
 .left-align {
-  margin-right: 60px;
+  margin-right: 50px;
   margin-left: 40px;
 }
 
@@ -309,14 +310,40 @@ mat-icon:hover {
   transform: scale(1) translate(2px, -2px);
 }
 
+mat-slide-toggle {
+  margin-left: 40px;
+}
+
+.toggle {
+  color: #673ab7;
+}
+
 .print-icon,
 .delete-icon {
   margin-bottom: 10px;
 }
 
 .background {
+  margin-left: 8%;
+  margin-right: 10px;
+  margin-bottom: 10px;
   border-radius: 20px;
   margin-top: 30px;
-  background-color: #f3ecff;
-  width: 100%;
+  background-color: rgba(243, 236, 255, 0.25);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  width: 80%;
+}
+
+// .error-snackbar {
+//   background-color: white;
+//   color: red !important;
+// }
+
+// .success-snackbar {
+//   background-color: white;
+//   color: green;
+// }
+
+mat-tab-group button {
+  margin-right: -20px;
 }

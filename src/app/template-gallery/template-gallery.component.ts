@@ -14,7 +14,7 @@ export class TemplateGalleryComponent {
 
   panelOpenState: boolean = false;
   forms: Array<forms> = [];
-  constructor(private router: Router, private service: ServicesService, public navbar: NavbarComponent) {
+  constructor(private router: Router, public service: ServicesService, public navbar: NavbarComponent) {
 
     this.service.GetForms().subscribe(res => {
       this.forms = res;
