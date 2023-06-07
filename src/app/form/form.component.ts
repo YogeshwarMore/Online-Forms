@@ -22,7 +22,7 @@ import { style } from '@angular/animations';
 export class FormComponent implements OnInit {
   formname: string = '';
   desc: string = '';
-  version: number = 1;
+  version: number = 0;
   formid: any = null;
   type: any;
   indexs: number = 0;
@@ -124,6 +124,15 @@ export class FormComponent implements OnInit {
     this.loadFields();
 
     if (!this.forms.formname || !this.forms.description) {
+      const textField = document.getElementById('formname') as HTMLInputElement;
+      const textField1 = document.getElementById('description') as HTMLInputElement;
+      textField.classList.add('shake');
+      textField1.classList.add('shake');
+      setTimeout(() => {
+        textField.classList.remove('shake');
+        textField1.classList.remove('shake');
+      }, 400);
+
       this.snackBar.open('Insert Form Name or Desc', 'Error', {
         duration: 1000,
         panelClass: ['error-snackbar']
@@ -132,6 +141,7 @@ export class FormComponent implements OnInit {
     }
 
     if (this.forms.fieldsList.length === 0) {
+
       this.snackBar.open('No Field Added', 'Error', {
         duration: 1000,
         panelClass: ['error-snackbar']

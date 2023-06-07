@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { forms } from '../model/forms';
 import { ServicesService } from '../services/services.service';
 import { Router } from '@angular/router';
+import { version } from '../model/versions';
 @Component({
   selector: 'app-all-forms',
   templateUrl: './all-forms.component.html',
@@ -25,20 +26,15 @@ export class AllFormsComponent {
   }
 
 
-  getform(id: forms) {
-
-    console.log("woking", id);
-
-    const highestVersion = id.versionsList?.reduce((maxVersion, version) => {
-      return version.versionNumber > maxVersion.versionNumber ? maxVersion : version;
-    });
+  getform(id: forms, version: version) {
 
 
-    this.service.addformdata(id.formid + "", highestVersion.versionid, id.formname, id.description, highestVersion.versionnumber)
+
+
+    const versionid = version.versionid ? version.versionid : 0;
+    this.service.addformdata(id.formid + "", versionid + "", id.formname, id.description, version.versionnumber + "")
 
     localStorage.setItem("savebtndis", "false");
-    localStorage.setItem("formid", id.formid + "");
-    localStorage.setItem("versionid", highestVersion.versionid);
     localStorage.setItem("flag", id.flag + "");
 
 

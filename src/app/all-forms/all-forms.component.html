@@ -18,7 +18,7 @@
                 <span class="versions" *ngFor="let version of form.versionsList let i=index">
                     <p>Version {{version.versionnumber}}</p>
                     <mat-icon class="delete" (click)="this.service.deleteVersion(version.versionid)">delete</mat-icon>
-                    <mat-icon (click)="this.getform(form)" class="visibility">visibility</mat-icon>
+                    <mat-icon (click)="this.getform(form,version)" class="visibility">visibility</mat-icon>
                 </span>
             </mat-expansion-panel>
         </mat-accordion>

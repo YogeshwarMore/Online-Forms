@@ -1,8 +1,6 @@
 <body>
   <div class="container">
     <div class="top section">
-
-
       <div class="heading">
         <h2>Template Gallery</h2>
       </div>
@@ -40,8 +38,6 @@
           <span class="template-text">Contact Form</span>
         </div>
       </div>
-
-
     </div>
     <div class="bottom section">
       <div class="heading">
@@ -51,7 +47,9 @@
         <span *ngFor="let form of forms.reverse().slice(0, 3) let i=index">
           <div class="template">
             <a (click)="navbar.getform(form)">
-              <img src="https://file.forms.app/sitefile/1669970831345.jpg" alt="Recent {{i}}" class="template-image">
+              <img
+                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSUSws6AhvJ_-B55UWZK2fZcAtLLP9DUnrqVVxx7qcMY5C-DorB8KBEWl8SchkpyAMfQk&usqp=CAU"
+                alt="Recent {{i}}" class="template-image">
               <span class="template-text">{{form.formname}}</span>
             </a>
           </div>

@@ -36,13 +36,14 @@
 
           <div class="left" cdkDropList (cdkDropListDropped)="drop($event)">
             <div class="left-align">
-              <input class="formname" type="text" name="myInput" [(ngModel)]="formname" placeholder="Form Name">
-              <input class="description" type="text" name="lname" [(ngModel)]="desc" placeholder="Description"
-                style="font-size: medium;">
+              <input id="formname" class="formname" type="text" name="myInput" [(ngModel)]="formname"
+                placeholder="Form Name">
+              <input id="description" class="description" type="text" name="lname" [(ngModel)]="desc"
+                placeholder="Description" style="font-size: medium;">
               <hr width="70%">
 
             </div>
-            <div class="formfield">
+            <div class="formfield" *ngIf="this.forms.fieldsList.length!=0">
               <ng-container *ngFor="let field of forms.fieldsList; let i = index ">
                 <div class="Labels" cdkDrag>
                   <div class="text" *ngIf="field.toolid === 1">

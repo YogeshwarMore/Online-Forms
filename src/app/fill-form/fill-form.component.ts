@@ -98,6 +98,7 @@ export class FillFormComponent implements OnInit {
   }
 
   updateCheckedOptions(option: string, field: field, i: number) {
+
     const index = this.demo.findIndex(d => d.value === option);
     if (field.toolid == 3)
       this.demo = this.demo.filter(demoItem => demoItem.fieldid !== field.formfieldid);
@@ -132,6 +133,38 @@ export class FillFormComponent implements OnInit {
       return 1;
     else
       return 0;
+  }
+  shake: boolean = false;
+
+  shakeFields() {
+    for (const field of this.forms.fieldsList) {
+      if (field.isoptional && !this.isFieldFilled(field)) {
+        console.log(field.fieldName);
+        this.shake = true;
+        setTimeout(() => {
+          this.shake = false;
+        }, 400);
+      }
+
+    }
+  }
+
+  isFieldFilled(field: field): boolean {
+    if (field.toolid === 2) {
+      // Checkbox field
+      const idToCheck = field.formfieldid;
+      const exists = this.demo.some(demoItem => demoItem.fieldid === idToCheck);
+      return exists;
+    } else if (field.toolid === 3) {
+
+      // Radio button field
+      const idToCheck = field.formfieldid;
+      const exists = this.demo.some(demoItem => demoItem.fieldid === idToCheck);
+      console.log(idToCheck, exists, field.isoptional);
+      return exists;
+    }
+
+    return false;
   }
 
   submitForm() {

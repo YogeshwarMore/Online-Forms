@@ -7,7 +7,7 @@
       <ng-container *ngFor="let field of forms.fieldsList; let i = index">
         <div class="Labels">
           <div class="text" *ngIf="field.toolid === 1">
-            <div class="label-input-container">
+            <div class="label-input-container" [ngClass]="{'shake': field.isoptional && !names[i] && shake}">
               <label>{{ i + 1 }}. {{ field.fieldName }} <span *ngIf="field.isoptional"
                   style="font: bold; color: red; margin-top:2px; margin-left: 2px;">*</span></label>
               <input type="text" [name]="field.fieldName" [(ngModel)]="names[i]" (change)="valuestore(field, i)">
@@ -19,7 +19,8 @@
             <div class="ops">
               <ng-container *ngFor="let option of field.names">
                 <input type="radio" [name]="field.fieldName" [value]="option"
-                  (change)="updateCheckedOptions(option, field, i)">
+                  (change)="updateCheckedOptions(option, field, i)"
+                  [ngClass]="{'shake': field.isoptional && shake&& !this.isFieldFilled(field)}">
                 {{ option }}
               </ng-container>
             </div>
@@ -30,15 +31,16 @@
             <div class="ops">
               <ng-container *ngFor="let option of field.names; let j = index">
                 <input type="checkbox" [name]="field.fieldName" [value]="option"
-                  (change)="updateCheckedOptions(option, field, i)">
+                  (change)="updateCheckedOptions(option, field, i)"
+                  [ngClass]="{'shake': field.isoptional && shake && !this.isFieldFilled(field)}">
                 {{ option }}
               </ng-container>
             </div>
           </div>
           <div *ngIf="field.toolid === 8">
-            <button type="submit">{{ field.fieldName }}</button>
+            <button type="submit" (click)="shakeFields()">{{ field.fieldName }}</button>
           </div>
-          <div class="text" *ngIf="field.toolid === 5">
+          <div class="text" *ngIf="field.toolid === 5" [ngClass]="{'shake': field.isoptional && !names[i] && shake}">
             <label>{{ field.fieldName }} <span *ngIf="field.isoptional"
                 style="font: bold; color: red; margin-top:2px; margin-left: 2px;">*</span></label>
             <input type="date" id="Test_Date" [(ngModel)]="names[i]" [ngModelOptions]="{ standalone: true }"
