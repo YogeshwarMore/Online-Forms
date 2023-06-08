@@ -43,9 +43,9 @@ export class UserLoginComponent {
 
         if (re.role === 'admin' || re.role === 'user') {
           const versionid = localStorage.getItem('versionid');
-          console.log(versionid);
+
           const formid = localStorage.getItem('formid');
-          console.log(formid);
+
           if (versionid) {
             localStorage.removeItem('versionid');
             this.router.navigate(['/fillform'], { queryParams: { i: formid, j: versionid } });

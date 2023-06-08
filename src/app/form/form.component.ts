@@ -85,7 +85,6 @@ export class FormComponent implements OnInit {
     if (this.i > 0) {
 
       this.service.GetFormField(this.i, this.i).subscribe((res) => {
-        console.log(res);
         this.field = res;
         this.forms.fieldsList = this.field;
 
@@ -183,7 +182,7 @@ export class FormComponent implements OnInit {
       type = field.toolid;
     const dialogRef = this.dialog.open(FormPopupComponent, {
       width: '250px',
-      data: { name: type }
+      data: { name: type, field: field }
     });
 
     dialogRef.afterClosed().subscribe(res => {
@@ -250,7 +249,6 @@ export class FormComponent implements OnInit {
           names: res.data1.name,
           fieldName: res.data1.fieldName,
         };
-        console.log(this.forms);
 
         this.forms.fieldsList.push(newField);
       } else if (type === 3) {
@@ -306,7 +304,6 @@ export class FormComponent implements OnInit {
 
     const textToCopy = `http://localhost:4200/fillform?i=${i}&j=${j}`;
 
-    console.log(textToCopy);
 
     navigator.clipboard.writeText(textToCopy)
       .then(() => {

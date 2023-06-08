@@ -28,11 +28,12 @@ export class FormPopupComponent implements OnInit {
   constructor(public dialogRef: MatDialogRef<FormPopupComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
   ngOnInit(): void {
     this.type = this.data.name;
-    // this.options = this.data.field.names;
+    this.Name = this.data.field.fieldName;
+    this.isOptional = this.data.field.isoptional;
+    this.options = this.data.field.names;
   }
   remove(id: number) {
-    this.options.slice(id, 1);
-    console.log("wkmnd", id);
+    this.options.splice(id, 1);
   }
   addOption(): void {
     this.options.push(this.optionName);

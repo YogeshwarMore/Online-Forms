@@ -10,8 +10,8 @@
 
 
         <ng-container *ngFor="let option of options; let i = index;">
+            <mat-icon (click)="remove(i)">delete</mat-icon>
             <input *ngIf="type=== 3" type="radio" placeholder="option {{i + 1}}" [placeholder]="option">
-            <mat-icon (click)="remove(i)">del</mat-icon>
             <input *ngIf="type=== 2" type="checkbox" placeholder="option {{i + 1}}" [placeholder]="option">
             <label>{{option}}</label><br>
         </ng-container>

@@ -15,6 +15,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class ServicesService {
 
+  url: string = "http://localhost:8081/";
 
   constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) { }
 
@@ -26,16 +27,16 @@ export class ServicesService {
 
   GetForms(): Observable<forms[]> {
     const headers = this.getHeaders();
-    return this.http.get<forms[]>("http://localhost:8081/forms", { headers });
+    return this.http.get<forms[]>(this.url + "forms", { headers });
   }
   GetFilledForms(versionId: number): Observable<filledform[]> {
     const headers = this.getHeaders();
-    return this.http.get<filledform[]>("http://localhost:8081/forms/" + versionId, { headers });
+    return this.http.get<filledform[]>(this.url + "forms/" + versionId, { headers });
   }
 
   GetFormField(formid: number, versionid: number): Observable<field[]> {
     const headers = this.getHeaders();
-    return this.http.get<field[]>(`http://localhost:8081/forms/formid/${formid}/versionid/${versionid}`, { headers })
+    return this.http.get<field[]>(this.url + `forms/formid/${formid}/versionid/${versionid}`, { headers })
       .pipe(
         catchError(error => {
           this.snackBar.open('Error fetching form fields:', "", {
@@ -48,32 +49,32 @@ export class ServicesService {
 
   Gettool(): Observable<forms[]> {
     const headers = this.getHeaders();
-    return this.http.get<forms[]>("http://localhost:8081/tools", { headers });
+    return this.http.get<forms[]>(this.url + "tools", { headers });
   }
 
   getOptionId(name: string): Observable<number> {
     const headers = this.getHeaders();
-    const url = `http://localhost:8081/forms/options/${name}`;
+    const url = this.url + `forms/options/${name}`;
     return this.http.get<number>(url, { headers });
   }
 
   getUserData(id: number): Observable<data[]> {
     const headers = this.getHeaders();
-    const url = `http://localhost:8081/forms/${id}`;
+    const url = this.url + `forms/${id}`;
     return this.http.get<data[]>(url, { headers });
   }
 
   getFormDetails(id: number): Observable<any> {
     const headers = this.getHeaders();
 
-    const url = `http://localhost:8081/forms/details/${id}`;
+    const url = this.url + `forms/details/${id}`;
     return this.http.get<any>(url, { headers });
   }
 
   saveForms(form: forms, field: field[]) {
     const headers = this.getHeaders();
     form.fieldsList = field;
-    this.http.post('http://localhost:8081/forms/creating', form, { headers }).subscribe(
+    this.http.post(this.url + 'forms/creating', form, { headers }).subscribe(
       (response) => this.snackBar.open("response is submitted", "Close", {
         duration: 1000,
       }),
@@ -85,7 +86,7 @@ export class ServicesService {
 
   deleteUser(userid: number, vid: number) {
     const headers = this.getHeaders();
-    this.http.delete('http://localhost:8081/forms/' + userid + '/' + vid, { headers }).subscribe(
+    this.http.delete(this.url + 'forms/' + userid + '/' + vid, { headers }).subscribe(
       (Response) => {
         this.snackBar.open('Delete success', 'Close', {
           duration: 1000,
@@ -103,7 +104,7 @@ export class ServicesService {
   }
   deleteForm(fid: any) {
     const headers = this.getHeaders();
-    this.http.delete('http://localhost:8081/forms/formid/' + fid, { headers }).subscribe(
+    this.http.delete(this.url + 'forms/formid/' + fid, { headers }).subscribe(
       () => {
         this.snackBar.open('Delete success', 'Close', {
           duration: 1000,
@@ -121,7 +122,7 @@ export class ServicesService {
   }
   deleteVersion(vid: any) {
     const headers = this.getHeaders();
-    this.http.delete('http://localhost:8081/forms/versionid/' + vid, { headers }).subscribe(
+    this.http.delete(this.url + 'forms/versionid/' + vid, { headers }).subscribe(
       () => {
         this.snackBar.open('Delete success', 'Close', {
           duration: 1000,
@@ -139,7 +140,7 @@ export class ServicesService {
   }
   updateFormrecived(boolean: boolean, formid: number) {
     const headers = this.getHeaders();
-    this.http.put('http://localhost:8081/forms/flag/' + boolean + '/' + formid, null, { headers }).subscribe(
+    this.http.put(this.url + 'forms/flag/' + boolean + '/' + formid, null, { headers }).subscribe(
       (response) => this.snackBar.open(""),
       (error) => this.snackBar.open("receiving form " + boolean, "", {
         duration: 1000,
@@ -148,13 +149,13 @@ export class ServicesService {
   }
 
   check(user: userdata): Observable<any> {
-    return this.http.post<any>('http://localhost:8081/authenticate', user);
+    return this.http.post<any>(this.url + 'authenticate', user);
   }
 
 
   saveFilledData(versionId: number, userId: number, filledData: filledform[]) {
     const headers = this.getHeaders();
-    this.http.post(`http://localhost:8081/forms/${versionId}/${userId}`, filledData, { headers })
+    this.http.post(this.url + `forms/${versionId}/${userId}`, filledData, { headers })
       .subscribe(
         (response) => {
           this.router.navigate(['/feedback']);

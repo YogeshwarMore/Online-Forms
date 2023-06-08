@@ -139,7 +139,7 @@ export class FillFormComponent implements OnInit {
   shakeFields() {
     for (const field of this.forms.fieldsList) {
       if (field.isoptional && !this.isFieldFilled(field)) {
-        console.log(field.fieldName);
+
         this.shake = true;
         setTimeout(() => {
           this.shake = false;
@@ -160,7 +160,7 @@ export class FillFormComponent implements OnInit {
       // Radio button field
       const idToCheck = field.formfieldid;
       const exists = this.demo.some(demoItem => demoItem.fieldid === idToCheck);
-      console.log(idToCheck, exists, field.isoptional);
+
       return exists;
     }
 

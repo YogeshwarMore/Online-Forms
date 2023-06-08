@@ -17,7 +17,7 @@ export class AllFormsComponent {
   constructor(public service: ServicesService, private router: Router) {
     this.service.GetForms().subscribe(res => {
       this.forms = res;
-      console.log(res, this.forms);
+
     });
     this.role = this.service.getRoles();
     if (this.role !== 'admin') {

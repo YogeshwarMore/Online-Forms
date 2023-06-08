@@ -14,7 +14,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-import { DummyComponent } from './dummy/dummy.component';
 import { TemplateGalleryComponent } from './template-gallery/template-gallery.component';
 import { FeedbackPageComponent } from './feedback-page/feedback-page.component';
 import { FormComponent } from './form/form.component';
@@ -45,13 +44,13 @@ import { UserLoginComponent } from './user-login/user-login.component';
 import { SubmissionClosedComponent } from './submission-closed/submission-closed.component';
 import { AlreadySubmittedComponent } from './already-submitted/already-submitted.component';
 import { AllFormsComponent } from './all-forms/all-forms.component';
+import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    DummyComponent,
     TemplateGalleryComponent,
     FeedbackPageComponent,
     FormComponent,
@@ -65,8 +64,6 @@ import { AllFormsComponent } from './all-forms/all-forms.component';
     SubmissionClosedComponent,
     AlreadySubmittedComponent,
     AllFormsComponent
-
-
   ],
   imports: [
     BrowserModule,
@@ -96,8 +93,64 @@ import { AllFormsComponent } from './all-forms/all-forms.component';
     MatSnackBarModule,
     ReactiveFormsModule,
     SocialLoginModule,
-    GoogleSigninButtonModule
+    GoogleSigninButtonModule,
+    NgxUiLoaderModule.forRoot({
+
+      "bgsColor": "#673ab7",
+
+      "bgsOpacity": 0.5,
+
+      "bgsPosition": "bottom-right",
+
+      "bgsSize": 90,
+
+      "bgsType": "three-strings",
+
+      "blur": 15,
+
+      "delay": 0,
+
+      "fastFadeOut": true,
+
+      "fgsColor": "#673ab7",
+
+      "fgsPosition": "center-center",
+
+      "fgsSize": 90,
+
+      "fgsType": "three-strings",
+
+      "gap": 24,
+
+      "logoPosition": "center-center",
+
+      "logoSize": 120,
+
+      "logoUrl": "",
+
+      "masterLoaderId": "master",
+
+      "overlayBorderRadius": "0",
+
+      "overlayColor": "rgba(255,255,255,0.94)",
+
+      "pbColor": "#673ab7",
+
+      "pbDirection": "ltr",
+
+      "pbThickness": 3,
+
+      "hasProgressBar": true,
+
+      "text": "",
+
+      "textColor": "red",
+
+      "textPosition": "center-center",
+    }),
+    NgxUiLoaderHttpModule.forRoot({ showForeground: true })
   ],
+
   exports: [RouterModule],
   providers: [{
     provide: 'SocialAuthServiceConfig',
